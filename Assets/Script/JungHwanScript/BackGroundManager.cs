@@ -17,7 +17,7 @@ public class BackGroundManager : MonoBehaviour
         //anim = GetComponent<Animator>();
         
         distanceLength = Vector3.Distance(StartPosition, EndPosition);
-        StartCoroutine("GoBackStage");
+        
     }
 
     void Update()
@@ -25,16 +25,26 @@ public class BackGroundManager : MonoBehaviour
         
     }
 
-    IEnumerator GoBackStage()
+    public void next()
+    {   
+        if(this.transform.position == new Vector3(0f,0f,0f))
+        {
+            StartCoroutine("GoBackStage");
+        }
+        if (this.transform.position == new Vector3(10f, 0f, 0f))
+        {
+            StartCoroutine("GoStage");
+        }
+
+    }
+
+        IEnumerator GoBackStage()
     {
         Debug.Log("코루틴 진입");
         StartPosition = this.transform.position;
         EndPosition = new Vector3(-10f, 0f, 0f);
         Vector3 currPosition;
         startTime = Time.time;
-
-
-
         /*
         if (this.transform.position != endposition)
         {
@@ -52,7 +62,36 @@ public class BackGroundManager : MonoBehaviour
             //Debug.Log("와일 끝");
             yield return null;
         }
-        
+        this.transform.position = new Vector3(10f, 0f, 0f);
+        //Debug.Log("와일 탈출");
+        yield break;
+    }
+
+    IEnumerator GoStage()
+    {
+        Debug.Log("코루틴 진입");
+        StartPosition = this.transform.position;
+        EndPosition = new Vector3(0f, 0f, 0f);
+        Vector3 currPosition;
+        startTime = Time.time;
+        /*
+        if (this.transform.position != endposition)
+        {
+            this.transform.position = Vector3.MoveTowards(currposition, endposition, step);
+            yield return null;
+        }
+        */
+        while (this.transform.position != EndPosition)
+        {
+            //Debug.Log("와일");
+            currPosition = this.transform.position;
+            float step = speed * (Time.time - startTime);
+            transform.position = Vector3.MoveTowards(currPosition, EndPosition, step);
+            startTime = Time.time;
+            //Debug.Log("와일 끝");
+            yield return null;
+        }
+
         //Debug.Log("와일 탈출");
         yield break;
     }
