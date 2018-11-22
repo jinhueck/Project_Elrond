@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class BackGroundManager : MonoBehaviour
 {
-    private Animator anim;
+    //private Animator anim;
     //public bool position;
+    public float speed;
+    private Vector3 StartPosition;
+    private Vector3 EndPosition;
+    private float startTime;
+    private float distanceLength;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
+        
+        distanceLength = Vector3.Distance(StartPosition, EndPosition);
+        StartCoroutine("GoBackStage");
     }
 
     void Update()
@@ -17,6 +25,38 @@ public class BackGroundManager : MonoBehaviour
         
     }
 
+    IEnumerator GoBackStage()
+    {
+        Debug.Log("코루틴 진입");
+        StartPosition = this.transform.position;
+        EndPosition = new Vector3(-10f, 0f, 0f);
+        Vector3 currPosition;
+        startTime = Time.time;
+
+
+
+        /*
+        if (this.transform.position != endposition)
+        {
+            this.transform.position = Vector3.MoveTowards(currposition, endposition, step);
+            yield return null;
+        }
+        */
+        while (this.transform.position != EndPosition)
+        {
+            //Debug.Log("와일");
+            currPosition = this.transform.position;
+            float step = speed * (Time.time-startTime);
+            transform.position = Vector3.MoveTowards(currPosition, EndPosition, step);
+            startTime = Time.time;
+            //Debug.Log("와일 끝");
+            yield return null;
+        }
+        
+        //Debug.Log("와일 탈출");
+        yield break;
+    }
+    /*
     void CheckPosition()
     {
         if(this.gameObject.transform.position == new Vector3(0f,0f,0f))
@@ -33,28 +73,36 @@ public class BackGroundManager : MonoBehaviour
             anim.SetBool("IsBackStage", true);
         }
     }
+    
+    public void AniFalse()
+    {
+        anim.SetBool("IsStage", false);
+        anim.SetBool("IsBackStage", false);
+    }
+
+    public void GoBackGround()
+    {
+        if (this.gameObject.transform.position == new Vector3(-10f, 0f, 0f))
+        {
+            this.gameObject.transform.position = new Vector3(10f, 0f, 0f);
+            //anim.SetBool("IsBackStage", false);
+        }
+    }
 
     public void next()
     {
         CheckPosition();
         
-        if (this.gameObject.transform.position == new Vector3(-10f, 0f, 0f))
-        {
-            anim.SetBool("IsStage", false);
-            gameObject.SetActive(false);
-            gameObject.transform.position = new Vector3(10f, 0f, 0f);
-            gameObject.SetActive(true);
-            //anim.SetBool("IsBackStage", false);
-        }
+        
 
-        /*
+        
         if (this.gameObject.transform.position == new Vector3(0f, 0f, 0f))
         {
             anim.SetBool("IsBackStage", false);
         }
-        */
+        
 
         //anim.SetBool("IsStage", false);
         //anim.SetBool("IsBackStage", false);
-    }
+    }*/
 }

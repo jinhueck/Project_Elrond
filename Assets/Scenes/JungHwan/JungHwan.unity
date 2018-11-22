@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -401,7 +401,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1439111757299386, guid: 91a3dd1735a0d03499743a731bd4cb2b, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114134235374268638, guid: 91a3dd1735a0d03499743a731bd4cb2b,
         type: 2}
@@ -417,6 +417,11 @@ Prefab:
         type: 2}
       propertyPath: m_Animation
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114218963683827370, guid: 91a3dd1735a0d03499743a731bd4cb2b,
+        type: 2}
+      propertyPath: speed
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 111356084210693184, guid: 91a3dd1735a0d03499743a731bd4cb2b, type: 2}
@@ -434,7 +439,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1008793680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8b1f3da2b821caa41bf7e6cfe3c50d56, type: 2}
   m_CullingMode: 0
@@ -469,7 +474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1045699139
 RectTransform:
   m_ObjectHideFlags: 0
@@ -495,11 +500,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1045699138}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30dd402c6c04ee346b24b26d772b69b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!114 &1045699141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +651,11 @@ Prefab:
         type: 2}
       propertyPath: m_Animation
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859819031209112, guid: ad1399f7e7f82b24aad1cb5a1f73421e,
+        type: 2}
+      propertyPath: speed
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 111883415784689724, guid: ad1399f7e7f82b24aad1cb5a1f73421e, type: 2}
@@ -799,7 +810,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1662934366}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8b1f3da2b821caa41bf7e6cfe3c50d56, type: 2}
   m_CullingMode: 0

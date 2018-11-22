@@ -24,15 +24,12 @@ public class BombManager : MonoBehaviour {
     {
         bool what = true;
         GetRandomInt(3, 0, 10);
-        Debug.Log("랜덤 수" + randArray.Length);
-        Debug.Log("랜덤 숫자" + randArray[0] +randArray[1] +randArray[2]);
         for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < randArray.Length; j++)
             {
                 if (i == randArray[j])
-                {
-                    Debug.Log("j"+j);
+                {   
                     GameObject obj2 = Instantiate(Trap, this.transform.GetChild(i).transform.position, Quaternion.identity);
                     obj2.transform.parent = this.transform;
                     what = false;
@@ -45,7 +42,6 @@ public class BombManager : MonoBehaviour {
             }
             if (what == true)
             {
-                Debug.Log("i"+i);
                 GameObject obj = Instantiate(Bomb, this.transform.GetChild(i).transform.position, Quaternion.identity);
                 obj.transform.parent = this.transform;
             }
