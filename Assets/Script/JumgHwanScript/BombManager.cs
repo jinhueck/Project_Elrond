@@ -7,32 +7,54 @@ public class BombManager : MonoBehaviour {
     public GameObject Bomb;
     public GameObject Trap;
     private int randomnum;
+    private int[] randArray;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
-        randomnum = Random.Range(1, 11);
-        for (int i=1; i<=10; i++)
-        {
-            if (i == randomnum)
-            {
-                Instantiate(Trap, GameObject.Find("Tile" + i).transform.position, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(Bomb, GameObject.Find("Tile" + i).transform.position, Quaternion.identity);
-            }
-        }
-	}
+        MakeStage();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
+    public void MakeStage()
+    {
+        bool what = true;
+        GetRandomInt(3, 0, 10);
+        Debug.Log("랜덤 수" + randArray.Length);
+        Debug.Log("랜덤 숫자" + randArray[0] +randArray[1] +randArray[2]);
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < randArray.Length; j++)
+            {
+                if (i == randArray[j])
+                {
+                    Debug.Log("j"+j);
+                    GameObject obj2 = Instantiate(Trap, this.transform.GetChild(i).transform.position, Quaternion.identity);
+                    obj2.transform.parent = this.transform;
+                    what = false;
+                    break;
+                }
+                else
+                {
+                    what = true;
+                }
+            }
+            if (what == true)
+            {
+                Debug.Log("i"+i);
+                GameObject obj = Instantiate(Bomb, this.transform.GetChild(i).transform.position, Quaternion.identity);
+                obj.transform.parent = this.transform;
+            }
+        }
+    }
+    
     public int[] GetRandomInt(int length, int min, int max)
     {
-        int[] randArray = new int[length];
+        randArray = new int[length];
         bool isSame;
 
         for (int i = 0; i < length; ++i)
