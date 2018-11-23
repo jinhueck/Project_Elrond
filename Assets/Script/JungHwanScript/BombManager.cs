@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombManager : MonoBehaviour {
 
-    public static BombManager instance;
+    //public static BombManager instance;
 
     //뽁뽁이 리스트
     public GameObject prefab = null;
@@ -31,10 +31,12 @@ public class BombManager : MonoBehaviour {
 
     private void Awake()
     {
+        /*
         if(instance == null)
         {
             instance = this;
         }
+        */
         MakeStage();        
         InvisibleBomb = new GameObject();
         InvisibleTrap = new GameObject();
@@ -56,6 +58,7 @@ public class BombManager : MonoBehaviour {
                 {
                     GameObject obj2 = PopFromPool(TrapList,1,this.transform);
                     obj2.transform.position = this.transform.GetChild(i).transform.position;
+                    obj2.transform.SetParent(this.transform);
                     //GameObject obj2 = Instantiate(Trap, this.transform.GetChild(i).transform.position, Quaternion.identity);
                     //obj2.transform.parent = ;
                     what = false;
@@ -70,6 +73,7 @@ public class BombManager : MonoBehaviour {
             {
                 GameObject obj = PopFromPool(BombList,0,this.transform);
                 obj.transform.position = this.transform.GetChild(i).transform.position;
+                obj.transform.SetParent(this.transform);
                 //GameObject obj = Instantiate(Bomb, this.transform.GetChild(i).transform.position, Quaternion.identity);
                 //obj.transform.parent = ;
             }
@@ -134,7 +138,7 @@ public class BombManager : MonoBehaviour {
 
         GameObject item = list[0];
         list.RemoveAt(0);
-        item.transform.SetParent(parent);
+        //item.transform.SetParent(parent);
         item.SetActive(true);
 
         return item;

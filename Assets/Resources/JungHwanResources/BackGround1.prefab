@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 212468826625936246}
   - component: {fileID: 114708898342541866}
   - component: {fileID: 114859819031209112}
-  - component: {fileID: 111883415784689724}
   m_Layer: 0
   m_Name: BackGround1
   m_TagString: Untagged
@@ -343,22 +342,6 @@ Transform:
   m_Father: {fileID: 4111310050874512}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!111 &111883415784689724
-Animation:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1498963433655116}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 2c43641d1a22d6f4fbbcc01affa56645, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 2c43641d1a22d6f4fbbcc01affa56645, type: 2}
-  - {fileID: 7400000, guid: b045955f987960740ae8cb278d43073d, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &114708898342541866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,8 +353,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fadbc922b21e94fba77902106b5948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  poolCount: 0
+  BombList: []
+  TrapList: []
+  FeverList: []
+  InvisibleBomb: {fileID: 0}
+  InvisibleTrap: {fileID: 0}
+  InvisibleFever: {fileID: 0}
   Bomb: {fileID: 1584774785045562, guid: 52f5a8e56816e244794be8510c66dde0, type: 2}
   Trap: {fileID: 1115878325140272, guid: 9cd46b46142e9234ea139938e9fa0553, type: 2}
+  Fever: {fileID: 1584774785045562, guid: 0e62a0fb471e2814cb8c7840ff8def9b, type: 2}
 --- !u!114 &114859819031209112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30dd402c6c04ee346b24b26d772b69b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 50
 --- !u!212 &212367909847996412
 SpriteRenderer:
   m_ObjectHideFlags: 1

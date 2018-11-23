@@ -12,12 +12,13 @@ public class BackGroundManager : MonoBehaviour
     private float startTime;
     private float distanceLength;
 
+    BombManager bomba;
     void Start()
     {
         //anim = GetComponent<Animator>();
         
         distanceLength = Vector3.Distance(StartPosition, EndPosition);
-        
+        bomba = this.transform.GetComponent<BombManager>();
     }
     
     public void next()
@@ -61,29 +62,30 @@ public class BackGroundManager : MonoBehaviour
 
         Clear();
 
-        BombManager.instance.MakeStage();
+        this.transform.GetComponent<BombManager>().MakeStage();
         //Debug.Log("와일 탈출");
         yield break;
     }
 
     void Clear()
     {
+        
         for (int i = 0; i < 10; i++)
         {
             int j = 10;
             if (this.transform.GetChild(j).tag == "Bomb")
-            {   
-                BombManager.instance.PushToPool(BombManager.instance.BombList, this.transform.GetChild(j).gameObject, BombManager.instance.InvisibleBomb.transform);
+            {
+                bomba.PushToPool(bomba.BombList, this.transform.GetChild(j).gameObject, bomba.InvisibleBomb.transform);
             }
 
             else if (this.transform.GetChild(j).tag == "Trap")
-            {   
-                BombManager.instance.PushToPool(BombManager.instance.TrapList, this.transform.GetChild(j).gameObject, BombManager.instance.InvisibleTrap.transform);
+            {
+                bomba.PushToPool(bomba.TrapList, this.transform.GetChild(j).gameObject, bomba.InvisibleTrap.transform);
             }
 
             else if (this.transform.GetChild(j).tag == "Fever")
             {
-                BombManager.instance.PushToPool(BombManager.instance.FeverList, this.transform.GetChild(j).gameObject, BombManager.instance.InvisibleFever.transform);
+                bomba.PushToPool(bomba.FeverList, this.transform.GetChild(j).gameObject, bomba.InvisibleFever.transform);
             }
         }
     }
