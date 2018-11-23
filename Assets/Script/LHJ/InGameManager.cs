@@ -7,7 +7,7 @@ public class InGameManager : MonoBehaviour {
 
 
 
-    public static InGameManager instance=null;
+    public static InGameManager instance;
 
 
 
@@ -114,7 +114,7 @@ public class InGameManager : MonoBehaviour {
         fevercheck = false;
     }
 
-    public void ScoreManager()
+    public void AddScore()
     {
         if(fevercheck==true)
         {

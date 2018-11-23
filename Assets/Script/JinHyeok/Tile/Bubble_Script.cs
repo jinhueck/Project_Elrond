@@ -12,6 +12,7 @@ public class Bubble_Script : Tile_Script
         {
             isTouched = true;
             ImageChange(tileSprite[1]);
+            InGameManager.instance.AddScore();
         }
     }
 }
