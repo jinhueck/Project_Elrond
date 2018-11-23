@@ -45,7 +45,6 @@ public class Touch_Script : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             touchPos = Input.mousePosition;
-            //Debug.Log("Touch Pos : " + touchPos);
         }
 #endif
         

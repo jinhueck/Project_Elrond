@@ -15,13 +15,21 @@ public class Tile_Script : MonoBehaviour {
 
     public void Setup()
     {
-        isTouched = false;
+        SetBool();
         ImageChange(tileSprite[0]);
     }
-
-	public virtual void Touched()
+    protected virtual void SetBool()
     {
-        Debug.Log("Bomb!");
+
+    }
+
+    public bool IsTouched()
+    {
+        return isTouched;
+    }
+
+    public virtual void Touched()
+    {
     }
 
     protected void ImageChange(Sprite sprite)
