@@ -19,12 +19,7 @@ public class BackGroundManager : MonoBehaviour
         distanceLength = Vector3.Distance(StartPosition, EndPosition);
         
     }
-
-    void Update()
-    {
-        
-    }
-
+    
     public void next()
     {   
         if(this.transform.position == new Vector3(0f,0f,0f))
@@ -63,8 +58,34 @@ public class BackGroundManager : MonoBehaviour
             yield return null;
         }
         this.transform.position = new Vector3(10f, 0f, 0f);
+
+        Clear();
+
+        BombManager.instance.MakeStage();
         //Debug.Log("와일 탈출");
         yield break;
+    }
+
+    void Clear()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            int j = 10;
+            if (this.transform.GetChild(j).tag == "Bomb")
+            {   
+                BombManager.instance.PushToPool(BombManager.instance.BombList, this.transform.GetChild(j).gameObject, BombManager.instance.InvisibleBomb.transform);
+            }
+
+            else if (this.transform.GetChild(j).tag == "Trap")
+            {   
+                BombManager.instance.PushToPool(BombManager.instance.TrapList, this.transform.GetChild(j).gameObject, BombManager.instance.InvisibleTrap.transform);
+            }
+
+            else if (this.transform.GetChild(j).tag == "Fever")
+            {
+                BombManager.instance.PushToPool(BombManager.instance.FeverList, this.transform.GetChild(j).gameObject, BombManager.instance.InvisibleFever.transform);
+            }
+        }
     }
 
     IEnumerator GoStage()
@@ -74,6 +95,7 @@ public class BackGroundManager : MonoBehaviour
         EndPosition = new Vector3(0f, 0f, 0f);
         Vector3 currPosition;
         startTime = Time.time;
+        
         /*
         if (this.transform.position != endposition)
         {
@@ -81,6 +103,8 @@ public class BackGroundManager : MonoBehaviour
             yield return null;
         }
         */
+
+
         while (this.transform.position != EndPosition)
         {
             //Debug.Log("와일");
