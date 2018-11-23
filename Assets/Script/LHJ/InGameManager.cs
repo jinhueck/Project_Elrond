@@ -16,7 +16,7 @@ public class InGameManager : MonoBehaviour {
 
 
 
-    private float playtime = 60f;
+   public float playtime ;
 
 
 
@@ -27,11 +27,11 @@ public class InGameManager : MonoBehaviour {
 
     //콤보 피버 점수 관련
     Coroutine ComboCor;
-    int plusScore=100;
-    int combo=1;
-    float combotime=5f;
+    int plusScore;
+    int combo;
+    float combotime;
     bool fevercheck;
-    float fevertime = 2f;
+    float fevertime;
     int fevercount;
 
 
@@ -60,6 +60,16 @@ public class InGameManager : MonoBehaviour {
         GameTime();
     }
 
+    void SetupGame()
+    {
+        plusScore = 100;
+        combo = 1;
+        combotime = 5f;
+        fevercheck=false;
+        fevertime = 2f;
+        fevercount=0;
+    }
+
    
 
     public void AddCombo()
@@ -75,6 +85,7 @@ public class InGameManager : MonoBehaviour {
         if (combotime<=2f)
             combotime = 2f;
 
+        UIManager.instance.ComboUI(combo);
         ResetCoroutine();
     }
 
@@ -122,6 +133,8 @@ public class InGameManager : MonoBehaviour {
         }
         else
         totalscore += plusScore * combo;
+
+        UIManager.instance.ScoreUI(totalscore);
     }
 
     void GameTime()
@@ -132,20 +145,22 @@ public class InGameManager : MonoBehaviour {
             if (playtime>0)
             {
                 playtime -= Time.deltaTime;
+                UIManager.instance.TimerUI(playtime);
                 //Debug.Log(playtime);
-                
+
             }            
             else
             {
                 playtime = 0f;
                 Debug.Log("Game end");
-                //게임 정지
+               
                 //광고 볼지의 여부 함수
             }
         }
+        //게임 정지
     }
 
-    
+
     void GameEnd()
     {
 
