@@ -32,9 +32,9 @@ public class Touch_Script : MonoBehaviour {
             Touch touch = Input.GetTouch(i);
             touchPos = touch.position;
             touchPos.z = 5f;
-            
+            Debug.Log(touchPos);
 
-            RaycastHit2D hit = Physics2D.Raycast(camera.ScreenToWorldPoint(touchPos), Vector2.zero, Mathf.Infinity, layermask);
+            RaycastHit2D hit = Physics2D.Raycast(camera.ScreenToWorldPoint(touchPos),Vector2.zero, Mathf.Infinity, layermask);
             if(hit.collider != null)
             {
                 hit.transform.GetComponent<Tile_Script>().Touched();
