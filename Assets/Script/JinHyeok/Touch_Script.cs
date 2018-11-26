@@ -25,23 +25,25 @@ public class Touch_Script : MonoBehaviour {
         int count = Input.touchCount;
 
         if (count == 0)
+        {
+            Map_Group_Script.instance.check = false;
             return;
-
+        }
+            
+        if(Map_Group_Script.instance.check == false)
         for(int i = 0; i < count; i ++)
         {
             Touch touch = Input.GetTouch(i);
             touchPos = touch.position;
             touchPos.z = 5f;
-            Debug.Log(touchPos);
+            //Debug.Log(touchPos);
 
             RaycastHit2D hit = Physics2D.Raycast(camera.ScreenToWorldPoint(touchPos),Vector2.zero, Mathf.Infinity, layermask);
-            if(hit.collider != null && Map_Group_Script.instance.check == false)
+
+            if(hit.collider != null)
             {
                 hit.transform.GetComponent<Tile_Script>().Touched();
             }
-            if (touch.phase == TouchPhase.Ended)
-                Map_Group_Script.instance.check = false;
-
         }
 #endif
 #if UNITY_EDITOR

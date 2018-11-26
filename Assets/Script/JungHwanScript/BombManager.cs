@@ -183,7 +183,6 @@ public class BombManager : MonoBehaviour {
         if (T == 7)
         {
             Map_Group_Script.instance.next();
-            Debug.Log("다음스테이지 내놔");
             T = 0;
         }
     }
