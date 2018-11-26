@@ -29,6 +29,10 @@ public class BombManager : MonoBehaviour {
 
     // Use this for initialization
 
+    Tile_Script setup;
+
+    int T = 1;
+
     private void Awake()
     {
         /*
@@ -47,7 +51,7 @@ public class BombManager : MonoBehaviour {
     }
     
     public void MakeStage()
-    {
+    {   
         bool what = true;
         GetRandomInt(3, 0, 10);
         for (int i = 0; i < 10; i++)
@@ -59,6 +63,7 @@ public class BombManager : MonoBehaviour {
                     GameObject obj2 = PopFromPool(TrapList,1,this.transform);
                     obj2.transform.position = this.transform.GetChild(i).transform.position;
                     obj2.transform.SetParent(this.transform);
+                    
                     //GameObject obj2 = Instantiate(Trap, this.transform.GetChild(i).transform.position, Quaternion.identity);
                     //obj2.transform.parent = ;
                     what = false;
@@ -74,6 +79,7 @@ public class BombManager : MonoBehaviour {
                 GameObject obj = PopFromPool(BombList,0,this.transform);
                 obj.transform.position = this.transform.GetChild(i).transform.position;
                 obj.transform.SetParent(this.transform);
+                obj.GetComponent<Tile_Script>().Setup();
                 //GameObject obj = Instantiate(Bomb, this.transform.GetChild(i).transform.position, Quaternion.identity);
                 //obj.transform.parent = ;
             }
@@ -169,5 +175,15 @@ public class BombManager : MonoBehaviour {
             item.SetActive(false);
         }
         return item;
+    }
+
+    public void CheckIsTouched()
+    {
+        T++;
+        if (T == 7)
+        {
+            Debug.Log("다음스테이지 내놔");
+            T = 1;
+        }
     }
 }
