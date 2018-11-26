@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Map_Group_Script : MonoBehaviour {
 
+    public static Map_Group_Script instance;
+
     public GameObject Ground1;
     public GameObject Ground2;
     public GameObject Ground3;
@@ -11,12 +13,16 @@ public class Map_Group_Script : MonoBehaviour {
     public Vector3 Pos_right;
     public Vector3 Pos2_middle;
     public Vector3 Pos_left;
+    public bool check;
 
     private void Awake()
     {
+        if (Map_Group_Script.instance == null)
+            Map_Group_Script.instance = this;
         Pos_right = new Vector3(10, 0, 0);
         Pos2_middle = new Vector3(0, 0, 0);
         Pos_left = new Vector3(-10, 0, 0);
+        check = false;
     }
 
     public void next()

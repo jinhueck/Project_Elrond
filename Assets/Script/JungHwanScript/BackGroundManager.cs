@@ -42,7 +42,7 @@ public class BackGroundManager : MonoBehaviour
         Vector3 currPosition;
 
         startTime = Time.time;
-
+        Map_Group_Script.instance.check = true;
         while (transform.position != StartPosition)
         {
             currPosition = transform.position;
@@ -52,7 +52,6 @@ public class BackGroundManager : MonoBehaviour
             
             yield return null;
         }
-
         yield break;
     }
 

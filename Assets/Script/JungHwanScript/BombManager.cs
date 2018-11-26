@@ -31,7 +31,7 @@ public class BombManager : MonoBehaviour {
 
     Tile_Script setup;
 
-    int T = 1;
+    int T = 0;
 
     private void Awake()
     {
@@ -182,8 +182,9 @@ public class BombManager : MonoBehaviour {
         T++;
         if (T == 7)
         {
+            Map_Group_Script.instance.next();
             Debug.Log("다음스테이지 내놔");
-            T = 1;
+            T = 0;
         }
     }
 }

@@ -35,10 +35,13 @@ public class Touch_Script : MonoBehaviour {
             Debug.Log(touchPos);
 
             RaycastHit2D hit = Physics2D.Raycast(camera.ScreenToWorldPoint(touchPos),Vector2.zero, Mathf.Infinity, layermask);
-            if(hit.collider != null)
+            if(hit.collider != null && Map_Group_Script.instance.check == false)
             {
                 hit.transform.GetComponent<Tile_Script>().Touched();
             }
+            if (touch.phase == TouchPhase.Ended)
+                Map_Group_Script.instance.check = false;
+
         }
 #endif
 #if UNITY_EDITOR
