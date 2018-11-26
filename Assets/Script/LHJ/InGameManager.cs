@@ -9,18 +9,11 @@ public class InGameManager : MonoBehaviour {
 
     public static InGameManager instance;
 
-
-
-
-
-
-
-
    public float playtime ;
 
 
 
-    private int totalscore;
+    [SerializeField]private int totalscore;
    
     ////////////////
 
@@ -47,8 +40,7 @@ public class InGameManager : MonoBehaviour {
         {
             instance = this;
         }
-
-        totalscore = 0;
+        SetupGame();
     }
 
     void Start ()
@@ -64,6 +56,7 @@ public class InGameManager : MonoBehaviour {
     {
         plusScore = 100;
         combo = 1;
+        totalscore = 0;
         combotime = 5f;
         fevercheck=false;
         fevertime = 2f;
@@ -100,6 +93,7 @@ public class InGameManager : MonoBehaviour {
     {
         combo = 1;
         combotime = 5f;
+        UIManager.instance.ComboUI(combo);
         ResetCoroutine();
     }
 
@@ -119,8 +113,11 @@ public class InGameManager : MonoBehaviour {
 
     IEnumerator Fever()
     {
+        Debug.Log("Fever Start!!!");
         fevercheck = true;
         yield return new WaitForSeconds(fevertime);
+
+        Debug.Log("Fever END!!!");
         fevercount = 0;
         fevercheck = false;
     }

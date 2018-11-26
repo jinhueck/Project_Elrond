@@ -27,17 +27,7 @@ public class Map_Group_Script : MonoBehaviour {
 
     public void next()
     {
-        int count = Input.touchCount;
-        if (count > 0)
-        {
-            
-            Touch touch;
-            for(int i = 0; i < count; i ++)
-            {
-                touch = Input.GetTouch(i);
-                touch.phase = TouchPhase.Canceled;
-            }
-        }
+        InGameManager.instance.AddCombo();
 
         Ground1.GetComponent<BackGroundManager>().next(Pos2_middle);
         Ground2.GetComponent<BackGroundManager>().next(Pos_left);
