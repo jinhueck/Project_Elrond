@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/JungHwan/StartUI.unity
+    guid: b48d5b7cdcaad9f479f2b8fe02ad7f3c
   - enabled: 1
     path: Assets/Scenes/JungHwan/JungHwan.unity
     guid: 2a3aa752926d90c42a04a8cceb488970
