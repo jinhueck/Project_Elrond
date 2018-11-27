@@ -10,18 +10,21 @@ public class Test : MonoBehaviour {
     {
         instance = this;
         btnPause.onClick.AddListener(OnClick_Pause);
-        uiPause.Close();
+        //uiPause.Close();
 
         fade.FadeOut(fade.Close);
+        
     }
 
     public UIPause uiPause;
     public Button btnPause;
+    public UI_Message message;
 
     public UI_Fade fade;
 
     public void OnClick_Pause()
     {
-        uiPause.Open();
+        //uiPause.Open();
+        message.Open("Test");
     }
 }

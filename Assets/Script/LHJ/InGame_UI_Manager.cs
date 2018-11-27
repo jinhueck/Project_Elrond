@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour {
+public class InGame_UI_Manager : MonoBehaviour {
 
-    public static UIManager instance;
+    public static InGame_UI_Manager instance;
 
     public Text Timer;
     public Slider slider;

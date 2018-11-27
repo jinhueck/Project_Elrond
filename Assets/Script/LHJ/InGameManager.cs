@@ -49,7 +49,7 @@ public class InGameManager : MonoBehaviour {
     void Update ()
     {
         GameTime();
-        Pause();
+        //Pause();
     }
 
     void SetupGame()
@@ -80,7 +80,7 @@ public void AddCombo()
         if (combotime<=2f)
             combotime = 2f;
 
-        UIManager.instance.ComboUI(combo);
+        InGame_UI_Manager.instance.ComboUI(combo);
         ResetCoroutine();
     }
 
@@ -95,7 +95,7 @@ public void AddCombo()
     {
         combo = 1;
         combotime = 5f;
-        UIManager.instance.ComboUI(combo);
+        InGame_UI_Manager.instance.ComboUI(combo);
         ResetCoroutine();
     }
 
@@ -133,7 +133,7 @@ public void AddCombo()
         else
         totalscore += plusScore * combo;
 
-        UIManager.instance.ScoreUI(totalscore);
+        InGame_UI_Manager.instance.ScoreUI(totalscore);
     }
 
     void GameTime()
@@ -141,7 +141,7 @@ public void AddCombo()
         if (playtime > 0)
         {
             playtime -= Time.deltaTime;
-            UIManager.instance.TimerUI(playtime);
+            InGame_UI_Manager.instance.TimerUI(playtime);
             //Debug.Log(playtime);
 
         }
