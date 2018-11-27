@@ -14,21 +14,26 @@ public class BombManager : MonoBehaviour {
     [SerializeField] public List<GameObject> BombList = new List<GameObject>();
     [SerializeField] public List<GameObject> TrapList = new List<GameObject>();
     [SerializeField] public List<GameObject> FeverList = new List<GameObject>();
-        
+    [SerializeField] public List<GameObject> RubyList = new List<GameObject>();
+
     public GameObject InvisibleBomb;
     public GameObject InvisibleTrap;
     public GameObject InvisibleFever;
+    public GameObject InvisibleRuby;
 
 
 
     public GameObject Bomb;
     public GameObject Trap;
     public GameObject Fever;
+    public GameObject Ruby;
     private int randomnum;
     private int[] randArray;
 
     // Use this for initialization
 
+    //루비생성
+    int makeRuby;
     Tile_Script setup;
 
     int T = 0;
@@ -45,15 +50,19 @@ public class BombManager : MonoBehaviour {
         InvisibleBomb = new GameObject();
         InvisibleTrap = new GameObject();
         InvisibleFever = new GameObject();
+        InvisibleRuby = new GameObject();
         InvisibleBomb.name = "InvisibleBomb";
         InvisibleTrap.name = "InvisibleTrap";
         InvisibleFever.name = "InvisibleFever";
+        InvisibleRuby.name = "InvisibleRuby";
     }
     
     public void MakeStage()
     {   
         bool what = true;
         GetRandomInt(3, 0, 10);
+        
+        
         for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < randArray.Length; j++)
@@ -76,16 +85,37 @@ public class BombManager : MonoBehaviour {
             }
             if (what == true)
             {
-                GameObject obj = PopFromPool(BombList,0,this.transform);
-                obj.transform.position = this.transform.GetChild(i).transform.position;
-                obj.transform.SetParent(this.transform);
-                obj.GetComponent<Tile_Script>().Setup();
+                MakeRuby(0,10);
+                Debug.Log(makeRuby);
+                if (makeRuby == 5)
+                {
+                    Debug.Log("루비생성" + makeRuby);
+                    GameObject obj = PopFromPool(RubyList, 3, this.transform);
+                    obj.transform.position = this.transform.GetChild(i).transform.position;
+                    obj.transform.SetParent(this.transform);
+                    
+                    //obj.GetComponent<Tile_Script>().Setup();
+                }
+                else if(makeRuby !=5)
+                {
+                    GameObject obj = PopFromPool(BombList, 0, this.transform);
+                    obj.transform.position = this.transform.GetChild(i).transform.position;
+                    obj.transform.SetParent(this.transform);
+                    obj.GetComponent<Tile_Script>().Setup();
+                }
                 //GameObject obj = Instantiate(Bomb, this.transform.GetChild(i).transform.position, Quaternion.identity);
                 //obj.transform.parent = ;
             }
         }
     }
     
+    public int MakeRuby(int min, int max)
+    {
+        makeRuby = Random.Range(min, max);
+
+        return makeRuby;
+    }
+
     public int[] GetRandomInt(int length, int min, int max)
     {
         randArray = new int[length];
@@ -141,6 +171,10 @@ public class BombManager : MonoBehaviour {
         {
             list.Add(CreateItem(num, parent));
         }
+        if (list.Count == 0 && num == 3)
+        {
+            list.Add(CreateItem(num, parent));
+        }
 
         GameObject item = list[0];
         list.RemoveAt(0);
@@ -171,6 +205,13 @@ public class BombManager : MonoBehaviour {
         {
             item = Object.Instantiate(Fever) as GameObject;
             item.name = "Fever";
+            item.transform.SetParent(parent);
+            item.SetActive(false);
+        }
+        if (num == 3)
+        {
+            item = Object.Instantiate(Ruby) as GameObject;
+            item.name = "Ruby";
             item.transform.SetParent(parent);
             item.SetActive(false);
         }

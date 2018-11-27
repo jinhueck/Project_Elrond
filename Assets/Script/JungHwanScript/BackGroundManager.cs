@@ -84,6 +84,11 @@ public class BackGroundManager : MonoBehaviour
             {
                 bomba.PushToPool(bomba.FeverList, transform.GetChild(j).gameObject, bomba.InvisibleFever.transform);
             }
+
+            else if (transform.GetChild(j).tag == "Ruby")
+            {
+                bomba.PushToPool(bomba.RubyList, transform.GetChild(j).gameObject, bomba.InvisibleRuby.transform);
+            }
         }
     }
 

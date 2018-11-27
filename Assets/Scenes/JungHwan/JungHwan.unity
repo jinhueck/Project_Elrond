@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -901,7 +901,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -978,6 +978,18 @@ Prefab:
       propertyPath: m_Name
       value: BackGround1
       objectReference: {fileID: 0}
+    - target: {fileID: 114134235374268638, guid: 91a3dd1735a0d03499743a731bd4cb2b,
+        type: 2}
+      propertyPath: Ruby
+      value: 
+      objectReference: {fileID: 1449436078416766, guid: 2b468eb37d96f0d4c99c475869473479,
+        type: 2}
+    - target: {fileID: 114134235374268638, guid: 91a3dd1735a0d03499743a731bd4cb2b,
+        type: 2}
+      propertyPath: Fever
+      value: 
+      objectReference: {fileID: 1584774785045562, guid: 0e62a0fb471e2814cb8c7840ff8def9b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91a3dd1735a0d03499743a731bd4cb2b, type: 2}
   m_IsPrefabAsset: 0
@@ -1179,6 +1191,18 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114134235374268638, guid: 91a3dd1735a0d03499743a731bd4cb2b,
+        type: 2}
+      propertyPath: Ruby
+      value: 
+      objectReference: {fileID: 1449436078416766, guid: 2b468eb37d96f0d4c99c475869473479,
+        type: 2}
+    - target: {fileID: 114134235374268638, guid: 91a3dd1735a0d03499743a731bd4cb2b,
+        type: 2}
+      propertyPath: Fever
+      value: 
+      objectReference: {fileID: 1584774785045562, guid: 0e62a0fb471e2814cb8c7840ff8def9b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91a3dd1735a0d03499743a731bd4cb2b, type: 2}
   m_IsPrefabAsset: 0
@@ -1234,6 +1258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playtime: 60
+  totalscore: 0
 --- !u!114 &984849010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,6 +1529,12 @@ Prefab:
       propertyPath: m_Name
       value: BackGround2
       objectReference: {fileID: 0}
+    - target: {fileID: 114708898342541866, guid: ad1399f7e7f82b24aad1cb5a1f73421e,
+        type: 2}
+      propertyPath: Ruby
+      value: 
+      objectReference: {fileID: 1449436078416766, guid: 2b468eb37d96f0d4c99c475869473479,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad1399f7e7f82b24aad1cb5a1f73421e, type: 2}
   m_IsPrefabAsset: 0
