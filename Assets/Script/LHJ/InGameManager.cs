@@ -30,10 +30,9 @@ public class InGameManager : MonoBehaviour {
 
 
 
-    bool stopgame =false;//인게임 스탑 확인
-    bool advertisement;//광고의 확인
-
-
+    public bool advertisement;//광고의 확인
+    public bool pausecheck;
+    int addadver;
     private void Awake()
     {
         if(instance==null)
@@ -50,6 +49,7 @@ public class InGameManager : MonoBehaviour {
     void Update ()
     {
         GameTime();
+        Pause();
     }
 
     void SetupGame()
@@ -61,11 +61,13 @@ public class InGameManager : MonoBehaviour {
         fevercheck=false;
         fevertime = 2f;
         fevercount=0;
+        pausecheck = false;
+        addadver = 0;
     }
 
-   
 
-    public void AddCombo()
+
+public void AddCombo()
     {
         combo++;
 
@@ -136,28 +138,58 @@ public class InGameManager : MonoBehaviour {
 
     void GameTime()
     {
-        if (stopgame == false)
+        if (playtime > 0)
         {
-            
-            if (playtime>0)
-            {
-                playtime -= Time.deltaTime;
-                UIManager.instance.TimerUI(playtime);
-                //Debug.Log(playtime);
+            playtime -= Time.deltaTime;
+            UIManager.instance.TimerUI(playtime);
+            //Debug.Log(playtime);
 
-            }            
-            else
-            {
-                playtime = 0f;
-                Debug.Log("Game end");
-               
-                //광고 볼지의 여부 함수
-            }
+        }
+        else
+        {
+            playtime = 0f;
+            Debug.Log("Game end");
+            pausecheck = true;
+            Advertisingrh();
+            //광고 볼지의 여부 함수
         }
         //게임 정지
     }
 
+    void Pause()
+    {
+        if(pausecheck==true)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
 
+        }
+    }
+
+    void Advertisingrh()
+    {
+        if (addadver == 0)
+        {
+            if (advertisement == true)
+            {
+                //광고 재생
+                playtime += 10f;
+                addadver++;
+                pausecheck = false;
+            }
+            else
+            {
+                Debug.Log("아직 광고 안봤당");
+            }
+        }
+        else
+        {
+            Debug.Log("광고보고 게임 끝남");
+        }
+    }
     void GameEnd()
     {
 

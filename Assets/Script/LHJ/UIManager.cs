@@ -47,4 +47,5 @@ public class UIManager : MonoBehaviour {
     {
         combo.text = "" + n+" Combo";
     }
+
 }
