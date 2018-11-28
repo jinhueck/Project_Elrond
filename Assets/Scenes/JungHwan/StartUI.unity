@@ -1533,7 +1533,7 @@ GameObject:
   - component: {fileID: 2109321058}
   - component: {fileID: 2109321059}
   m_Layer: 0
-  m_Name: Google
+  m_Name: GoogleLogin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

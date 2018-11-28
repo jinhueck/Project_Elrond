@@ -8,9 +8,9 @@ using GooglePlayGames.BasicApi;
 
 public class GoogleLogin : MonoBehaviour {
 
-    private const float FontSizeMult = 0.05f;
-    private bool mWaitingForAuth = false;
-    private string mStatusText = "Ready.";
+    //private const float FontSizeMult = 0.05f;
+    //private bool mWaitingForAuth = false;
+    //private string mStatusText = "Ready.";
     private const string LeaderboardID = "CgkIqvO5zaACEAIQAQ";
 
     static private GoogleLogin instance;
@@ -48,7 +48,7 @@ public class GoogleLogin : MonoBehaviour {
 
     void Start()
     {
-        Login();
+        //Login();
         //SignIn();
 
     }
@@ -72,8 +72,8 @@ public class GoogleLogin : MonoBehaviour {
     {
         if(!isAuthenticated)
         {
-            //Login();
-            SignIn();
+            Login();
+            //SignIn();
             return;
         }
 
@@ -94,6 +94,7 @@ public class GoogleLogin : MonoBehaviour {
         Social.ShowAchievementsUI();
     }
 
+    /*
     public void SignIn() //로그인 하는 함수이지만 지금은 쓰지않음
     {
         PlayGamesPlatform.Instance.Authenticate((bool success) =>
@@ -117,6 +118,7 @@ public class GoogleLogin : MonoBehaviour {
             }
         });
     }
+    */
 
     public void SignOut()//로그아웃
     {
