@@ -28,11 +28,10 @@ public class InGameManager : MonoBehaviour
     float fevertime;
     int fevercount;
 
-
+    float a;
 
 
     public bool advertisement;//광고의 확인
-    public bool pausecheck;
     int addadver;
     private void Awake()
     {
@@ -62,9 +61,9 @@ public class InGameManager : MonoBehaviour
         fevercheck = false;
         fevertime = 2f;
         fevercount = 0;
-        pausecheck = false;
         addadver = 0;
         jewelry = 0;
+        a = 0;
     }
 
 
@@ -156,25 +155,13 @@ public class InGameManager : MonoBehaviour
         {
             playtime = 0f;
             Debug.Log("Game end");
-            pausecheck = true;
+            Time.timeScale = 0;
             Advertisingrh();
             //광고 볼지의 여부 함수
         }
         //게임 정지
     }
 
-    void Pause()
-    {
-        if (pausecheck == true)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-
-        }
-    }
 
     void Advertisingrh()
     {
@@ -183,13 +170,16 @@ public class InGameManager : MonoBehaviour
             if (advertisement == true)
             {
                 //광고 재생
+             
                 playtime += 10f;
                 addadver++;
-                pausecheck = false;
+                Time.timeScale = 1f;
             }
             else
             {
-                Debug.Log("아직 광고 안봤당");
+                a += Time.unscaledDeltaTime;
+                Debug.Log("아직 광고 안봤당"+a );
+                
                 EndScore();
             }
         }

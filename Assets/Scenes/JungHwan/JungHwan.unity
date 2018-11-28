@@ -777,7 +777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &530823172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1585,7 +1585,6 @@ MonoBehaviour:
   totalscore: 0
   jewelry: 0
   advertisement: 0
-  pausecheck: 0
 --- !u!114 &984849010
 MonoBehaviour:
   m_ObjectHideFlags: 0

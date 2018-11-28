@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ui : MonoBehaviour {
 
+    public Text TopScore;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,5 +21,11 @@ public class ui : MonoBehaviour {
     public void GameStart()
     {
         SceneManager.LoadScene("JungHwan");
+    }
+
+    void PrintTopScore()
+    {
+        long topscore = GoogleLogin.Instance.TopScore;
+        TopScore.text = "TopScore : " + topscore;
     }
 }

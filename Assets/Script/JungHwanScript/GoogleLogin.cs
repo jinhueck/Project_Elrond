@@ -49,10 +49,11 @@ public class GoogleLogin : MonoBehaviour {
     void Start()
     {
         Login();
-        
+        //SignIn();
+
     }
 
-    void Login() // 로그인
+    public void Login() // 로그인
     {
         Social.localUser.Authenticate((bool success) => { if (!success) { Debug.Log("Login Fail"); } }
         );
@@ -67,11 +68,12 @@ public class GoogleLogin : MonoBehaviour {
         }
     }
 
-    public void achievement_1000() //업적 1000점 달성
+    public void Completeachievement_1000() //업적 1000점 달성
     {
         if(!isAuthenticated)
         {
-            Login();
+            //Login();
+            SignIn();
             return;
         }
 
@@ -86,6 +88,7 @@ public class GoogleLogin : MonoBehaviour {
         if (!isAuthenticated)
         {
             Login();
+            //SignIn();
             return;
         }
         Social.ShowAchievementsUI();
@@ -101,7 +104,8 @@ public class GoogleLogin : MonoBehaviour {
                 // to do ...
                 // 로그인 성공 처리
               mStatusText = "Welcome " + Social.localUser.userName;
-              //SceneManager.LoadScene("StartUI");
+                //SceneManager.LoadScene("StartUI");
+                StartLoadScore();
 
 
             }
@@ -176,6 +180,10 @@ public class GoogleLogin : MonoBehaviour {
         }
         set
         {
+            if(value > 1000 && !PlayerPrefs.HasKey("achievement_1000"))
+            {
+                Completeachievement_1000();
+            }
             PlayerPrefs.SetString("TopScore", value.ToString());
         }
     }
