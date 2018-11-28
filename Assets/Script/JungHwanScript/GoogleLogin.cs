@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.SceneManagement;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 
 public class GoogleLogin : MonoBehaviour {
 
@@ -11,16 +13,45 @@ public class GoogleLogin : MonoBehaviour {
     private string mStatusText = "Ready.";
     private const string LeaderboardID = "CgkIqvO5zaACEAIQAQ";
 
-    // Use this for initialization
-    void Start ()
+    static private GoogleLogin instance;
+
+    public static GoogleLogin Instance
     {
-        GooglePlayGames.PlayGamesPlatform.Activate();
+        get
+        {
+            if(instance == null)
+            {
+                instance = FindObjectOfType<GoogleLogin>();
+
+                if(instance = null)
+                {
+                    instance = new GameObject("GoogleLogin").AddComponent<GoogleLogin>();
+                }
+            }
+            return instance;
+        }
+    }
+    // Use this for initialization
+    void Awake ()
+    {
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+            .EnableSavedGames().Build();
+
+        PlayGamesPlatform.InitializeInstance(config);
+
+        PlayGamesPlatform.DebugLogEnabled = false;
+        PlayGamesPlatform.Activate();
         SignIn();
+    }
+
+    void Start()
+    {
+        Social.localUser.Authenticate((bool success) =>);
     }
 
     public void SignIn()
     {
-        GooglePlayGames.PlayGamesPlatform.Instance.Authenticate((bool success) =>
+        PlayGamesPlatform.Instance.Authenticate((bool success) =>
         {
             mWaitingForAuth = false;
             if (success)
@@ -43,12 +74,12 @@ public class GoogleLogin : MonoBehaviour {
 
     public void SignOut()
     {
-        GooglePlayGames.PlayGamesPlatform.Instance.SignOut();   
+        PlayGamesPlatform.Instance.SignOut();   
     }
 
     public void ReportScore(int score)
     {
-        GooglePlayGames.PlayGamesPlatform.Instance.ReportScore(score, LeaderboardID, (bool success) =>
+        PlayGamesPlatform.Instance.ReportScore(score, LeaderboardID, (bool success) =>
         {
             if (success)
             {
@@ -86,7 +117,7 @@ public class GoogleLogin : MonoBehaviour {
                 }
             });
         }
-        GooglePlayGames.PlayGamesPlatform.Instance.ShowLeaderboardUI();
+        PlayGamesPlatform.Instance.ShowLeaderboardUI();
 
     }
 

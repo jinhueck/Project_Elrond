@@ -190,6 +190,7 @@ public void AddCombo()
             Debug.Log("광고보고 게임 끝남");
         }
     }
+
     void GameEnd()
     {
 
