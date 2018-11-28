@@ -69,7 +69,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  tileSprite: []
+  tileSprite:
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: d03139fcaf5639e44a4f95b2ae07077e, type: 3}
   isTouched: 0
 --- !u!212 &212461799392060584
 SpriteRenderer:

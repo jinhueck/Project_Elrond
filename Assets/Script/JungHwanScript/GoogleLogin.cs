@@ -49,12 +49,14 @@ public class GoogleLogin : MonoBehaviour {
     void Start()
     {
         Login();
+        
     }
 
     void Login() // 로그인
     {
         Social.localUser.Authenticate((bool success) => { if (!success) { Debug.Log("Login Fail"); } }
         );
+        StartLoadScore();
     }
 
     public bool isAuthenticated //현재 로그인이 되어있는지 확인하는 함수
@@ -161,7 +163,33 @@ public class GoogleLogin : MonoBehaviour {
 
     }
 
+    public long TopScore
+    {
+        get
+        {
+            if(!PlayerPrefs.HasKey("TopScore"))
+            {
+                return 0;
+            }
+            string tmpTopScore = PlayerPrefs.GetString("TopScore");
+            return long.Parse(tmpTopScore);
+        }
+        set
+        {
+            PlayerPrefs.SetString("TopScore", value.ToString());
+        }
+    }
 
-    
+    public void test()
+    {
+        long a = TopScore;
+        TopScore = 3;
+    }
+
+    public void StartLoadScore() // 구글 클라우드에서 스코어 불러오기
+    {
+        PlayCloudDataManager.Instance.LoadFromCloud((string dataToLoad) =>
+        { TopScore = long.Parse(dataToLoad); });
+    }
 
 }

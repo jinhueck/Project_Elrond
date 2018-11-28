@@ -1023,7 +1023,7 @@ Prefab:
         type: 2}
       propertyPath: Ruby
       value: 
-      objectReference: {fileID: 1449436078416766, guid: 2b468eb37d96f0d4c99c475869473479,
+      objectReference: {fileID: 1711025272616890, guid: 0f8e46a7bcf1c0146a46425ac64f98a0,
         type: 2}
     - target: {fileID: 114134235374268638, guid: 91a3dd1735a0d03499743a731bd4cb2b,
         type: 2}
@@ -1517,7 +1517,7 @@ Prefab:
         type: 2}
       propertyPath: Ruby
       value: 
-      objectReference: {fileID: 1449436078416766, guid: 2b468eb37d96f0d4c99c475869473479,
+      objectReference: {fileID: 1711025272616890, guid: 0f8e46a7bcf1c0146a46425ac64f98a0,
         type: 2}
     - target: {fileID: 114134235374268638, guid: 91a3dd1735a0d03499743a731bd4cb2b,
         type: 2}
@@ -1583,6 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playtime: 60
   totalscore: 0
+  jewelry: 0
   advertisement: 0
   pausecheck: 0
 --- !u!114 &984849010
@@ -2113,7 +2114,7 @@ Prefab:
         type: 2}
       propertyPath: Ruby
       value: 
-      objectReference: {fileID: 1449436078416766, guid: 2b468eb37d96f0d4c99c475869473479,
+      objectReference: {fileID: 1711025272616890, guid: 0f8e46a7bcf1c0146a46425ac64f98a0,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad1399f7e7f82b24aad1cb5a1f73421e, type: 2}

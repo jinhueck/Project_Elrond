@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CloudButton : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public void LoadScore()
+    {
+        PlayCloudDataManager.Instance.LoadFromCloud( (string dataToLoad) =>
+        { GoogleLogin.Instance.TopScore = long.Parse(dataToLoad); });
+    }
+
+    public void SaveScore()
+    {
+        PlayCloudDataManager.Instance.SaveToCloud(GoogleLogin.Instance.TopScore.ToString());
+    }
 }

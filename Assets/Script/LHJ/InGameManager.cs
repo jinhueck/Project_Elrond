@@ -17,7 +17,7 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private int totalscore;
 
     ////////////////
-    int jewelry;
+    [SerializeField]int jewelry;
 
     //콤보 피버 점수 관련
     Coroutine ComboCor;
@@ -190,22 +190,40 @@ public class InGameManager : MonoBehaviour
             else
             {
                 Debug.Log("아직 광고 안봤당");
+                EndScore();
             }
         }
         else
         {
             Debug.Log("광고보고 게임 끝남");
+            EndScore();
         }
     }
 
-    public int endScore()
+    public void EndScore()
     {
-        return totalscore;
+        long score = GoogleLogin.Instance.TopScore;
+        if (score < totalscore)
+        {
+            GoogleLogin.Instance.TopScore = totalscore;
+            SaveScore();
+        }
     }
 
     void GameEnd()
     {
 
+    }
+
+    public void LoadScore() // 구글 클라우드에서 스코어 불러오기
+    {
+        PlayCloudDataManager.Instance.LoadFromCloud((string dataToLoad) =>
+        { GoogleLogin.Instance.TopScore = long.Parse(dataToLoad); });
+    }
+
+    public void SaveScore() // 구글 클라우드에 스코어 저장
+    {
+        PlayCloudDataManager.Instance.SaveToCloud(GoogleLogin.Instance.TopScore.ToString());
     }
 
 }
