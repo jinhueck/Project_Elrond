@@ -22,7 +22,7 @@ public class UIPause : MonoBehaviour {
 
     public void OnClick_Main()
     {
-        Test.instance.fade.FadeIn(OpenMainScene);
+        InGame_UI_Manager.instance.UI_Fade.FadeIn(OpenMainScene);
     }
 
     public void OpenMainScene()

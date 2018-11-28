@@ -13,13 +13,16 @@ public class InGame_UI_Manager : MonoBehaviour {
     public Text Score;
     public Text combo;
 
+    public UI_Fade UI_Fade;
+    public UIPause UI_Pause;
+
     private void Awake()
     {
         if(instance==null)
         {
             instance = this;
         }
-
+        UI_Fade.FadeOut(UI_Fade.Close);
     }
     void Start ()
     {

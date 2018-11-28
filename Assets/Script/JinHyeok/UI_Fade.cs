@@ -36,6 +36,8 @@ public class UI_Fade : UI_Base
         m_finished = _event;
         alphaTween.from = 1f;
         alphaTween.to = 0f;
+        alphaTween.ResetToBeginning();
+        alphaTween.PlayForward();
     }
 
 }

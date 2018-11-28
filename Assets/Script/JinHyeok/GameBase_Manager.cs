@@ -18,7 +18,7 @@ public class GameBase_Manager : MonoBehaviour {
 
     public void OpenMainScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("JungHwan");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StartUI");
     }
     public void PlayScene()
     {

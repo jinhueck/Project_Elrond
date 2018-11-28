@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InGameManager : MonoBehaviour {
+public class InGameManager : MonoBehaviour
+{
 
 
 
 
     public static InGameManager instance;
 
-   public float playtime ;
+    public float playtime;
 
 
 
-    [SerializeField]private int totalscore;
-   
+    [SerializeField] private int totalscore;
+
     ////////////////
-
+    int jewelry;
 
     //콤보 피버 점수 관련
     Coroutine ComboCor;
@@ -35,18 +36,18 @@ public class InGameManager : MonoBehaviour {
     int addadver;
     private void Awake()
     {
-        if(instance==null)
+        if (instance == null)
         {
             instance = this;
         }
         SetupGame();
     }
 
-    void Start ()
+    void Start()
     {
     }
 
-    void Update ()
+    void Update()
     {
         GameTime();
         //Pause();
@@ -58,26 +59,27 @@ public class InGameManager : MonoBehaviour {
         combo = 1;
         totalscore = 0;
         combotime = 5f;
-        fevercheck=false;
+        fevercheck = false;
         fevertime = 2f;
-        fevercount=0;
+        fevercount = 0;
         pausecheck = false;
         addadver = 0;
+        jewelry = 0;
     }
 
 
 
-public void AddCombo()
+    public void AddCombo()
     {
         combo++;
 
         if (fevercheck == false)
-        fevercount++;
+            fevercount++;
 
         JoinFever();
         combotime -= 0.2f;
 
-        if (combotime<=2f)
+        if (combotime <= 2f)
             combotime = 2f;
 
         InGame_UI_Manager.instance.ComboUI(combo);
@@ -100,7 +102,7 @@ public void AddCombo()
     }
 
     IEnumerator limitCombotime()
-    { 
+    {
         yield return new WaitForSeconds(combotime);
         ResetCombo();
     }
@@ -126,14 +128,19 @@ public void AddCombo()
 
     public void AddScore()
     {
-        if(fevercheck==true)
+        if (fevercheck == true)
         {
-            totalscore += plusScore * combo*5;
+            totalscore += plusScore * combo * 5;
         }
         else
-        totalscore += plusScore * combo;
+            totalscore += plusScore * combo;
 
         InGame_UI_Manager.instance.ScoreUI(totalscore);
+    }
+
+    public void Jewelry()
+    {
+        jewelry++;
     }
 
     void GameTime()
@@ -158,7 +165,7 @@ public void AddCombo()
 
     void Pause()
     {
-        if(pausecheck==true)
+        if (pausecheck == true)
         {
             Time.timeScale = 0;
         }
@@ -189,6 +196,11 @@ public void AddCombo()
         {
             Debug.Log("광고보고 게임 끝남");
         }
+    }
+
+    public int endScore()
+    {
+        return totalscore;
     }
 
     void GameEnd()
