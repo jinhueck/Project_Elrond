@@ -15,6 +15,7 @@ public class GoogleLogin : MonoBehaviour {
 
     static private GoogleLogin instance;
 
+    //구글 로그인 인스턴스화
     public static GoogleLogin Instance
     {
         get
@@ -31,7 +32,8 @@ public class GoogleLogin : MonoBehaviour {
             return instance;
         }
     }
-    // Use this for initialization
+    
+    //어웨이크에서 구글 서버에 접속
     void Awake ()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
@@ -41,15 +43,53 @@ public class GoogleLogin : MonoBehaviour {
 
         PlayGamesPlatform.DebugLogEnabled = false;
         PlayGamesPlatform.Activate();
-        SignIn();
+        //SignIn();
     }
 
     void Start()
     {
-        Social.localUser.Authenticate((bool success) =>);
+        Login();
     }
 
-    public void SignIn()
+    void Login() // 로그인
+    {
+        Social.localUser.Authenticate((bool success) => { if (!success) { Debug.Log("Login Fail"); } }
+        );
+    }
+
+    public bool isAuthenticated //현재 로그인이 되어있는지 확인하는 함수
+    {
+        get
+        {
+            return Social.localUser.authenticated;
+        }
+    }
+
+    public void achievement_1000() //업적 1000점 달성
+    {
+        if(!isAuthenticated)
+        {
+            Login();
+            return;
+        }
+
+        Social.ReportProgress(GPGSIds.achievement_1000, 100.0, (bool success) =>
+        {
+            if (!success) { Debug.Log("Report Fail!"); }
+        });
+    }
+
+    public void ShowAchivementUI() //업적 UI를 키는 함수
+    {
+        if (!isAuthenticated)
+        {
+            Login();
+            return;
+        }
+        Social.ShowAchievementsUI();
+    }
+
+    public void SignIn() //로그인 하는 함수이지만 지금은 쓰지않음
     {
         PlayGamesPlatform.Instance.Authenticate((bool success) =>
         {
@@ -72,7 +112,7 @@ public class GoogleLogin : MonoBehaviour {
         });
     }
 
-    public void SignOut()
+    public void SignOut()//로그아웃
     {
         PlayGamesPlatform.Instance.SignOut();   
     }
