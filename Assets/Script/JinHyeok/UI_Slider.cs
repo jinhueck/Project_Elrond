@@ -46,7 +46,7 @@ public class UI_Slider : MonoBehaviour {
 
     void LerpToButton(int pos)
     {
-        float newX = Mathf.Lerp(panal.anchoredPosition.x, pos, Time.deltaTime * 10f);
+        float newX = Mathf.Lerp(panal.anchoredPosition.x, pos, Time.deltaTime * 1.5f);
         Debug.Log("newX : " + newX);
         Vector2 newPosition = new Vector2(newX, panal.anchoredPosition.y);
 
