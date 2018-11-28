@@ -31,14 +31,8 @@ public class MainGui : MonoBehaviour
         GooglePlayGames.PlayGamesPlatform.Activate();
     }
 
-    public void LogOut()
+    void OnGUI()
     {
-        ((GooglePlayGames.PlayGamesPlatform)Social.Active).SignOut();
-    }
-
-    public void OnGUI()
-    {
-        /*
         GUI.skin.button.fontSize = (int)(FontSizeMult * Screen.height);
         GUI.skin.label.fontSize = (int)(FontSizeMult * Screen.height);
 
@@ -51,7 +45,6 @@ public class MainGui : MonoBehaviour
                                   buttonRect.y + buttonRect.height * 1.1f,
                                   buttonRect.width / 2f, buttonRect.width / 2f);
 
-        */
         if (mWaitingForAuth)
         {
             return;
@@ -65,11 +58,11 @@ public class MainGui : MonoBehaviour
             buttonLabel = "Sign Out";
             if (Social.localUser.image != null)
             {
-                //GUI.DrawTexture(imageRect, Social.localUser.image,
-                  //              ScaleMode.ScaleToFit);
+                GUI.DrawTexture(imageRect, Social.localUser.image,
+                                ScaleMode.ScaleToFit);
             }
             else {
-               // GUI.Label(imageRect, "No image available");
+                GUI.Label(imageRect, "No image available");
             }
 
             mStatusText = "Ready";
@@ -78,8 +71,8 @@ public class MainGui : MonoBehaviour
             buttonLabel = "Authenticate";
         }
 
-       // if (GUI.Button(buttonRect, buttonLabel))
-       // {
+        if (GUI.Button(buttonRect, buttonLabel))
+        {
             if (!Social.localUser.authenticated)
             {
                 // Authenticate
@@ -98,5 +91,11 @@ public class MainGui : MonoBehaviour
                     }
                 });
             }
+            else {
+                // Sign out!
+                mStatusText = "Signing out.";
+                ((GooglePlayGames.PlayGamesPlatform)Social.Active).SignOut();
+            }
+        }
     }
 }

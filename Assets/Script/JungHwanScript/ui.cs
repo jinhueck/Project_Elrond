@@ -23,9 +23,11 @@ public class ui : MonoBehaviour {
         SceneManager.LoadScene("JungHwan");
     }
 
+    
     void PrintTopScore()
     {
-        long topscore = GoogleLogin.Instance.TopScore;
-        TopScore.text = "TopScore : " + topscore;
+        //long topscore = GoogleLogin.Instance.TopScore;
+        //TopScore.text = "TopScore : " + topscore;
     }
+    
 }

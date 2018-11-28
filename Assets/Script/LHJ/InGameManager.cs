@@ -192,12 +192,14 @@ public class InGameManager : MonoBehaviour
 
     public void EndScore()
     {
+        
         long score = GoogleLogin.Instance.TopScore;
         if (score < totalscore)
         {
             GoogleLogin.Instance.TopScore = totalscore;
             SaveScore();
         }
+        
     }
 
     void GameEnd()
@@ -205,11 +207,13 @@ public class InGameManager : MonoBehaviour
 
     }
 
+    
     public void LoadScore() // 구글 클라우드에서 스코어 불러오기
     {
         PlayCloudDataManager.Instance.LoadFromCloud((string dataToLoad) =>
         { GoogleLogin.Instance.TopScore = long.Parse(dataToLoad); });
     }
+    
 
     public void SaveScore() // 구글 클라우드에 스코어 저장
     {

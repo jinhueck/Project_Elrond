@@ -5,17 +5,20 @@ using UnityEngine.SocialPlatforms;
 using UnityEngine.SceneManagement;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+using UnityEngine.UI;
 
 public class GoogleLogin : MonoBehaviour {
 
     //private const float FontSizeMult = 0.05f;
     //private bool mWaitingForAuth = false;
-    //private string mStatusText = "Ready.";
+    private string mStatusText = "Ready.";
     private const string LeaderboardID = "CgkIqvO5zaACEAIQAQ";
 
     static private GoogleLogin instance;
 
+    public Text A;
     //구글 로그인 인스턴스화
+    
     public static GoogleLogin Instance
     {
         get
@@ -33,6 +36,7 @@ public class GoogleLogin : MonoBehaviour {
         }
     }
     
+
     //어웨이크에서 구글 서버에 접속
     void Awake ()
     {
@@ -50,14 +54,28 @@ public class GoogleLogin : MonoBehaviour {
     {
         //Login();
         //SignIn();
+        StartLoadScore();
 
     }
 
     public void Login() // 로그인
     {
-        Social.localUser.Authenticate((bool success) => { if (!success) { Debug.Log("Login Fail"); } }
-        );
-        StartLoadScore();
+        Social.localUser.Authenticate((bool success, string errorMessage) =>
+        {
+            if (success)
+            {
+                // to do ...
+                // 로그인 성공 처리
+                mStatusText = "Welcome " + Social.localUser.userName;
+                //SceneManager.LoadScene("StartUI");
+                //StartLoadScore();
+            }
+            else
+            {
+                Debug.Log("Login Fail");
+            }
+        });
+        //StartLoadScore();
     }
 
     public bool isAuthenticated //현재 로그인이 되어있는지 확인하는 함수
@@ -66,6 +84,17 @@ public class GoogleLogin : MonoBehaviour {
         {
             return Social.localUser.authenticated;
         }
+    }
+
+    public void iflogin()
+    {
+        bool a = isAuthenticated;
+        if (a == true)
+        {
+            A.text = "로그인상태";
+                }
+        else
+            A.text = "로그인 실패";
     }
 
     public void Completeachievement_1000() //업적 1000점 달성
