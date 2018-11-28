@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIPause : MonoBehaviour {
-
-    public uTools.TweenScale tweenScale;
+public class UIPause : UI_Open
+{
 
     UnityEngine.Events.UnityAction m_finished;
 
@@ -15,13 +14,13 @@ public class UIPause : MonoBehaviour {
 
     void OnTweenFinished()
     {
-        Debug.Log("QWEQWEQWEQWE");
         if (null != m_finished)
             m_finished();
     }
 
     public void OnClick_Main()
     {
+        Time.timeScale = 1;
         InGame_UI_Manager.instance.UI_Fade.FadeIn(OpenMainScene);
     }
 
@@ -32,23 +31,14 @@ public class UIPause : MonoBehaviour {
 
     public void OpenMenu()
     {
-        gameObject.SetActive(true);
-        tweenScale.from = Vector3.zero;
-        tweenScale.to = Vector3.one;
-        tweenScale.ResetToBeginning();
-        tweenScale.PlayForward();
+        Open_Menu();
         Time.timeScale = 0;
     }
 
 
     public void CloseMenu()
     {
-        tweenScale.from = Vector3.one;
-        tweenScale.to = Vector3.zero;
-        tweenScale.ResetToBeginning();
-        tweenScale.PlayForward();
-        gameObject.SetActive(false);
-
+        Close_Menu();
         Time.timeScale = 1;
     }
 }
