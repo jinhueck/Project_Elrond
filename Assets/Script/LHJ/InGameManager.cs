@@ -57,7 +57,7 @@ public class InGameManager : MonoBehaviour
         plusScore = 100;
         combo = 1;
         totalscore = 0;
-        combotime = 5f;
+        combotime = 3f;
         fevercheck = false;
         fevertime = 2f;
         fevercount = 0;
@@ -78,8 +78,8 @@ public class InGameManager : MonoBehaviour
         JoinFever();
         combotime -= 0.2f;
 
-        if (combotime <= 2f)
-            combotime = 2f;
+        if (combotime <= 0.7f)
+            combotime = 0.7f;
 
         InGame_UI_Manager.instance.ComboUI(combo);
         ResetCoroutine();
