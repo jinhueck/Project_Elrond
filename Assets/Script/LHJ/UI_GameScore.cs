@@ -24,6 +24,5 @@ public class UI_GameScore : UI_Open
         SceneManager.LoadScene("StartUI");
         InGameManager.instance.EndScore();
         Close_Menu();
-        Time.timeScale = 1f;
     }
 }
