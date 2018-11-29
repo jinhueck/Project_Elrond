@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine.UI;
+using System;
 
 public class GoogleLogin : MonoBehaviour {
 
@@ -56,19 +57,20 @@ public class GoogleLogin : MonoBehaviour {
         //Login();
         //SignIn();
         StartLoadScore();
+        PrintScore();
 
     }
 
     public void Login() // 로그인
     {
-        Social.localUser.Authenticate((bool success, string errorMessage) =>
+        Social.localUser.Authenticate((bool success) =>
         {
             if (success)
             {
                 // to do ...
                 // 로그인 성공 처리
                 mStatusText = "Welcome " + Social.localUser.userName;
-                SceneManager.LoadScene("StartUI");
+                //SceneManager.LoadScene("StartUI");
                 //StartLoadScore();
             }
             else
@@ -107,9 +109,14 @@ public class GoogleLogin : MonoBehaviour {
             return;
         }
 
-        Social.ReportProgress(GPGSIds.achievement_1000, 100.0, (bool success) =>
+        Social.ReportProgress(GPGSIds.achievement_score_1000, 100.0, (bool success) =>
         {
-            if (!success) { Debug.Log("Report Fail!"); }
+            if (success)
+            {
+                PlayerPrefs.SetInt("achievement_score_1000", 1);
+            }
+            if (!success)
+            { Debug.Log("Report Fail!"); }
         });
     }
 
@@ -224,6 +231,13 @@ public class GoogleLogin : MonoBehaviour {
     {
         long a = TopScore;
         TopScore = 3;
+    }
+
+    public void PrintScore()
+    {
+        long a = TopScore;
+        //int intval = Convert.ToInt64(a);
+        A.text = a.ToString();
     }
 
     public void StartLoadScore() // 구글 클라우드에서 스코어 불러오기

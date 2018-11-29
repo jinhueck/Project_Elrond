@@ -49,9 +49,9 @@ public class UI_EndGame : UI_Open
 
     public void EndthisGame()
     {
-        SceneManager.LoadScene("StartUI");
         InGameManager.instance.EndScore();
         Close_Menu();
+        SceneManager.LoadScene("StartUI");
         Time.timeScale = 1f;
     }
 

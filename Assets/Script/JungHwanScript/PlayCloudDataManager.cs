@@ -69,6 +69,13 @@ public class PlayCloudDataManager : MonoBehaviour
 
     private void Awake()
     {
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+            .EnableSavedGames().Build();
+
+        PlayGamesPlatform.InitializeInstance(config);
+
+        PlayGamesPlatform.DebugLogEnabled = false;
+        PlayGamesPlatform.Activate();
         InitiatePlayGames();
     }
 
@@ -100,8 +107,10 @@ public class PlayCloudDataManager : MonoBehaviour
 
     public void LoadFromCloud(Action<string> afterLoadAction)
     {
+        Debug.Log("Conect Cloud");
         if (isAuthenticated && !isProcessing)
         {
+            Debug.Log("Load Cloud");
             StartCoroutine(LoadFromCloudRoutin(afterLoadAction));
         }
         else
@@ -115,6 +124,11 @@ public class PlayCloudDataManager : MonoBehaviour
         isProcessing = true;
         Debug.Log("Loading game progress from the cloud.");
 
+        //((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(
+        //    m_saveFileName, //name of file.
+        //    DataSource.ReadCacheOrNetwork,
+        //    ConflictResolutionStrategy.UseLongestPlaytime,
+        //    OnFileOpenToLoad);
         ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(
             m_saveFileName, //name of file.
             DataSource.ReadCacheOrNetwork,
@@ -125,7 +139,7 @@ public class PlayCloudDataManager : MonoBehaviour
         {
             yield return null;
         }
-
+        Debug.Log("Load Action");
         loadAction.Invoke(loadedData);
     }
 
