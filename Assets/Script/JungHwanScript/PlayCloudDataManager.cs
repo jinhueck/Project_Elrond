@@ -62,20 +62,12 @@ public class PlayCloudDataManager : MonoBehaviour
 
         PlayGamesPlatform.InitializeInstance(config);
         // recommended for debugging:
-        PlayGamesPlatform.DebugLogEnabled = false;
+        PlayGamesPlatform.DebugLogEnabled = true;
         // Activate the Google Play Games platform
-        PlayGamesPlatform.Activate();
     }
 
     private void Awake()
     {
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
-            .EnableSavedGames().Build();
-
-        PlayGamesPlatform.InitializeInstance(config);
-
-        PlayGamesPlatform.DebugLogEnabled = false;
-        PlayGamesPlatform.Activate();
         InitiatePlayGames();
     }
 
@@ -129,10 +121,10 @@ public class PlayCloudDataManager : MonoBehaviour
         //    DataSource.ReadCacheOrNetwork,
         //    ConflictResolutionStrategy.UseLongestPlaytime,
         //    OnFileOpenToLoad);
-        ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.OpenWithAutomaticConflictResolution(
             m_saveFileName, //name of file.
-            DataSource.ReadCacheOrNetwork,
-            ConflictResolutionStrategy.UseLongestPlaytime,
+            DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseOriginal,
             OnFileOpenToLoad);
 
         while (isProcessing)
