@@ -15,7 +15,7 @@ public class InGame_UI_Manager : MonoBehaviour {
 
     public UI_Fade UI_Fade;
     public UIPause UI_Pause;
-
+  
     private void Awake()
     {
         if(instance==null)

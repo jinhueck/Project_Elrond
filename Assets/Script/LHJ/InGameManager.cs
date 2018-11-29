@@ -12,7 +12,7 @@ public class InGameManager : MonoBehaviour
 
     public float playtime;
 
-
+    public UI_EndGame endgame;
 
     [SerializeField] private int totalscore;
 
@@ -28,11 +28,10 @@ public class InGameManager : MonoBehaviour
     float fevertime;
     int fevercount;
 
-    float a;
+    int trueadv;
 
 
-    public bool advertisement;//광고의 확인
-    int addadver;
+   
     private void Awake()
     {
         if (instance == null)
@@ -49,7 +48,6 @@ public class InGameManager : MonoBehaviour
     void Update()
     {
         GameTime();
-        //Pause();
     }
 
     void SetupGame()
@@ -61,9 +59,12 @@ public class InGameManager : MonoBehaviour
         fevercheck = false;
         fevertime = 2f;
         fevercount = 0;
-        addadver = 0;
+
         jewelry = 0;
-        a = 0;
+
+        trueadv = 0;
+
+
     }
 
 
@@ -148,47 +149,23 @@ public class InGameManager : MonoBehaviour
         {
             playtime -= Time.deltaTime;
             InGame_UI_Manager.instance.TimerUI(playtime);
-            //Debug.Log(playtime);
-
-        }
-        else
+        }     
+        else if(trueadv == 0)
         {
             playtime = 0f;
             Debug.Log("Game end");
             Time.timeScale = 0;
-            Advertisingrh();
-            //광고 볼지의 여부 함수
+            endgame.OpenEndGame();
+            trueadv++;
+        }
+        else
+        {
+            
         }
         //게임 정지
     }
 
 
-    void Advertisingrh()
-    {
-        if (addadver == 0)
-        {
-            if (advertisement == true)
-            {
-                //광고 재생
-             
-                playtime += 10f;
-                addadver++;
-                Time.timeScale = 1f;
-            }
-            else
-            {
-                a += Time.unscaledDeltaTime;
-                Debug.Log("아직 광고 안봤당"+a );
-                
-                EndScore();
-            }
-        }
-        else
-        {
-            Debug.Log("광고보고 게임 끝남");
-            EndScore();
-        }
-    }
 
     public void EndScore()
     {
