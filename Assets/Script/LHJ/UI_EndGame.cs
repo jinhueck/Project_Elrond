@@ -14,7 +14,7 @@ public class UI_EndGame : UI_Open
     public Text Timer;
     public Image Clock;
 
-    public Image gameover;
+    public UI_GameScore EndScore;
 
     bool advertisement;//광고의 확인
     
@@ -44,8 +44,7 @@ public class UI_EndGame : UI_Open
     {
         InGameManager.instance.playtime += 10f;
         Close_Menu();
-        Time.timeScale = 1f;
-       
+        Time.timeScale = 1f; 
     }
 
     public void EndthisGame()
@@ -67,8 +66,7 @@ public class UI_EndGame : UI_Open
         else
         {
             Close_Menu();
-            gameover.gameObject.SetActive(true);
-            SceneManager.LoadScene("StartUI");
+            EndScore.Open_Menu();
             Time.timeScale = 1f;
         }     
     }
