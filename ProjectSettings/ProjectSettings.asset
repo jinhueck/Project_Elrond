@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.78
+  bundleVersion: 0.79
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -154,7 +154,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.RoomF.Project_Elrond
   buildNumber: {}
-  AndroidBundleVersionCode: 15
+  AndroidBundleVersionCode: 16
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -243,7 +243,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Unity/Project_Elrond/Keystore/user.keystore
+  AndroidKeystoreName: C:/Users/Atents/Documents/Project_Elrond/Keystore/user.keystore
   AndroidKeyaliasName: project_elrond
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1

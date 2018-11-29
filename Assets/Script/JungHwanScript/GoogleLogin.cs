@@ -17,8 +17,9 @@ public class GoogleLogin : MonoBehaviour {
     static private GoogleLogin instance;
 
     public Text A;
+    public Text B;
     //구글 로그인 인스턴스화
-    
+
     public static GoogleLogin Instance
     {
         get
@@ -67,7 +68,7 @@ public class GoogleLogin : MonoBehaviour {
                 // to do ...
                 // 로그인 성공 처리
                 mStatusText = "Welcome " + Social.localUser.userName;
-                //SceneManager.LoadScene("StartUI");
+                SceneManager.LoadScene("StartUI");
                 //StartLoadScore();
             }
             else
@@ -91,10 +92,10 @@ public class GoogleLogin : MonoBehaviour {
         bool a = isAuthenticated;
         if (a == true)
         {
-            A.text = "로그인상태";
+            B.text = "로그인상태";
                 }
         else
-            A.text = "로그인 실패";
+            B.text = "로그인 실패";
     }
 
     public void Completeachievement_1000() //업적 1000점 달성
