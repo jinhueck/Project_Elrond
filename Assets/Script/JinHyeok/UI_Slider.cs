@@ -50,33 +50,42 @@ public class UI_Slider : MonoBehaviour {
         Setup();
     }
 
-    private void Update()
+    void CheckMinButton()
     {
-        for(int i = 0; i < button.Length; i ++)
+        for (int i = 0; i < button.Length; i++)
         {
             distance[i] = Mathf.Abs(center.transform.position.x - button[i].transform.position.x);
         }
 
         float minDistance = Mathf.Min(distance);
-        
-        for(int i = 0; i < button.Length; i ++)
+
+        for (int i = 0; i < button.Length; i++)
         {
-            if(minDistance == distance[i])
+            if (minDistance == distance[i])
             {
                 minButtonNum = i;
             }
         }
-        if(!dragging)
+    }
+
+    private void Update()
+    {
+        CheckMinButton();
+        if (!dragging)
         {
-            Img_Select.sprite = sprite_Tile[minButtonNum];
             LerpToButton(minButtonNum * -btnDistance);
         }
     }
 
+    void Sizeup()
+    {
+        Debug.Log("이거 된다 이야호");
+    }
+
+
     void LerpToButton(int pos)
     {
         float newX = Mathf.Lerp(panal.anchoredPosition.x, pos, Time.deltaTime * 3f);
-        Debug.Log("newX : " + newX);
         Vector2 newPosition = new Vector2(newX, panal.anchoredPosition.y);
 
         panal.anchoredPosition = newPosition;
@@ -89,6 +98,10 @@ public class UI_Slider : MonoBehaviour {
 
     public void EndDrag()
     {
+        CheckMinButton();
+        Img_Select.sprite = sprite_Tile[minButtonNum];
+        Invoke("Sizeup", 0);
         dragging = false;
+        
     }
 }

@@ -13,7 +13,6 @@ public class UI_Open : UI_Base {
         tweenScale.to = Vector3.one;
         tweenScale.ResetToBeginning();
         tweenScale.PlayForward();
-        Time.timeScale = 0;
     }
 
 
@@ -24,7 +23,5 @@ public class UI_Open : UI_Base {
         tweenScale.ResetToBeginning();
         tweenScale.PlayForward();
         Close();
-
-        Time.timeScale = 1;
     }
 }
