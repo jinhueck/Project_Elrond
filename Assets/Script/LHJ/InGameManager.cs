@@ -153,7 +153,6 @@ public class InGameManager : MonoBehaviour
         else if(trueadv == 0)
         {
             playtime = 0f;
-            Debug.Log("Game end");
             Time.timeScale = 0;
             endgame.OpenEndGame();
             trueadv++;
@@ -162,7 +161,6 @@ public class InGameManager : MonoBehaviour
         {
             
         }
-        //게임 정지
     }
 
 
