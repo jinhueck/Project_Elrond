@@ -9,7 +9,7 @@ public class UI_Slider : MonoBehaviour {
     public RectTransform[] button;
     public RectTransform center;
     [SerializeField] private float[] distance;
-    private bool dragging = false;
+    [SerializeField] private bool dragging = false;
     private int btnDistance;
     [SerializeField] private int minButtonNum;
     [SerializeField] Image Img_Select;
@@ -66,22 +66,37 @@ public class UI_Slider : MonoBehaviour {
                 minButtonNum = i;
             }
         }
+        Img_Select.sprite = sprite_Tile[minButtonNum];
+    }
+
+    void SizeUpSelected()
+    {
+        for (int i = 0; i < button.Length; i++)
+        {
+            float distance_Button = distance[i] / 130;
+            if (distance_Button < 1)
+            {
+                RectTransform rect = button[i].transform.GetChild(0).GetComponent<RectTransform>();
+                rect.localScale = Vector3.one + new Vector3(0.5f, 0.5f, 0.5f) * (1 - distance_Button);
+                rect.sizeDelta = Vector2.zero + new Vector2(0.5f, 0.5f) * (1 - distance_Button);
+            }
+            else
+            {
+                button[i].localScale = Vector3.one;
+                button[i].sizeDelta = Vector2.zero;
+            }
+        }
     }
 
     private void Update()
     {
         CheckMinButton();
+        SizeUpSelected();
         if (!dragging)
         {
             LerpToButton(minButtonNum * -btnDistance);
         }
     }
-
-    void Sizeup()
-    {
-        Debug.Log("이거 된다 이야호");
-    }
-
 
     void LerpToButton(int pos)
     {
@@ -99,8 +114,6 @@ public class UI_Slider : MonoBehaviour {
     public void EndDrag()
     {
         CheckMinButton();
-        Img_Select.sprite = sprite_Tile[minButtonNum];
-        Invoke("Sizeup", 0);
         dragging = false;
         
     }
