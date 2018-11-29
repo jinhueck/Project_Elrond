@@ -12,6 +12,7 @@ public class UI_Slider : MonoBehaviour {
     private bool dragging = false;
     private int btnDistance;
     [SerializeField] private int minButtonNum;
+    [SerializeField] Image Img_Select;
 
     [SerializeField] private Sprite[] sprite_Tile;
     public void Setup()
@@ -24,6 +25,8 @@ public class UI_Slider : MonoBehaviour {
         distance = new float[btnLength];
 
         btnDistance = (int)Mathf.Abs(button[1].GetComponent<RectTransform>().anchoredPosition.x - button[0].GetComponent<RectTransform>().anchoredPosition.x);
+
+        Img_Select.sprite = sprite_Tile[0];
     }
 
     public void MakeList(int count)
@@ -65,6 +68,7 @@ public class UI_Slider : MonoBehaviour {
         }
         if(!dragging)
         {
+            Img_Select.sprite = sprite_Tile[minButtonNum];
             LerpToButton(minButtonNum * -btnDistance);
         }
     }
