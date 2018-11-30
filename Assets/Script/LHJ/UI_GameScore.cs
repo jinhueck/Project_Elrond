@@ -8,12 +8,12 @@ public class UI_GameScore : UI_Open
 
 {
     public uTools.TweenText Score;
+    public FirebaseCloud cloud;
 
-
-	void Start ()
+    void Start ()
     {
-		
-	}
+        cloud = GetComponent<FirebaseCloud>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -26,7 +26,7 @@ public class UI_GameScore : UI_Open
     {
         InGameManager.instance.EndScore();
         Close_Menu();
-        SceneManager.LoadScene("StartUI");        
+        SceneManager.LoadScene("StartUI");
     }
 
     public void Scoreview()

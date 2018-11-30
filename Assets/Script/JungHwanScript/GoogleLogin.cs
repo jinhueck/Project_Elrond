@@ -39,7 +39,7 @@ public class GoogleLogin : MonoBehaviour {
     }
     
 
-    //어웨이크에서 구글 서버에 접속
+    /*//어웨이크에서 구글 서버에 접속
     void Awake ()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
@@ -51,12 +51,13 @@ public class GoogleLogin : MonoBehaviour {
         PlayGamesPlatform.Activate();
         //SignIn();
     }
+    */
 
     void Start()
     {
         //Login();
         //SignIn();
-        StartLoadScore();
+        //StartLoadScore();
         PrintScore();
 
     }
@@ -80,7 +81,81 @@ public class GoogleLogin : MonoBehaviour {
         });
         //StartLoadScore();
     }
+    #region Achievements
+    public void Completeachievement_1000() //업적 1000점 달성
+    {
+        if (!isAuthenticated)
+        {
+            Login();
+            //SignIn();
+            return;
+        }
 
+        Social.ReportProgress(GPGSIds.achievement_score_1000, 100.0, (bool success) =>
+        {
+            if (success)
+            {
+                PlayerPrefs.SetInt("achievement_score_1000", 1);
+            }
+            if (!success)
+            { Debug.Log("Report Fail!"); }
+        });
+    }
+
+    public void IncrementAcheievement(string id,int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success =>
+        { });
+    }
+
+    public void ShowAchivementUI() //업적 UI를 키는 함수
+    {
+        if (!isAuthenticated)
+        {
+            Login();
+            //SignIn();
+            return;
+        }
+        Social.ShowAchievementsUI();
+    }
+
+    #endregion /Achievements
+
+    #region Leaderboards
+
+    public void AddScoreToLeaderboard(string leaderboardID, long score)
+    {
+        Social.ReportScore(score, leaderboardID, success => { }
+        );
+    }
+
+    public void ShowLeaderboardUI()
+    {
+        // Sign In 이 되어있지 않은 상태라면
+        // Sign In 후 리더보드 UI 표시 요청할 것
+        if (Social.localUser.authenticated == false)
+        { 
+            Social.localUser.Authenticate((bool success) =>
+            {
+                if (success)
+                {
+                    // Sign In 성공
+                    // 바로 리더보드 UI 표시 요청
+                    Social.ShowLeaderboardUI();
+                    return;
+                }
+                else
+                {
+                    // Sign In 실패 
+                    // 그에 따른 처리
+                    return;
+                }
+            });
+        }
+        PlayGamesPlatform.Instance.ShowLeaderboardUI();
+
+    }
+    #endregion /Leaderboards
     public bool isAuthenticated //현재 로그인이 되어있는지 확인하는 함수
     {
         get
@@ -100,36 +175,9 @@ public class GoogleLogin : MonoBehaviour {
             B.text = "로그인 실패";
     }
 
-    public void Completeachievement_1000() //업적 1000점 달성
-    {
-        if(!isAuthenticated)
-        {
-            Login();
-            //SignIn();
-            return;
-        }
+    
 
-        Social.ReportProgress(GPGSIds.achievement_score_1000, 100.0, (bool success) =>
-        {
-            if (success)
-            {
-                PlayerPrefs.SetInt("achievement_score_1000", 1);
-            }
-            if (!success)
-            { Debug.Log("Report Fail!"); }
-        });
-    }
-
-    public void ShowAchivementUI() //업적 UI를 키는 함수
-    {
-        if (!isAuthenticated)
-        {
-            Login();
-            //SignIn();
-            return;
-        }
-        Social.ShowAchievementsUI();
-    }
+   
 
     /*
     public void SignIn() //로그인 하는 함수이지만 지금은 쓰지않음
@@ -179,32 +227,7 @@ public class GoogleLogin : MonoBehaviour {
         });
     }
 
-    public void ShowLeaderboardUI()
-    {
-        // Sign In 이 되어있지 않은 상태라면
-        // Sign In 후 리더보드 UI 표시 요청할 것
-        if (Social.localUser.authenticated == false)
-        {
-            Social.localUser.Authenticate((bool success) =>
-            {
-                if (success)
-                {
-                    // Sign In 성공
-                    // 바로 리더보드 UI 표시 요청
-                    Social.ShowLeaderboardUI();
-                    return;
-                }
-                else
-                {
-                    // Sign In 실패 
-                    // 그에 따른 처리
-                    return;
-                }
-            });
-        }
-        PlayGamesPlatform.Instance.ShowLeaderboardUI();
-
-    }
+    
 
     public long TopScore
     {

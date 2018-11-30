@@ -478,8 +478,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2109321059}
-        m_MethodName: Login
+      - m_Target: {fileID: 2109321061}
+        m_MethodName: OnClickGoogleLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2109321059}
+      - m_Target: {fileID: 2109321060}
         m_MethodName: SignOut
         m_Mode: 1
         m_Arguments:
@@ -915,7 +915,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2109321059}
+      - m_Target: {fileID: 2109321060}
         m_MethodName: ShowLeaderboardUI
         m_Mode: 1
         m_Arguments:
@@ -1807,6 +1807,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2109321058}
   - component: {fileID: 2109321059}
+  - component: {fileID: 2109321060}
+  - component: {fileID: 2109321061}
   m_Layer: 0
   m_Name: GoogleLogin
   m_TagString: Untagged
@@ -1833,10 +1835,36 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2109321057}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd77b2b445613124580c908a21f4f3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 1715320426}
   B: {fileID: 207117301}
+--- !u!114 &2109321060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2109321057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9076ddb6dfdcae448b9db18c7188bd6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 1715320426}
+  t_GPGSDebugtext: {fileID: 207117301}
+--- !u!114 &2109321061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2109321057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbf86fa1c34ef5489d6bad151fe5440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input_pass: {fileID: 0}
+  result_text: {fileID: 0}

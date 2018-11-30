@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudButton : MonoBehaviour {
+public class GoogleFX : MonoBehaviour {
 
-    /*
-	public void LoadScore()
-    {
-        PlayCloudDataManager.Instance.LoadFromCloud( (string dataToLoad) =>
-        { GoogleLogin.Instance.TopScore = long.Parse(dataToLoad); });
-    }
-    */
+    public static GoogleFX Instance { get; private set; }
 
-        /*
-    public void SaveScore()
+    void Start()
     {
-        PlayCloudDataManager.Instance.SaveToCloud(GoogleLogin.Instance.TopScore.ToString());
+        Instance = this;
     }
-    */
+
+
 }

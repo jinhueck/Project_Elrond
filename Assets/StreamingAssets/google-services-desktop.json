@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "77471840682",
+    "firebase_url": "https://projectelrond-62372101.firebaseio.com",
+    "project_id": "projectelrond-62372101",
+    "storage_bucket": "projectelrond-62372101.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77471840682:android:fe5d618ef3a81cd8",
+        "android_client_info": {
+          "package_name": "com.RoomF.Project_Elrond"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77471840682-l92jpnl70ibseme89k162ep9oroh9toq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.RoomF.Project_Elrond",
+            "certificate_hash": "1786058fbaf704acb52534ea4c87b1a2474d98d0"
+          }
+        },
+        {
+          "client_id": "77471840682-74sdmrnr0ao7tahu9beecktiod9lr9u7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtOlxwHjL0NIH3U4JNjB1BylCsCQ6SeI4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77471840682-74sdmrnr0ao7tahu9beecktiod9lr9u7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -15,6 +15,7 @@ public class UI_EndGame : UI_Open
     public Image Clock;
 
     public UI_GameScore EndScore;
+    public FirebaseCloud cloud;
 
     bool advertisement;//광고의 확인
     
@@ -24,6 +25,7 @@ public class UI_EndGame : UI_Open
     {
         timer = 10.5f;
         gameovertime = 3f;
+        cloud = GetComponent<FirebaseCloud>();
     }
 
     
@@ -50,9 +52,8 @@ public class UI_EndGame : UI_Open
 
     public void EndthisGame()
     {
-        InGameManager.instance.EndScore();
+        EndScore.Open_Menu();
         Close_Menu();
-        SceneManager.LoadScene("StartUI");
         Time.timeScale = 1f;
     }
 

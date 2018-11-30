@@ -17,6 +17,7 @@ public class InGameManager : MonoBehaviour
     public UI_GameScore lastscore;
 
     public int totalscore;
+    public FirebaseCloud FC;
 
     ////////////////
     [SerializeField]int jewelry;
@@ -45,6 +46,7 @@ public class InGameManager : MonoBehaviour
 
     void Start()
     {
+    
     }
 
     void Update()
@@ -175,14 +177,16 @@ public class InGameManager : MonoBehaviour
     public void EndScore()
     {
         Debug.Log("EndScore 진입");
-        long score = GoogleLogin.Instance.TopScore;
-        if (score < totalscore)
+        Debug.Log("total score : "+totalscore);
+        //FC.TopScore = totalscore;
+        if (totalscore > FC.TopScore)
         {
             Debug.Log("EndScore 비교");
-            GoogleLogin.Instance.TopScore = totalscore;
-            SaveScore();
+            FC.TopScore = totalscore;
+            //SaveScore();
+            FC.AddScoreToLeaderboard(GPGSIds.leaderboard_score, totalscore);
             Debug.Log("EndScore 비교끝");
-        }
+        } 
         
     }
 
