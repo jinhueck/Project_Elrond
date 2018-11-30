@@ -43,6 +43,7 @@ public class UI_EndGame : UI_Open
    public void Advertisingrh()
     {
         InGameManager.instance.playtime += 10f;
+        InGameManager.instance.advview++;
         Close_Menu();
         Time.timeScale = 1f; 
     }

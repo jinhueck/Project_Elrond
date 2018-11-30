@@ -1976,8 +1976,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playtime: 1
   endgame: {fileID: 1679249044}
+  lastscore: {fileID: 1215101104}
   totalscore: 0
   jewelry: 0
+  advview: 0
 --- !u!114 &984849010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2302,6 +2304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenScale: {fileID: 1581862297}
+  Score: {fileID: 1368978799}
 --- !u!114 &1215101105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2949,8 +2952,9 @@ GameObject:
   - component: {fileID: 1368978798}
   - component: {fileID: 1368978801}
   - component: {fileID: 1368978800}
+  - component: {fileID: 1368978799}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2974,6 +2978,60 @@ RectTransform:
   m_AnchoredPosition: {x: 7.0001, y: 70.7}
   m_SizeDelta: {x: 371.58, y: 151.49}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1368978799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1368978797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88fe025f8c27c44195185d87ceeaf78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  method: 22
+  style: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ignoreTimeScale: 1
+  delay: 0
+  duration: 2
+  steeperCurves: 0
+  tweenGroup: 0
+  onFinished:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
+  from: 0
+  to: 0
+  format: '{0}'
+  digits: 0
+  isTime: 0
 --- !u!114 &1368978800
 MonoBehaviour:
   m_ObjectHideFlags: 0

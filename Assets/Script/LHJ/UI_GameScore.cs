@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class UI_GameScore : UI_Open
 
 {
-	
+    public uTools.TweenText Score;
+
+
 	void Start ()
     {
 		
@@ -16,14 +18,19 @@ public class UI_GameScore : UI_Open
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        Scoreview();
+
+    }
 
     public void EndthisGame()
     {
         InGameManager.instance.EndScore();
         Close_Menu();
-        SceneManager.LoadScene("StartUI");
-        
+        SceneManager.LoadScene("StartUI");        
+    }
+
+    public void Scoreview()
+    {
+        Score.to = InGameManager.instance.totalscore;
     }
 }

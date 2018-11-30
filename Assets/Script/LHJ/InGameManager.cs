@@ -14,8 +14,9 @@ public class InGameManager : MonoBehaviour
     public float playtime;
 
     public UI_EndGame endgame;
+    public UI_GameScore lastscore;
 
-    [SerializeField] private int totalscore;
+    public int totalscore;
 
     ////////////////
     [SerializeField]int jewelry;
@@ -29,8 +30,8 @@ public class InGameManager : MonoBehaviour
     float fevertime;
     int fevercount;
 
-    int trueadv;
-
+    bool trueadv;
+    public int advview;
 
    
     private void Awake()
@@ -63,8 +64,8 @@ public class InGameManager : MonoBehaviour
 
         jewelry = 0;
 
-        trueadv = 0;
-
+        trueadv = false;
+        advview = 0;
 
     }
 
@@ -150,18 +151,23 @@ public class InGameManager : MonoBehaviour
         {
             playtime -= Time.deltaTime;
             InGame_UI_Manager.instance.TimerUI(playtime);
-        }     
-        else if(trueadv == 0)
-        {
-            playtime = 0f;
-            Time.timeScale = 0;
-            endgame.OpenEndGame();
-            trueadv++;
         }
         else
         {
-            
+            if (trueadv == false)
+            {
+                trueadv=true;
+                playtime = 0f;
+                Time.timeScale = 0;
+                endgame.OpenEndGame();
+            }
+            else if(advview==1)
+            {
+                lastscore.Open_Menu();
+                advview++;
+            }
         }
+
     }
 
 
