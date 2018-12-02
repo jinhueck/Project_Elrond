@@ -18,7 +18,7 @@ public class FirebaseCloud : MonoBehaviour {
         PrintScore();
     }
 
-    public void ShowLeaderboardUI()
+    public void showLeaderboardUI()
     { 
         // Sign In 이 되어있지 않은 상태라면
         // Sign In 후 리더보드 UI 표시 요청할 것
@@ -42,14 +42,16 @@ public class FirebaseCloud : MonoBehaviour {
             });
         }
         //PlayGamesPlatform.Instance.ShowLeaderboardUI();
-        ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(GPGSIds.leaderboard_score);
+        //((PlayGamesPlatform)Social.Active).
+        Social.ShowLeaderboardUI();
     }
 
     public void SubmitToLeaderBoard(int score) //리더보드 점수 등록
     {
+        score = TopScore;
         if(PlayGamesPlatform.Instance.localUser.authenticated)
         {
-            Social.ReportScore(score, GPGSIds.leaderboard_score, (bool success) =>
+            Social.ReportScore(1000, GPGSIds.leaderboard_score, (bool success) =>
             {
                 if(success)
                 {
@@ -128,6 +130,12 @@ public class FirebaseCloud : MonoBehaviour {
         }
     }
 
+    public void ResetScore()
+    {
+        TopScore = 0;
+        PrintScore();
+    }
+
     public bool isAuthenticated //현재 로그인이 되어있는지 확인하는 함수
     {
         get
@@ -151,6 +159,25 @@ public class FirebaseCloud : MonoBehaviour {
     {
         Social.ReportScore(score, leaderboardID, success => { }
         );
+    }
+
+    public void LoadScore() // 구글 클라우드에서 스코어 불러오기
+    {
+        Debug.Log("LoadScore 진입");
+        PlayCloudDataManager.Instance.LoadFromCloud((string dataToLoad) =>
+        { TopScore = int.Parse(dataToLoad); });
+        PrintScore();
+        LogGPGS("불러오기완료");
+        Debug.Log("LoadScore 끝");
+    }
+
+
+    public void SaveScore() // 구글 클라우드에 스코어 저장
+    {
+        Debug.Log("SaveScore 진입");
+        PlayCloudDataManager.Instance.SaveToCloud(TopScore.ToString());
+        Debug.Log("SaveScore 끝");
+        LogGPGS("저장완료");
     }
 
 }

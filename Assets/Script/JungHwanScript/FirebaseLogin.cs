@@ -12,6 +12,7 @@ public class FirebaseLogin : MonoBehaviour
     public Text result_text;
 
     Firebase.Auth.FirebaseAuth for_email_auth;
+    private string authCode;
 
     void Start()
     {
@@ -39,12 +40,14 @@ public class FirebaseLogin : MonoBehaviour
     {
         InitGooglePlayService();
 
-        Social.localUser.Authenticate(success =>
+        Social.localUser.Authenticate((bool success) =>
         {
             result_text.text = string.Format("Google Login Result - {0}:{1}", success, Social.localUser.userName);
             if (success == false)
                 return;
 
+            if (success)
+                authCode = PlayGamesPlatform.Instance.GetServerAuthCode();
             StartCoroutine(coLogin());
         });
     }
@@ -52,6 +55,7 @@ public class FirebaseLogin : MonoBehaviour
     void InitGooglePlayService()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+            .RequestServerAuthCode(false)
             .RequestIdToken()
             .Build();
 
