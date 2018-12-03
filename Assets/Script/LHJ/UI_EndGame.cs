@@ -9,7 +9,7 @@ public class UI_EndGame : UI_Open
 {
     float advtime;
     float timer;
-    float gameovertime;
+
 
     public Text Timer;
     public Image Clock;
@@ -25,7 +25,6 @@ public class UI_EndGame : UI_Open
     void Start()
     {
         timer = 10.5f;
-        gameovertime = 3f;
         cloud = GetComponent<FirebaseCloud>();
     }
 
@@ -47,7 +46,6 @@ public class UI_EndGame : UI_Open
     {
         adver.ShowRewardedAd();
         Close_Menu();
-        Time.timeScale = 1f; 
     }
 
     public void EndthisGame()

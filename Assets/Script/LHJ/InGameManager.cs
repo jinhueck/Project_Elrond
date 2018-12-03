@@ -15,6 +15,7 @@ public class InGameManager : MonoBehaviour
 
     public UI_EndGame endgame;
     public UI_GameScore lastscore;
+    public UI_StartGame startgame;
 
     public int totalscore;
     public FirebaseCloud FC;
@@ -33,7 +34,7 @@ public class InGameManager : MonoBehaviour
 
     bool trueadv;
     public int advview;
-
+    bool startture;
    
     private void Awake()
     {
@@ -42,11 +43,12 @@ public class InGameManager : MonoBehaviour
             instance = this;
         }
         SetupGame();
+        
     }
 
     void Start()
     {
-    
+        
     }
 
     void Update()
@@ -68,7 +70,7 @@ public class InGameManager : MonoBehaviour
 
         trueadv = false;
         advview = 0;
-
+        startture = false;
     }
 
 
@@ -151,30 +153,36 @@ public class InGameManager : MonoBehaviour
 
     void GameTime()
     {
-        if (playtime > 0)
+        if (startture == false)
         {
-            playtime -= Time.deltaTime;
-            InGame_UI_Manager.instance.TimerUI(playtime);
+            startgame.Open_Menu();
+            startture = true;
         }
         else
         {
-            if (trueadv == false)
+            if (playtime > 0)
             {
-                trueadv=true;
-                playtime = 0f;
-                Time.timeScale = 0;
-                endgame.OpenEndGame();
+                playtime -= Time.deltaTime;
+                InGame_UI_Manager.instance.TimerUI(playtime);
             }
-            else if(advview==1)
+            else
             {
-                lastscore.Open_Menu();
-                advview++;
+                if (trueadv == false)
+                {
+                    trueadv = true;
+                    playtime = 0f;
+                    Time.timeScale = 0;
+                    endgame.OpenEndGame();
+                }
+                else if (advview == 1)
+                {
+                    lastscore.Open_Menu();
+                    advview++;
+                }
             }
         }
 
     }
-
-
 
     public void EndScore()
     {

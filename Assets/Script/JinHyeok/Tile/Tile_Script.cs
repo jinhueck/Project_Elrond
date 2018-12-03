@@ -7,10 +7,12 @@ public class Tile_Script : MonoBehaviour {
     [SerializeField] protected TileType type;         //뽁뽁이, 압정, 황금 뽁뽁이를 나누기 위한 enum
     [SerializeField] protected Sprite[] tileSprite;   //0이 안터진 이미지, 1은 터진 이미지
     [SerializeField] protected bool isTouched;        //터졌는지 안터졌는지 확인
+    
 
     private void Awake()
     {
         Setup();
+        
     }
 
     public void Setup()
