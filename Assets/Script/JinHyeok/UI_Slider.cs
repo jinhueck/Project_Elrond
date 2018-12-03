@@ -41,14 +41,21 @@ public class UI_Slider : MonoBehaviour {
         {
             var newObject = Instantiate(obj_list);
             newObject.transform.GetChild(0).GetComponent<Image>().sprite = sprite_Tile[i];
-            if (db_shop.SetMoney(i) == 0)
-                newObject.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = db_shop.ReturnMoney(i).ToString();
             newObject.transform.parent = panal.transform;
             RectTransform rect = newObject.GetComponent<RectTransform>();
             rect.anchoredPosition = new Vector2(130 * i, 0);
             rect.localScale = Vector3.one;
             rect.sizeDelta = Vector2.zero;
             button[i] = rect;
+
+            if (db_shop.SetMoney(i) == 0)
+            {
+                ChangeButtonText(i, db_shop.ReturnMoney(i).ToString());
+                Debug.Log("입력할떄는 이게 들어간단다 : " + i);
+                int a = i;
+                rect.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>Buy(a));
+            }
+                
         }
     }
 
@@ -126,5 +133,25 @@ void SizeUpSelected()
         CheckMinButton();
         dragging = false;
         
+    }
+
+    void ChangeButtonText(int i , string value)
+    {
+        button[i].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = value;
+    }
+
+    public void Buy(int i)
+    {
+        Debug.Log("이것은 인트이다 인트! : " + i);
+        int forBuy = db_shop.ReturnMoney(i);
+        RubyManager rubyManager = RubyManager.instance;
+        int hasMoney = rubyManager.Ruby;
+        if (hasMoney >= forBuy)
+        {
+            rubyManager.Ruby = hasMoney - forBuy;
+
+            db_shop.SetShopInfo(i);
+            ChangeButtonText(i, "장 착");
+        }
     }
 }

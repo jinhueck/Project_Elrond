@@ -64,4 +64,6 @@ public class ShopDB_Script : MonoBehaviour {
         }
         PlayerPrefs.SetString(key_Shop, value); 
     }
+
+    
 }
