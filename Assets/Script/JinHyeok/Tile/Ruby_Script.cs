@@ -5,14 +5,7 @@ using UnityEngine;
 public class Ruby_Script : Tile_Script {
 
     public Vector3 TopRuby = new Vector3(-3.5f, 6.5f, 0);
-    BombManager bomb;
     
-    
-    private void Start()
-    {
-        bomb = GetComponent<BombManager>();
-    }
-
     protected override void SetBool()
     {
         isTouched = false;
@@ -36,8 +29,8 @@ public class Ruby_Script : Tile_Script {
 
     public void CreateRuby()
     {
-        GameObject obj = bomb.PopFromPool(bomb.RubyIMGList, 4, this.transform);
-        obj.transform.position = this.transform.GetChild(0).transform.position;
-        obj.transform.SetParent(this.transform);
+        GameObject obj = RubyMaker.instance.PopFromPool(RubyMaker.instance.RubyIMGList, 4, this.transform);
+        obj.transform.position = this.transform.position;
+        //obj.transform.SetParent(this.transform);
     }
 }
