@@ -751,9 +751,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 03d71ff4-1adf-4800-bc0e-af25673632e0
+  cloudProjectId: 91c5b69c-c73d-452c-a9f2-3a4da4a3d488
   projectName: Project_Elrond
-  organizationId: slzxc373
+  organizationId: cjh6220
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
