@@ -8,6 +8,7 @@ public class UnityAdsHelper : MonoBehaviour
 
     private const string rewarded_video_id = "rewardedVideo";
 
+    public UI_StartGame startgame;
     void Start()
     {
         Initialize();
@@ -42,6 +43,9 @@ public class UnityAdsHelper : MonoBehaviour
 
                     InGameManager.instance.playtime += 10f;
                     InGameManager.instance.advview++;
+                    startgame.timerreset();
+                    startgame.tweenScale.duration = 0.915f;
+                    startgame.Open_Menu();
                     break;
                 }
             case ShowResult.Skipped:
