@@ -16,6 +16,7 @@ public class UI_EndGame : UI_Open
 
     public UI_GameScore EndScore;
     public FirebaseCloud cloud;
+    public UnityAdsHelper adver;
 
     bool advertisement;//광고의 확인
     
@@ -44,8 +45,7 @@ public class UI_EndGame : UI_Open
 
    public void Advertisingrh()
     {
-        InGameManager.instance.playtime += 10f;
-        InGameManager.instance.advview++;
+        adver.ShowRewardedAd();
         Close_Menu();
         Time.timeScale = 1f; 
     }

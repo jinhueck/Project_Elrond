@@ -15,7 +15,10 @@ public class InGame_UI_Manager : MonoBehaviour {
 
     public UI_Fade UI_Fade;
     public UIPause UI_Pause;
-  
+    public uTools.TweenScale Fever;
+
+    float timer;
+
     private void Awake()
     {
         if(instance==null)
@@ -23,6 +26,8 @@ public class InGame_UI_Manager : MonoBehaviour {
             instance = this;
         }
         UI_Fade.FadeOut(UI_Fade.Close);
+
+        timer = 0f;
     }
     void Start ()
     {
@@ -51,4 +56,15 @@ public class InGame_UI_Manager : MonoBehaviour {
         combo.text = "" + n+" Combo";
     }
 
+    public void FeverTrue()
+    {
+        Fever.gameObject.SetActive(true);
+        timer += Time.deltaTime;
+
+        if(timer>0.4f)
+        {
+            Fever.from = new Vector3(0.5f, 0.5f, 0.5f);
+            timer = 0f;
+        }
+    }
 }

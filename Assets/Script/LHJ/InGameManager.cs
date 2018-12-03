@@ -123,10 +123,12 @@ public class InGameManager : MonoBehaviour
     {
         Debug.Log("Fever Start!!!");
         fevercheck = true;
+        InGame_UI_Manager.instance.FeverTrue();
         yield return new WaitForSeconds(fevertime);
 
         Debug.Log("Fever END!!!");
         fevercount = 0;
+        InGame_UI_Manager.instance.Fever.gameObject.SetActive(false);
         fevercheck = false;
     }
 
