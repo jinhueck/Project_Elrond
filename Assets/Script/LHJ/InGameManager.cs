@@ -179,6 +179,7 @@ public class InGameManager : MonoBehaviour
         Debug.Log("EndScore 진입");
         Debug.Log("total score : "+totalscore);
         //FC.TopScore = totalscore;
+
         if (totalscore > FC.TopScore)
         {
             Debug.Log("EndScore 비교");
