@@ -61,7 +61,7 @@ public class InGameManager : MonoBehaviour
         totalscore = 0;
         combotime = 3f;
         fevercheck = false;
-        fevertime = 2f;
+        fevertime = 5f;
         fevercount = 0;
 
         jewelry = 0;
@@ -113,7 +113,7 @@ public class InGameManager : MonoBehaviour
 
     void JoinFever()
     {
-        if (fevercount >= 10)
+        if (fevercount >= 9)
         {
             StartCoroutine("Fever");
         }
