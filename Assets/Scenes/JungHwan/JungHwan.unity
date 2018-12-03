@@ -2348,7 +2348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20b5a7919edd3349924e4d2cddf0914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playtime: 20
+  playtime: 60
   endgame: {fileID: 236266772}
   lastscore: {fileID: 283188943}
   totalscore: 0

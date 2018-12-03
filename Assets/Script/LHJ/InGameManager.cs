@@ -186,30 +186,6 @@ public class InGameManager : MonoBehaviour
             //SaveScore();
             FC.AddScoreToLeaderboard(GPGSIds.leaderboard_score, totalscore);
             Debug.Log("EndScore 비교끝");
-        } 
-        
+        }
     }
-
-    void GameEnd()
-    {
-
-    }
-
-    
-    public void LoadScore() // 구글 클라우드에서 스코어 불러오기
-    {
-        Debug.Log("LoadScore 진입");
-        PlayCloudDataManager.Instance.LoadFromCloud((string dataToLoad) =>
-        { GoogleLogin.Instance.TopScore = long.Parse(dataToLoad); });
-        Debug.Log("LoadScore 끝");
-    }
-    
-
-    public void SaveScore() // 구글 클라우드에 스코어 저장
-    {
-        Debug.Log("SaveScore 진입");
-        PlayCloudDataManager.Instance.SaveToCloud(GoogleLogin.Instance.TopScore.ToString());
-        Debug.Log("SaveScore 끝");
-    }
-
 }
