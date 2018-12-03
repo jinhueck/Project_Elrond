@@ -1558,49 +1558,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 744892662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7be254a4358ba4893b296157eb92b8, type: 3}
+  m_Script: {fileID: 11500000, guid: a09e56fa4d0f85742a46982ab3c2a01d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  method: 22
-  style: 0
-  animationCurve:
+  curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
+      time: 0.017494202
+      value: 0.52472305
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
+      time: 0.49735156
+      value: 0.989415
+      inSlope: -0.00002242081
+      outSlope: -0.00002242081
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.98251224
+      value: 0.4927613
+      inSlope: -2.056023
+      outSlope: -2.056023
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.21274878
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 0.3
-  steeperCurves: 0
-  tweenGroup: 0
-  onFinished:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 0.5, y: 0.5, z: 0.5}
-  to: {x: 1, y: 1, z: 1}
+  AnimationSpeed: 1
+  MovementScale: 1
+  nowPos: {x: 0, y: 0, z: 0}
 --- !u!114 &744892665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2108,7 +2104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20b5a7919edd3349924e4d2cddf0914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playtime: 1
+  playtime: 60
   endgame: {fileID: 1679249044}
   lastscore: {fileID: 1215101104}
   totalscore: 0
