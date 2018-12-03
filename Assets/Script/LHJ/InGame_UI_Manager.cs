@@ -15,7 +15,10 @@ public class InGame_UI_Manager : MonoBehaviour {
 
     public UI_Fade UI_Fade;
     public UIPause UI_Pause;
-  
+    public FeverAni Fever;
+
+    float timer;
+
     private void Awake()
     {
         if(instance==null)
@@ -23,16 +26,8 @@ public class InGame_UI_Manager : MonoBehaviour {
             instance = this;
         }
         UI_Fade.FadeOut(UI_Fade.Close);
-    }
-    void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        
+
+        timer = 0f;
     }
 
     public void TimerUI(float time)
@@ -50,5 +45,4 @@ public class InGame_UI_Manager : MonoBehaviour {
     {
         combo.text = "" + n+" Combo";
     }
-
 }

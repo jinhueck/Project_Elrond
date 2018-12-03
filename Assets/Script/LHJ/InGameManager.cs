@@ -61,7 +61,7 @@ public class InGameManager : MonoBehaviour
         totalscore = 0;
         combotime = 3f;
         fevercheck = false;
-        fevertime = 2f;
+        fevertime = 5f;
         fevercount = 0;
 
         jewelry = 0;
@@ -113,7 +113,7 @@ public class InGameManager : MonoBehaviour
 
     void JoinFever()
     {
-        if (fevercount >= 10)
+        if (fevercount >= 9)
         {
             StartCoroutine("Fever");
         }
@@ -123,10 +123,12 @@ public class InGameManager : MonoBehaviour
     {
         Debug.Log("Fever Start!!!");
         fevercheck = true;
+        InGame_UI_Manager.instance.Fever.gameObject.SetActive(true);
         yield return new WaitForSeconds(fevertime);
 
         Debug.Log("Fever END!!!");
         fevercount = 0;
+        InGame_UI_Manager.instance.Fever.gameObject.SetActive(false);
         fevercheck = false;
     }
 
@@ -179,6 +181,7 @@ public class InGameManager : MonoBehaviour
         Debug.Log("EndScore 진입");
         Debug.Log("total score : "+totalscore);
         //FC.TopScore = totalscore;
+
         if (totalscore > FC.TopScore)
         {
             Debug.Log("EndScore 비교");

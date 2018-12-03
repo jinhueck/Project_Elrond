@@ -16,8 +16,9 @@ public class Ruby_Script : Tile_Script {
             isTouched = true;
             ImageChange(tileSprite[1]);
             InGameManager.instance.AddScore();
-            InGameManager.instance.Jewelry();
+            //InGameManager.instance.Jewelry();
             Sound_Script.instance.Play_EffectPopSound();
+            RubyManager.instance.AddRuby();
             transform.parent.GetComponent<BombManager>().CheckIsTouched();
         }
     }

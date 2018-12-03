@@ -18,6 +18,7 @@ public class FirebaseCloud : MonoBehaviour {
         PrintScore();
     }
 
+    //리더보드 관련 함수들--------------------------------------------------
     public void showLeaderboardUI()
     { 
         // Sign In 이 되어있지 않은 상태라면
@@ -69,35 +70,38 @@ public class FirebaseCloud : MonoBehaviour {
         }
     }
 
-    public void PrintTokens() //토큰 출력
+    public void AddScoreToLeaderboard(string leaderboardID, int score)
     {
-        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        Social.ReportScore(score, leaderboardID, success => { }
+        );
+    }
+
+    //----------------------------------------------------------------------------------
+    //업적관련 함수
+
+    public void Completeachievement_1000() //업적 1000점 달성
+    {
+        if (!isAuthenticated)
         {
-            //유저 토큰 받기 첫번째 방법
-            //string _IDtoken = PlayGamesPlatform.Instance.GetIdToken();
-            //두번째 방법
-            string _IDtoken = ((PlayGamesLocalUser)Social.localUser).GetIdToken();
-
-            //인증코드 받기
-            string _authCode = PlayGamesPlatform.Instance.GetServerAuthCode();
-            LogGPGS("authcode : " + _authCode + " / " + "idtoken : " + _IDtoken);
+            Social.localUser.Authenticate((bool success) =>
+            { });
+            return;
         }
-        else
+
+        Social.ReportProgress(GPGSIds.achievement_score_1000, 100.0, (bool success) =>
         {
-            LogGPGS("접속되어있지 않습니다. PlayGamesPlatform.Instance.localUser.authenticated :  fail");
-        }
+            if (success)
+            {
+                PlayerPrefs.SetInt("achievement_score_1000", 1);
+            }
+            if (!success)
+            { Debug.Log("Report Fail!"); }
+        });
     }
 
-    public void SignOut()//로그아웃
-    {
-        PlayGamesPlatform.Instance.SignOut();
-    }
+    //----------------------------------------------------------------------------------
+    //점수관련 함수
 
-    public void LogGPGS(string _log)
-    {
-        Debug.Log(_log);
-        t_GPGSDebugtext.text = _log;
-    }
 
     public void PrintScore() //점수 출력
     {
@@ -124,7 +128,7 @@ public class FirebaseCloud : MonoBehaviour {
         {
             if (value > 1000 && !PlayerPrefs.HasKey("achievement_1000"))
             {
-                //Completeachievement_1000();
+                Completeachievement_1000();
             }
             PlayerPrefs.SetString("TopScore", value.ToString());
         }
@@ -135,6 +139,10 @@ public class FirebaseCloud : MonoBehaviour {
         TopScore = 0;
         PrintScore();
     }
+
+    //----------------------------------------------------------------------------------
+    //로그인 관련 함수
+
 
     public bool isAuthenticated //현재 로그인이 되어있는지 확인하는 함수
     {
@@ -155,10 +163,34 @@ public class FirebaseCloud : MonoBehaviour {
             t_GPGSDebugtext.text = "로그인 실패";
     }
 
-    public void AddScoreToLeaderboard(string leaderboardID, int score)
+    public void PrintTokens() //토큰 출력
     {
-        Social.ReportScore(score, leaderboardID, success => { }
-        );
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        {
+            //유저 토큰 받기 첫번째 방법
+            //string _IDtoken = PlayGamesPlatform.Instance.GetIdToken();
+            //두번째 방법
+            string _IDtoken = ((PlayGamesLocalUser)Social.localUser).GetIdToken();
+
+            //인증코드 받기
+            string _authCode = PlayGamesPlatform.Instance.GetServerAuthCode();
+            LogGPGS("authcode : " + _authCode + " / " + "idtoken : " + _IDtoken);
+        }
+        else
+        {
+            LogGPGS("접속되어있지 않습니다. PlayGamesPlatform.Instance.localUser.authenticated :  fail");
+        }
+    }
+
+    public void SignOut()//로그아웃
+    {
+        PlayGamesPlatform.Instance.SignOut();
+    }
+
+    public void LogGPGS(string _log)//디버그 출력
+    {
+        Debug.Log(_log);
+        t_GPGSDebugtext.text = _log;
     }
 
     public void LoadScore() // 구글 클라우드에서 스코어 불러오기
@@ -179,5 +211,7 @@ public class FirebaseCloud : MonoBehaviour {
         Debug.Log("SaveScore 끝");
         LogGPGS("저장완료");
     }
+    //----------------------------------------------------------------------------------
 
+   
 }
