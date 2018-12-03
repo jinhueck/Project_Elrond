@@ -13,10 +13,15 @@ public class UI_Slider : MonoBehaviour {
     private int btnDistance;
     [SerializeField] private int minButtonNum;
     [SerializeField] Image Img_Select;
+    [SerializeField] Text text_Select;
+    [SerializeField] ShopDB_Script db_shop;
 
     [SerializeField] private Sprite[] sprite_Tile;
+
     public void Setup()
     {
+        db_shop.Setup();
+
         sprite_Tile = Resources.LoadAll<Sprite>("JinHyeok/Img_Tile");
         button = new RectTransform[sprite_Tile.Length];
         MakeList(sprite_Tile.Length);
@@ -36,6 +41,8 @@ public class UI_Slider : MonoBehaviour {
         {
             var newObject = Instantiate(obj_list);
             newObject.transform.GetChild(0).GetComponent<Image>().sprite = sprite_Tile[i];
+            if (db_shop.SetMoney(i) == 0)
+                newObject.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = db_shop.ReturnMoney(i).ToString();
             newObject.transform.parent = panal.transform;
             RectTransform rect = newObject.GetComponent<RectTransform>();
             rect.anchoredPosition = new Vector2(130 * i, 0);
@@ -67,9 +74,12 @@ public class UI_Slider : MonoBehaviour {
             }
         }
         Img_Select.sprite = sprite_Tile[minButtonNum];
+        text_Select.text = db_shop.ReturnName(minButtonNum).ToString();
     }
 
-    void SizeUpSelected()
+    
+
+void SizeUpSelected()
     {
         for (int i = 0; i < button.Length; i++)
         {
