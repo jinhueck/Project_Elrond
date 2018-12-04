@@ -11,8 +11,7 @@ public class Tile_Script : MonoBehaviour {
 
     private void Awake()
     {
-        Setup();
-        
+        Setup(); 
     }
 
     public void Setup()
