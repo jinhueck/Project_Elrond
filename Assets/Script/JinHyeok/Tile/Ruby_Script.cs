@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Ruby_Script : Tile_Script {
 
-    
-    
-    
     protected override void SetBool()
     {
         isTouched = false;

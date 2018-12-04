@@ -15,14 +15,6 @@ public class BombManager : MonoBehaviour {
     [SerializeField] public List<GameObject> TrapList = new List<GameObject>();
     [SerializeField] public List<GameObject> FeverList = new List<GameObject>();
     [SerializeField] public List<GameObject> RubyList = new List<GameObject>();
-    
-
-    public GameObject InvisibleBomb;
-    public GameObject InvisibleTrap;
-    public GameObject InvisibleFever;
-    public GameObject InvisibleRuby;
-    
-
 
 
     public GameObject Bomb;
@@ -41,7 +33,7 @@ public class BombManager : MonoBehaviour {
 
     int T = 0;
 
-    private void Awake()
+    private void Start()
     {
         /*
         if(instance == null)
@@ -49,17 +41,7 @@ public class BombManager : MonoBehaviour {
             instance = this;
         }
         */
-        MakeStage();        
-        InvisibleBomb = new GameObject();
-        InvisibleTrap = new GameObject();
-        InvisibleFever = new GameObject();
-        InvisibleRuby = new GameObject();
-        
-        InvisibleBomb.name = "InvisibleBomb";
-        InvisibleTrap.name = "InvisibleTrap";
-        InvisibleFever.name = "InvisibleFever";
-        InvisibleRuby.name = "InvisibleRuby";
-        
+        MakeStage();             
     }
     
     public void MakeStage()

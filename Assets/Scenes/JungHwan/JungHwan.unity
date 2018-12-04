@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 55249298}
   - component: {fileID: 55249300}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Map_Group_Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,6 +262,14 @@ MonoBehaviour:
   Pos2_middle: {x: 0, y: 0, z: 0}
   Pos_left: {x: 0, y: 0, z: 0}
   check: 0
+  InvisibleBomb: {fileID: 0}
+  InvisibleTrap: {fileID: 0}
+  InvisibleFever: {fileID: 0}
+  InvisibleRuby: {fileID: 0}
+  key_IntSelect: SetTile
+  sprites_Tile: []
+  sprites_TileSelect: []
+  obj: {fileID: 0}
 --- !u!1 &61348574
 GameObject:
   m_ObjectHideFlags: 0

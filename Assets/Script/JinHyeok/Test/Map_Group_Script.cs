@@ -15,6 +15,16 @@ public class Map_Group_Script : MonoBehaviour {
     public Vector3 Pos_left;
     public bool check;
 
+    public GameObject InvisibleBomb;
+    public GameObject InvisibleTrap;
+    public GameObject InvisibleFever;
+    public GameObject InvisibleRuby;
+
+    [SerializeField] private string key_IntSelect = "SetTile";
+    [SerializeField] Sprite[] sprites_Tile;
+    [SerializeField] Sprite[] sprites_TileSelect;
+    public GameObject obj;
+    int intSelected;
     private void Awake()
     {
         if (Map_Group_Script.instance == null)
@@ -23,7 +33,33 @@ public class Map_Group_Script : MonoBehaviour {
         Pos2_middle = new Vector3(0, 0, 0);
         Pos_left = new Vector3(-10, 0, 0);
         check = false;
+
+        InvisibleBomb = new GameObject();
+        InvisibleTrap = new GameObject();
+        InvisibleFever = new GameObject();
+        InvisibleRuby = new GameObject();
+
+        InvisibleBomb.name = "InvisibleBomb";
+        InvisibleTrap.name = "InvisibleTrap";
+        InvisibleFever.name = "InvisibleFever";
+        InvisibleRuby.name = "InvisibleRuby";
+
+        intSelected = PlayerPrefs.GetInt(key_IntSelect);
+        Debug.Log("intSelected checkNum : " + intSelected);
+
+        sprites_Tile = Resources.LoadAll<Sprite>("JinHyeok/Img_Tile");
+        sprites_TileSelect = Resources.LoadAll<Sprite>("JinHyeok/Img_TileSelect");
     }
+
+    public Sprite ReturnTile()
+    {
+        return sprites_Tile[intSelected];
+    }
+    public Sprite ReturnTileSelect()
+    {
+        return sprites_TileSelect[intSelected];
+    }
+
 
     public void next()
     {

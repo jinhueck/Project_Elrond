@@ -16,11 +16,12 @@ public class UI_Slider : MonoBehaviour {
     [SerializeField] private int minButtonNum;
     [SerializeField] Image Img_Select;
     [SerializeField] Text text_Select;
+    [SerializeField] int int_Select;
     [SerializeField] ShopDB_Script db_shop;
 
     [SerializeField] private Sprite[] sprite_Tile;
     [SerializeField] Delegate_Script delegate_Script;
-    
+    [SerializeField] private string key_IntSelect = "SetTile";
 
     public void Setup()
     {
@@ -34,16 +35,41 @@ public class UI_Slider : MonoBehaviour {
         distance = new float[btnLength];
 
         btnDistance = (int)Mathf.Abs(button[1].GetComponent<RectTransform>().anchoredPosition.x - button[0].GetComponent<RectTransform>().anchoredPosition.x);
-
-        Img_Select.sprite = sprite_Tile[0];
+        SetupIntSelect();
 
         delegate_Script = gameObject.GetComponent<Delegate_Script>();
         delegate_Script.SetTarget(ui_Slider);
+
+        ui_Slider.SetActive(false);
+    }
+
+    public void SetupIntSelect()
+    {
+        if(PlayerPrefs.HasKey(key_IntSelect) == false)
+        {
+            int_Select = 0;
+            PlayerPrefs.SetInt(key_IntSelect, int_Select);
+        }
+        else
+        {
+            int_Select = PlayerPrefs.GetInt(key_IntSelect);
+        }
+        Img_Select.sprite = sprite_Tile[int_Select];
+    }
+
+    public void SetIntSelect()
+    {
+        PlayerPrefs.SetInt(key_IntSelect, int_Select);
+    }
+
+    public int GetIntSelect()
+    {
+        return int_Select;
     }
 
     public void MakeList(int count)
     {
-        var  obj_list = Resources.Load("JinHyeok/Prefabs/Panel") as GameObject;
+        var  obj_list = Resources.Load("JinHyeok/Panel") as GameObject;
         for(int i = 0; i < count; i ++)
         {
             var newObject = Instantiate(obj_list);
@@ -101,6 +127,7 @@ public class UI_Slider : MonoBehaviour {
         }
         Img_Select.sprite = sprite_Tile[minButtonNum];
         text_Select.text = db_shop.ReturnName(minButtonNum).ToString();
+        int_Select = minButtonNum;
     }
 
     
@@ -126,11 +153,14 @@ void SizeUpSelected()
 
     private void Update()
     {
-        CheckMinButton();
-        SizeUpSelected();
-        if (!dragging)
+        if(ui_Slider.active)
         {
-            LerpToButton(minButtonNum * -btnDistance);
+            CheckMinButton();
+            SizeUpSelected();
+            if (!dragging)
+            {
+                LerpToButton(minButtonNum * -btnDistance);
+            }
         }
     }
 
@@ -161,18 +191,20 @@ void SizeUpSelected()
 
     public void UIOpen()
     {
+        Vector2 pos = new Vector2(int_Select * -btnDistance, panal.anchoredPosition.y);
+        panal.anchoredPosition = pos;
         ui_Slider.SetActive(true);
         delegate_Script.Move_Open();
     }
 
     public void ButtonSelect()
     {
+        SetIntSelect();
         delegate_Script.Move_Close();
     }
 
     public void Buy(int i)
     {
-        Debug.Log("이것은 인트이다 인트! : " + i);
         int forBuy = db_shop.ReturnMoney(i);
         RubyManager rubyManager = RubyManager.instance;
         int hasMoney = rubyManager.Ruby;
