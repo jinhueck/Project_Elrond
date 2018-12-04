@@ -194,9 +194,8 @@ public class InGameManager : MonoBehaviour
         {
             Debug.Log("EndScore 비교");
             FC.TopScore = totalscore;
-            //SaveScore();
-            FC.AddScoreToLeaderboard(GPGSIds.leaderboard_score, totalscore);
             Debug.Log("EndScore 비교끝");
         }
+        FC.AddScoreToLeaderboard(GPGSIds.leaderboard_score, totalscore);
     }
 }
