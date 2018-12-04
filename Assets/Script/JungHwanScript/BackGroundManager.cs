@@ -72,22 +72,22 @@ public class BackGroundManager : MonoBehaviour
             int j = 10;
             if (transform.GetChild(j).tag == "Bomb")
             {
-                bomba.PushToPool(bomba.BombList, transform.GetChild(j).gameObject, bomba.InvisibleBomb.transform);
+                bomba.PushToPool(bomba.BombList, transform.GetChild(j).gameObject, Map_Group_Script.instance.InvisibleBomb.transform);
             }
 
             else if (transform.GetChild(j).tag == "Trap")
             {
-                bomba.PushToPool(bomba.TrapList, transform.GetChild(j).gameObject, bomba.InvisibleTrap.transform);
+                bomba.PushToPool(bomba.TrapList, transform.GetChild(j).gameObject, Map_Group_Script.instance.InvisibleTrap.transform);
             }
 
             else if (transform.GetChild(j).tag == "Fever")
             {
-                bomba.PushToPool(bomba.FeverList, transform.GetChild(j).gameObject, bomba.InvisibleFever.transform);
+                bomba.PushToPool(bomba.FeverList, transform.GetChild(j).gameObject, Map_Group_Script.instance.InvisibleFever.transform);
             }
 
             else if (transform.GetChild(j).tag == "Ruby")
             {
-                bomba.PushToPool(bomba.RubyList, transform.GetChild(j).gameObject, bomba.InvisibleRuby.transform);
+                bomba.PushToPool(bomba.RubyList, transform.GetChild(j).gameObject, Map_Group_Script.instance.InvisibleRuby.transform);
             }
         }
     }
