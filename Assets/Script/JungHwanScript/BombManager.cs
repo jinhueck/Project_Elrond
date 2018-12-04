@@ -15,13 +15,13 @@ public class BombManager : MonoBehaviour {
     [SerializeField] public List<GameObject> TrapList = new List<GameObject>();
     [SerializeField] public List<GameObject> FeverList = new List<GameObject>();
     [SerializeField] public List<GameObject> RubyList = new List<GameObject>();
-    [SerializeField] public List<GameObject> RubyIMGList = new List<GameObject>();
+    
 
     public GameObject InvisibleBomb;
     public GameObject InvisibleTrap;
     public GameObject InvisibleFever;
     public GameObject InvisibleRuby;
-    public GameObject InvisibleRubyIMG;
+    
 
 
 
@@ -29,7 +29,7 @@ public class BombManager : MonoBehaviour {
     public GameObject Trap;
     public GameObject Fever;
     public GameObject Ruby;
-    public GameObject RubyIMG;
+    
     private int randomnum;
     private int[] randArray;
 
@@ -54,12 +54,12 @@ public class BombManager : MonoBehaviour {
         InvisibleTrap = new GameObject();
         InvisibleFever = new GameObject();
         InvisibleRuby = new GameObject();
-        InvisibleRubyIMG = new GameObject();
+        
         InvisibleBomb.name = "InvisibleBomb";
         InvisibleTrap.name = "InvisibleTrap";
         InvisibleFever.name = "InvisibleFever";
         InvisibleRuby.name = "InvisibleRuby";
-        InvisibleRubyIMG.name = "InvisibleRubyIMG";
+        
     }
     
     public void MakeStage()
@@ -179,11 +179,7 @@ public class BombManager : MonoBehaviour {
         if (list.Count == 0 && num == 3)
         {
             list.Add(CreateItem(num, parent));
-        }
-        if (list.Count == 0 && num == 4)
-        {
-            list.Add(CreateItem(num, parent));
-        }
+        }       
 
         GameObject item = list[0];
         list.RemoveAt(0);
@@ -221,13 +217,6 @@ public class BombManager : MonoBehaviour {
         {
             item = Object.Instantiate(Ruby) as GameObject;
             item.name = "Ruby";
-            item.transform.SetParent(parent);
-            item.SetActive(false);
-        }
-        if (num == 4)
-        {
-            item = Object.Instantiate(RubyIMG) as GameObject;
-            item.name = "RubyIMG";
             item.transform.SetParent(parent);
             item.SetActive(false);
         }
