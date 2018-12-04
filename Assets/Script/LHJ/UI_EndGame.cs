@@ -60,8 +60,15 @@ public class UI_EndGame : UI_Open
         if (timer > 0)
         {
             timer -= Time.unscaledDeltaTime;
-            Timer.text = string.Format("{0:N0}", timer);
             Clock.fillAmount = timer / 10;
+            if (timer > 3.5f)
+            {    
+                Timer.text = string.Format("{0:N0}", timer); 
+            }
+            else
+            {
+                Timer.text =  "<color=#ff0000>" + string.Format("{0:N0}", timer) + "</color>";
+            }
         }
         else
         {

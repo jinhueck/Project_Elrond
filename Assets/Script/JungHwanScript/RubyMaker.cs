@@ -10,7 +10,7 @@ public class RubyMaker : MonoBehaviour {
     public GameObject Ruby_False;
     public GameObject Ruby_True;
     public GameObject RubyIMG;
-    private RubyMove move;
+    RubyMove move;
 
     public int poolCount = 3;
 
@@ -72,9 +72,14 @@ public class RubyMaker : MonoBehaviour {
 
     public void CreateRuby(Vector3 pos)
     {
-        GameObject obj = RubyMaker.instance.PopFromPool(RubyIMGList, 4);
+        Debug.Log("크리에이트루비 진입");
+        GameObject obj = PopFromPool(RubyIMGList, 4);
+        Debug.Log("루비 팝 완료");
         obj.transform.position = pos;
-        move.MoveRuby(TopRuby);
+        Debug.Log("루비 포지션 변경");
+        //move.MoveRuby(TopRuby);
+        obj.GetComponent<RubyMove>().MoveRuby(TopRuby);
+        Debug.Log("무브루비");
         //obj.transform.SetParent(this.transform);
     }
 }

@@ -15,6 +15,7 @@ public class RubyMove : MonoBehaviour {
         //if (cor != null)
         //StopCoroutine(cor);
         //this.gameObject.SetActive(true);
+        Debug.Log("루비무브스크립트 진입");
         cor = StartCoroutine(MoveTopRuby(vec));
     }
 
@@ -22,11 +23,9 @@ public class RubyMove : MonoBehaviour {
     {
         //Debug.Log("GoBackStage 코루틴 진입");
         StartPosition = vec;
-
         Vector3 currPosition;
-
         startTime = Time.time;
-        Map_Group_Script.instance.check = true;
+
         while (transform.position != StartPosition)
         {
             Debug.Log("루비이동중");

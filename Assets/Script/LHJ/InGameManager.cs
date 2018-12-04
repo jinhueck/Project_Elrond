@@ -16,6 +16,7 @@ public class InGameManager : MonoBehaviour
     public UI_EndGame endgame;
     public UI_GameScore lastscore;
     public UI_StartGame startgame;
+    public UI_ComboScale comboview;
 
     public int totalscore;
     public FirebaseCloud FC;
@@ -26,7 +27,7 @@ public class InGameManager : MonoBehaviour
     //콤보 피버 점수 관련
     Coroutine ComboCor;
     int plusScore;
-    int combo;
+    public int combo;
     float combotime;
     bool fevercheck;
     float fevertime;
@@ -88,7 +89,8 @@ public class InGameManager : MonoBehaviour
         if (combotime <= 0.7f)
             combotime = 0.7f;
 
-        InGame_UI_Manager.instance.ComboUI(combo);
+        // InGame_UI_Manager.instance.ComboUI(combo);
+        comboview.Open_Menu();
         ResetCoroutine();
     }
 
@@ -103,7 +105,8 @@ public class InGameManager : MonoBehaviour
     {
         combo = 1;
         combotime = 5f;
-        InGame_UI_Manager.instance.ComboUI(combo);
+        //InGame_UI_Manager.instance.ComboUI(combo);
+        comboview.Close();
         ResetCoroutine();
     }
 
@@ -194,9 +197,8 @@ public class InGameManager : MonoBehaviour
         {
             Debug.Log("EndScore 비교");
             FC.TopScore = totalscore;
-            //SaveScore();
-            FC.AddScoreToLeaderboard(GPGSIds.leaderboard_score, totalscore);
             Debug.Log("EndScore 비교끝");
         }
+        FC.AddScoreToLeaderboard(GPGSIds.leaderboard_score, totalscore);
     }
 }
