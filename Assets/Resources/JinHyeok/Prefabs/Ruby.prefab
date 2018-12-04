@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212461799392060584}
   - component: {fileID: 58270501275220802}
   - component: {fileID: 114989382698772364}
-  - component: {fileID: 114640387660638722}
   m_Layer: 9
   m_Name: Ruby
   m_TagString: Bomb
@@ -58,21 +57,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.405
---- !u!114 &114640387660638722
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1711025272616890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6403ed8518a3cc4db9215f371b42d65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RubyIMGList: []
-  InvisibleRubyIMG: {fileID: 0}
-  RubyIMG: {fileID: 1338694490094884, guid: c4fba3b3de74c7248afdd4fa7a214993, type: 2}
-  poolCount: 5
 --- !u!114 &114989382698772364
 MonoBehaviour:
   m_ObjectHideFlags: 1

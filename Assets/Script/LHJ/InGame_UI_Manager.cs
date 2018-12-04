@@ -11,7 +11,6 @@ public class InGame_UI_Manager : MonoBehaviour {
     public Slider slider;
 
     public Text Score;
-    public Text combo;
 
     public UI_Fade UI_Fade;
     public UIPause UI_Pause;
@@ -39,10 +38,5 @@ public class InGame_UI_Manager : MonoBehaviour {
     public void ScoreUI(int score)
     {
         Score.text =""+score;
-    }
-
-    public void ComboUI(int n)
-    {
-        combo.text = "" + n+" Combo";
     }
 }
