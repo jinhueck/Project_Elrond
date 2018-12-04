@@ -5,12 +5,14 @@ using UnityEngine;
 public class RubyMaker : MonoBehaviour {
 
     [SerializeField] public List<GameObject> RubyIMGList = new List<GameObject>();
+    public Vector3 TopRuby = new Vector3(-3.5f, 6.5f, 0);
 
-    public GameObject InvisibleRubyIMG;
-
+    public GameObject Ruby_False;
+    public GameObject Ruby_True;
     public GameObject RubyIMG;
+    private RubyMove move;
 
-    public int poolCount = 5;
+    public int poolCount = 3;
 
     public static RubyMaker instance;
 
@@ -20,9 +22,8 @@ public class RubyMaker : MonoBehaviour {
         {
             instance = this;
         }
-        InvisibleRubyIMG = new GameObject();
-        InvisibleRubyIMG.name = "InvisibleRubyIMG";
-        Initialize(RubyIMGList, InvisibleRubyIMG.transform);
+        Initialize(RubyIMGList, Ruby_False.transform);
+        move = GetComponent<RubyMove>();
     }
 
     public void Initialize(List<GameObject> list, Transform parent)
@@ -33,24 +34,24 @@ public class RubyMaker : MonoBehaviour {
         }
     }
 
-    public void PushToPool(List<GameObject> list, GameObject item, Transform parent) //집어넣기
+    public void PushToPool(List<GameObject> list, GameObject item) //집어넣기
     {
-        item.transform.SetParent(parent);
+        item.transform.SetParent(Ruby_False.transform);
         item.SetActive(false);
         list.Add(item);
     }
 
-    public GameObject PopFromPool(List<GameObject> list, int num, Transform parent) //빼기
+    public GameObject PopFromPool(List<GameObject> list, int num) //빼기
     {
         
         if (list.Count == 0 && num == 4)
         {
-            list.Add(CreateItem(num, parent));
+            list.Add(CreateItem(num, Ruby_False.transform));
         }
 
         GameObject item = list[0];
         list.RemoveAt(0);
-        item.transform.SetParent(parent);
+        item.transform.SetParent(Ruby_True.transform);
         item.SetActive(true);
 
         return item;
@@ -67,5 +68,13 @@ public class RubyMaker : MonoBehaviour {
             item.SetActive(false);
         }
         return item;
+    }
+
+    public void CreateRuby(Vector3 pos)
+    {
+        GameObject obj = RubyMaker.instance.PopFromPool(RubyIMGList, 4);
+        obj.transform.position = pos;
+        move.MoveRuby(TopRuby);
+        //obj.transform.SetParent(this.transform);
     }
 }

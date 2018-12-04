@@ -4,28 +4,17 @@ using UnityEngine;
 
 public class RubyMove : MonoBehaviour {
 
-    public static RubyMove instance;
     private Vector3 StartPosition;
     private Vector3 zeroPosition = new Vector3(0, 0, 0);
     private float startTime;
     public float speed;
-
     Coroutine cor;
-
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
 
     public void MoveRuby(Vector3 vec)
     {
         //if (cor != null)
         //StopCoroutine(cor);
-        this.gameObject.SetActive(true);
+        //this.gameObject.SetActive(true);
         cor = StartCoroutine(MoveTopRuby(vec));
     }
 
@@ -49,8 +38,8 @@ public class RubyMove : MonoBehaviour {
             yield return null;
         }
         this.gameObject.SetActive(false);
-        this.transform.position = zeroPosition;
-        RubyMaker.instance.PushToPool(RubyMaker.instance.RubyIMGList, this.gameObject , RubyMaker.instance.InvisibleRubyIMG.transform);
+        //this.transform.position = zeroPosition;
+        RubyMaker.instance.PushToPool(RubyMaker.instance.RubyIMGList, this.gameObject);
         Debug.Log("루비 코루틴 끝");
         yield break;
     }

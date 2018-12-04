@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Ruby_Script : Tile_Script {
 
-    public Vector3 TopRuby = new Vector3(-3.5f, 6.5f, 0);
+    
+    
     
     protected override void SetBool()
     {
@@ -18,19 +19,14 @@ public class Ruby_Script : Tile_Script {
             isTouched = true;
             ImageChange(tileSprite[1]);
             InGameManager.instance.AddScore();
-            CreateRuby();
+            RubyMaker.instance.CreateRuby(this.transform.position);
             //InGameManager.instance.Jewelry();
             Sound_Script.instance.Play_EffectPopSound();
             RubyManager.instance.AddRuby();
-            RubyMove.instance.MoveRuby(TopRuby);
+            //RubyMove.instance.MoveRuby(TopRuby);
             transform.parent.GetComponent<BombManager>().CheckIsTouched();
         }
     }
 
-    public void CreateRuby()
-    {
-        GameObject obj = RubyMaker.instance.PopFromPool(RubyMaker.instance.RubyIMGList, 4, this.transform);
-        obj.transform.position = this.transform.position;
-        //obj.transform.SetParent(this.transform);
-    }
+  
 }
