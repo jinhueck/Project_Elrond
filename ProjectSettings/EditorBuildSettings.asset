@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JungHwan/Realstart.unity
     guid: 596824f1c3ae8c842a7d59febe4fad36
   - enabled: 0
