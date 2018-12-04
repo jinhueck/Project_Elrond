@@ -9,19 +9,6 @@ public class Bubble_Script : Tile_Script
         isTouched = false;
     }
 
-    public override void Setup()
-    {
-        SetBool();
-        SetTileImg(Tile_ImgChange_Script.instance.GetSprites());
-        ImageChange(tileSprite[0]);
-    }
-
-    void SetTileImg(Sprite[] sprites)
-    {
-        tileSprite[0] = sprites[0];
-        tileSprite[1] = sprites[1];
-    }
-
     public override void Touched()
     {
         if(isTouched == false)

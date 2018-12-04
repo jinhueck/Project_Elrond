@@ -16,7 +16,8 @@ public class FirebaseLogin : MonoBehaviour
 
     void Start()
     {
-        for_email_auth = Firebase.Auth.FirebaseAuth.DefaultInstance;    
+        for_email_auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        OnClickGoogleLogin();
     }
 
     public void OnClickLoginAnonymous() // 익명인증
@@ -86,8 +87,8 @@ public class FirebaseLogin : MonoBehaviour
                     result_text.text = string.Format("FirebaseUser:{0}\nEmail:{1}", newUser.UserId, newUser.Email);
                 }
             });
-        SceneManager.LoadScene("StartUI");
-        result_text.text = string.Format("\nStartUI");
+        //SceneManager.LoadScene("StartUI");
+        //result_text.text = string.Format("\nStartUI");
     }
 
 }
