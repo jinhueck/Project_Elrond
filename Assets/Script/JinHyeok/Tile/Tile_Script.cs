@@ -14,7 +14,8 @@ public class Tile_Script : MonoBehaviour {
         Setup(); 
     }
 
-    public void Setup()
+
+    public virtual void Setup()
     {
         SetBool();
         ImageChange(tileSprite[0]);
