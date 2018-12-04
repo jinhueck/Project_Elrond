@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UI_Slider : MonoBehaviour {
 
+    public GameObject ui_Slider;
+
     public RectTransform panal;
     public RectTransform[] button;
     public RectTransform center;
@@ -17,6 +19,8 @@ public class UI_Slider : MonoBehaviour {
     [SerializeField] ShopDB_Script db_shop;
 
     [SerializeField] private Sprite[] sprite_Tile;
+    [SerializeField] Delegate_Script delegate_Script;
+    
 
     public void Setup()
     {
@@ -32,6 +36,9 @@ public class UI_Slider : MonoBehaviour {
         btnDistance = (int)Mathf.Abs(button[1].GetComponent<RectTransform>().anchoredPosition.x - button[0].GetComponent<RectTransform>().anchoredPosition.x);
 
         Img_Select.sprite = sprite_Tile[0];
+
+        delegate_Script = gameObject.GetComponent<Delegate_Script>();
+        delegate_Script.SetTarget(ui_Slider);
     }
 
     public void MakeList(int count)
@@ -51,13 +58,25 @@ public class UI_Slider : MonoBehaviour {
             if (db_shop.SetMoney(i) == 0)
             {
                 ChangeButtonText(i, db_shop.ReturnMoney(i).ToString());
-                Debug.Log("입력할떄는 이게 들어간단다 : " + i);
                 int a = i;
-                rect.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>Buy(a));
+                rect.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => Buy(a));
+            }
+            else
+            {
+                ChangeButtonText(i, "장 착");
+                SetSelectedButton(rect.transform);
             }
                 
         }
     }
+
+    void SetSelectedButton(Transform trans)
+    {
+        trans.GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
+        trans.GetChild(1).GetComponent<Button>().onClick.AddListener(() => ButtonSelect());
+
+    }
+
 
     private void Awake()
     {
@@ -140,6 +159,17 @@ void SizeUpSelected()
         button[i].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = value;
     }
 
+    public void UIOpen()
+    {
+        ui_Slider.SetActive(true);
+        delegate_Script.Move_Open();
+    }
+
+    public void ButtonSelect()
+    {
+        delegate_Script.Move_Close();
+    }
+
     public void Buy(int i)
     {
         Debug.Log("이것은 인트이다 인트! : " + i);
@@ -152,6 +182,7 @@ void SizeUpSelected()
 
             db_shop.SetShopInfo(i);
             ChangeButtonText(i, "장 착");
+            SetSelectedButton(button[i].transform);
         }
     }
 }
