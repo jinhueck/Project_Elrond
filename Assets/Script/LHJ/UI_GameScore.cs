@@ -26,7 +26,7 @@ public class UI_GameScore : UI_Open
     {
         InGameManager.instance.EndScore();
         Close_Menu();
-        SceneManager.LoadScene("StartUI");
+        GameBase_Manager.instance.OpenMainScene();
     }
 
     public void Scoreview()

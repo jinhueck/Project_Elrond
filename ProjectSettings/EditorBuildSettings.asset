@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/JungHwan/Realstart.unity
     guid: 596824f1c3ae8c842a7d59febe4fad36
-  - enabled: 0
+  - enabled: 1
     path: Assets/Minimal/MainScene.unity
     guid: 38664161efaca4b22862070c6f7fc16e
   - enabled: 1
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JungHwan/JungHwan.unity
     guid: 2a3aa752926d90c42a04a8cceb488970
+  - enabled: 1
+    path: Assets/Scenes/JinHyeok/StartUI 1.unity
+    guid: b548e9c2548f2c048b124cd12f528116
   m_configObjects: {}
