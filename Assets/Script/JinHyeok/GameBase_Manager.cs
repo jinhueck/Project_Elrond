@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameBase_Manager : MonoBehaviour {
 
@@ -18,7 +19,8 @@ public class GameBase_Manager : MonoBehaviour {
 
     public void OpenMainScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("StartUI");
+        SceneManager.LoadScene("StartUI");
+        SceneManager.LoadScene("StartUI 1", LoadSceneMode.Additive);
     }
     public void PlayScene()
     {
