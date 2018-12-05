@@ -76,7 +76,7 @@ public class UI_Slider : MonoBehaviour {
             newObject.transform.GetChild(0).GetComponent<Image>().sprite = sprite_Tile[i];
             newObject.transform.parent = panal.transform;
             RectTransform rect = newObject.GetComponent<RectTransform>();
-            rect.anchoredPosition = new Vector2(130 * i, 0);
+            rect.anchoredPosition = new Vector2(Mathf.Abs(rect.sizeDelta.x) * i, 0);
             rect.localScale = Vector3.one;
             rect.sizeDelta = Vector2.zero;
             button[i] = rect;
