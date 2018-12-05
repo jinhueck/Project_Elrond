@@ -31,7 +31,12 @@ public class InGame_UI_Manager : MonoBehaviour {
 
     public void TimerUI(float time)
     {
-        Timer.text = string.Format("{0:N0}", time);
+        if (time > 10.5)
+        {
+            Timer.text = string.Format("{0:N0}", time);
+        }
+        else
+            Timer.text = "<color=#ff0000>" + string.Format("{0:N0}", time) + "</color>";
         slider.value = time;        
     }
 

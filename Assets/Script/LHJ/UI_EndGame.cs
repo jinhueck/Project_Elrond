@@ -15,7 +15,6 @@ public class UI_EndGame : UI_Open
     public Image Clock;
 
     public UI_GameScore EndScore;
-    public FirebaseCloud cloud;
     public UnityAdsHelper adver;
 
     bool advertisement;//광고의 확인
@@ -25,7 +24,6 @@ public class UI_EndGame : UI_Open
     void Start()
     {
         timer = 10.5f;
-        cloud = GetComponent<FirebaseCloud>();
     }
 
     
