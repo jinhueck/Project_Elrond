@@ -25,7 +25,11 @@ public class UI_GameScore : UI_Open
     public void EndthisGame()
     {
         InGameManager.instance.EndScore();
-        Close_Menu();
+        InGame_UI_Manager.instance.UI_Fade.FadeIn(OpenMainScene);
+    }
+
+    public void OpenMainScene()
+    {
         GameBase_Manager.instance.OpenMainScene();
     }
 

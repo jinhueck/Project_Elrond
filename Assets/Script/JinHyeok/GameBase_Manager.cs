@@ -20,7 +20,6 @@ public class GameBase_Manager : MonoBehaviour {
     public void OpenMainScene()
     {
         SceneManager.LoadScene("StartUI");
-        SceneManager.LoadScene("StartUI 1", LoadSceneMode.Additive);
     }
     public void PlayScene()
     {
