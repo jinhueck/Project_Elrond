@@ -18,6 +18,7 @@ public class UI_Slider : MonoBehaviour {
     [SerializeField] Text text_Select;
     [SerializeField] int int_Select;
     [SerializeField] ShopDB_Script db_shop;
+    [SerializeField] bool check_SliderOpen;
 
     [SerializeField] private Sprite[] sprite_Tile;
     [SerializeField] Delegate_Script delegate_Script;
@@ -40,6 +41,7 @@ public class UI_Slider : MonoBehaviour {
         delegate_Script = gameObject.GetComponent<Delegate_Script>();
         delegate_Script.SetTarget(ui_Slider);
 
+        check_SliderOpen = false;
         ui_Slider.SetActive(false);
     }
 
@@ -191,14 +193,25 @@ void SizeUpSelected()
 
     public void UIOpen()
     {
-        Vector2 pos = new Vector2(int_Select * -btnDistance, panal.anchoredPosition.y);
-        panal.anchoredPosition = pos;
-        ui_Slider.SetActive(true);
-        delegate_Script.Move_Open();
+        if(!check_SliderOpen)
+        {
+            check_SliderOpen = true;
+            Vector2 pos = new Vector2(int_Select * -btnDistance, panal.anchoredPosition.y);
+            panal.anchoredPosition = pos;
+            ui_Slider.SetActive(true);
+            delegate_Script.Move_Open();
+        }
+        else
+        {
+            check_SliderOpen = false;
+            delegate_Script.Move_Close();
+        }
+        
     }
 
     public void ButtonSelect()
     {
+        check_SliderOpen = false;
         SetIntSelect();
         delegate_Script.Move_Close();
     }

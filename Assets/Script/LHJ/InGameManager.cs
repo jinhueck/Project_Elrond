@@ -22,7 +22,7 @@ public class InGameManager : MonoBehaviour
     public FirebaseCloud FC;
 
     ////////////////
-    [SerializeField]int jewelry;
+    [SerializeField] int jewelry;
 
     //콤보 피버 점수 관련
     Coroutine ComboCor;
@@ -35,8 +35,9 @@ public class InGameManager : MonoBehaviour
 
     bool trueadv;
     public int advview;
-    bool startture;
-   
+    [SerializeField] bool forTouch;
+    bool startcount;
+
     private void Awake()
     {
         if (instance == null)
@@ -44,12 +45,12 @@ public class InGameManager : MonoBehaviour
             instance = this;
         }
         SetupGame();
-        
+
     }
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -71,10 +72,21 @@ public class InGameManager : MonoBehaviour
 
         trueadv = false;
         advview = 0;
-        startture = false;
+        startcount =false;
+       
     }
 
-
+    public bool TouchCheck
+    {
+        get
+        {
+            return forTouch;
+        }
+        set
+        {
+            forTouch = value;
+        }
+    }
 
     public void AddCombo()
     {
@@ -156,10 +168,11 @@ public class InGameManager : MonoBehaviour
 
     void GameTime()
     {
-        if (startture == false)
+
+        if (startcount == false)
         {
             startgame.Open_Menu();
-            startture = true;
+            startcount = true;
         }
         else
         {
@@ -184,8 +197,8 @@ public class InGameManager : MonoBehaviour
                 }
             }
         }
-
     }
+
 
     public void EndScore()
     {
