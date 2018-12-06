@@ -2069,7 +2069,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2165,11 +2165,9 @@ MonoBehaviour:
   music_Main: {fileID: 713412097}
   music_Effect: {fileID: 713412096}
   bgm_Main: {fileID: 8300000, guid: 9b973dc155f4ae6439c01e194df121ef, type: 3}
-  bgm_Effect_POP:
-  - {fileID: 8300000, guid: 68aa4700baedfe6458e6d2db51bbfe8c, type: 3}
-  - {fileID: 8300000, guid: 9b973dc155f4ae6439c01e194df121ef, type: 3}
-  - {fileID: 8300000, guid: ea8a78758fb3d0048b80998fb6045b7f, type: 3}
+  bgm_Effect_POP: {fileID: 0}
   bgm_Effect_Hit: {fileID: 8300000, guid: 9b973dc155f4ae6439c01e194df121ef, type: 3}
+  key_IntSelect: SetTile
 --- !u!4 &713412099
 Transform:
   m_ObjectHideFlags: 0
@@ -2755,6 +2753,7 @@ MonoBehaviour:
   jewelry: 0
   combo: 0
   advview: 0
+  forTouch: 0
 --- !u!114 &1034807471
 MonoBehaviour:
   m_ObjectHideFlags: 0
