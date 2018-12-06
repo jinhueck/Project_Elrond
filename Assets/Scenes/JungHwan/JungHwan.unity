@@ -825,7 +825,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 388439a50500bb243b063da52c291334, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 674dbc715e34747d3aff7fe3298c72a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2081,6 +2081,7 @@ MonoBehaviour:
   bgm_Main: {fileID: 8300000, guid: 9b973dc155f4ae6439c01e194df121ef, type: 3}
   bgm_Effect_POP: {fileID: 0}
   bgm_Effect_Hit: {fileID: 8300000, guid: 9b973dc155f4ae6439c01e194df121ef, type: 3}
+  bgm_Effect_Rubby: {fileID: 0}
   key_IntSelect: SetTile
 --- !u!4 &713412099
 Transform:
