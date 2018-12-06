@@ -20,6 +20,7 @@ public class UIPause : UI_Open
 
     public void OnClick_Main()
     {
+
         Time.timeScale = 1;
         InGame_UI_Manager.instance.UI_Fade.FadeIn(OpenMainScene);
     }
