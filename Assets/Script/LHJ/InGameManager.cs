@@ -73,7 +73,8 @@ public class InGameManager : MonoBehaviour
         trueadv = false;
         advview = 0;
         startcount =false;
-       
+
+        Sound_Script.instance.Play_MainSound();
     }
 
     public bool TouchCheck
