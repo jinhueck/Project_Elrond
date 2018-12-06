@@ -12,6 +12,8 @@ public class Sound_Script : MonoBehaviour {
     public AudioClip bgm_Effect_POP;
     public AudioClip bgm_Effect_Hit;
 
+    public AudioClip bgm_Effect_Rubby;
+
     [SerializeField] private string key_IntSelect = "SetTile";
     int intSelected;
 
@@ -28,11 +30,18 @@ public class Sound_Script : MonoBehaviour {
         bgm_Main = (AudioClip)Resources.Load("JinHyeok/Music/Main/" + intSelected);
         bgm_Effect_POP = (AudioClip)Resources.Load("JinHyeok/Music/TouchBubble/" + intSelected);
         bgm_Effect_Hit = (AudioClip)Resources.Load("JinHyeok/Music/TouchTack/" + intSelected);
+        bgm_Effect_Rubby = (AudioClip)Resources.Load("JinHyeok/Music/Rubby");
     }
 
     public void Play_EffectPopSound()
     {
         music_Effect.clip = bgm_Effect_POP;
+        music_Effect.Play();
+    }
+
+    public void Play_EffectRubbySound()
+    {
+        music_Effect.clip = bgm_Effect_Rubby;
         music_Effect.Play();
     }
 
