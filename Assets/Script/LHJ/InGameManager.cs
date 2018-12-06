@@ -35,7 +35,8 @@ public class InGameManager : MonoBehaviour
 
     bool trueadv;
     public int advview;
-    bool forTouch;
+    [SerializeField] bool forTouch;
+    bool startcount;
 
     private void Awake()
     {
@@ -71,8 +72,8 @@ public class InGameManager : MonoBehaviour
 
         trueadv = false;
         advview = 0;
-        forTouch = true;
-        startgame.Open_Menu();
+        startcount =false;
+       
     }
 
     public bool TouchCheck
@@ -168,24 +169,32 @@ public class InGameManager : MonoBehaviour
     void GameTime()
     {
 
-        if (playtime > 0)
+        if (startcount == false)
         {
-            playtime -= Time.deltaTime;
-            InGame_UI_Manager.instance.TimerUI(playtime);
+            startgame.Open_Menu();
+            startcount = true;
         }
         else
         {
-            if (trueadv == false)
+            if (playtime > 0)
             {
-                trueadv = true;
-                playtime = 0f;
-                Time.timeScale = 0;
-                endgame.OpenEndGame();
+                playtime -= Time.deltaTime;
+                InGame_UI_Manager.instance.TimerUI(playtime);
             }
-            else if (advview == 1)
+            else
             {
-                lastscore.Open_Menu();
-                advview++;
+                if (trueadv == false)
+                {
+                    trueadv = true;
+                    playtime = 0f;
+                    Time.timeScale = 0;
+                    endgame.OpenEndGame();
+                }
+                else if (advview == 1)
+                {
+                    lastscore.Open_Menu();
+                    advview++;
+                }
             }
         }
     }

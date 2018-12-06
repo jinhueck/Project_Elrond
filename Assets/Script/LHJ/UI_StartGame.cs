@@ -9,7 +9,7 @@ public class UI_StartGame : UI_Open
 
     public Text starttimer;
 
-    void Start ()
+    private void Awake()
     {
         timerreset();
     }
@@ -18,6 +18,7 @@ public class UI_StartGame : UI_Open
 	void Update ()
     {
         StartCount();
+        Debug.Log("스타트 타이머"+timer);
     }
 
     public void StartCount()

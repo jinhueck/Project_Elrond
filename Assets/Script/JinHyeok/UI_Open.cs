@@ -6,7 +6,7 @@ public class UI_Open : UI_Base {
 
     public uTools.TweenScale tweenScale;
 
-    public void Open_Menu()
+    public virtual void Open_Menu()
     {
         InGameManager.instance.TouchCheck = true;
         Open();

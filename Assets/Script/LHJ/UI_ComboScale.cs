@@ -21,6 +21,15 @@ public class UI_ComboScale : UI_Open
         ComboUI();
     }
 
+    public virtual void Open_Menu()
+    {
+        Open();
+        tweenScale.from = Vector3.zero;
+        tweenScale.to = Vector3.one;
+        tweenScale.ResetToBeginning();
+        tweenScale.PlayForward();
+    }
+
     public void ComboUI()
     {    
             combo.text = "" + (InGameManager.instance.combo-1) + " Combo";
