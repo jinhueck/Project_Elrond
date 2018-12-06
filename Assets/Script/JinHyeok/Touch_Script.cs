@@ -29,22 +29,27 @@ public class Touch_Script : MonoBehaviour {
             Map_Group_Script.instance.check = false;
             return;
         }
-            
-        if(Map_Group_Script.instance.check == false)
-        for(int i = 0; i < count; i ++)
-        {
-            Touch touch = Input.GetTouch(i);
-            touchPos = touch.position;
-            touchPos.z = 5f;
-            //Debug.Log(touchPos);
 
-            RaycastHit2D hit = Physics2D.Raycast(camera.ScreenToWorldPoint(touchPos),Vector2.zero, Mathf.Infinity, layermask);
-
-            if(hit.collider != null)
+        if (Map_Group_Script.instance.check == false)
+            for (int i = 0; i < count; i++)
             {
-                hit.transform.GetComponent<Tile_Script>().Touched();
+                Touch touch = Input.GetTouch(i);
+                touchPos = touch.position;
+                touchPos.z = 5f;
+                //Debug.Log(touchPos);
+
+                RaycastHit2D hit = Physics2D.Raycast(camera.ScreenToWorldPoint(touchPos), Vector2.zero, Mathf.Infinity, layermask);
+
+                if (hit.collider != null)
+                {
+                    hit.transform.GetComponent<Tile_Script>().Touched();
+                }
+                RaycastHit2D hitTest = Physics2D.Raycast(camera.ScreenToWorldPoint(touchPos), Vector2.zero, Mathf.Infinity, 1 << LayerMask.NameToLayer("UI"));
+                if (hitTest.collider != null)
+                {
+                    Debug.Log("UI 찍힘");
+                }
             }
-        }
 #endif
 #if UNITY_EDITOR
         if (Input.GetMouseButton(0))
