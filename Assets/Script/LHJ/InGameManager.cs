@@ -22,7 +22,7 @@ public class InGameManager : MonoBehaviour
     public FirebaseCloud FC;
 
     ////////////////
-    [SerializeField]int jewelry;
+    [SerializeField] int jewelry;
 
     //콤보 피버 점수 관련
     Coroutine ComboCor;
@@ -35,8 +35,8 @@ public class InGameManager : MonoBehaviour
 
     bool trueadv;
     public int advview;
-    bool startture;
-   
+    bool forTouch;
+
     private void Awake()
     {
         if (instance == null)
@@ -44,12 +44,12 @@ public class InGameManager : MonoBehaviour
             instance = this;
         }
         SetupGame();
-        
+
     }
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -71,10 +71,21 @@ public class InGameManager : MonoBehaviour
 
         trueadv = false;
         advview = 0;
-        startture = false;
+        forTouch = true;
+        startgame.Open_Menu();
     }
 
-
+    public bool TouchCheck
+    {
+        get
+        {
+            return forTouch;
+        }
+        set
+        {
+            forTouch = value;
+        }
+    }
 
     public void AddCombo()
     {
@@ -156,36 +167,29 @@ public class InGameManager : MonoBehaviour
 
     void GameTime()
     {
-        if (startture == false)
+
+        if (playtime > 0)
         {
-            startgame.Open_Menu();
-            startture = true;
+            playtime -= Time.deltaTime;
+            InGame_UI_Manager.instance.TimerUI(playtime);
         }
         else
         {
-            if (playtime > 0)
+            if (trueadv == false)
             {
-                playtime -= Time.deltaTime;
-                InGame_UI_Manager.instance.TimerUI(playtime);
+                trueadv = true;
+                playtime = 0f;
+                Time.timeScale = 0;
+                endgame.OpenEndGame();
             }
-            else
+            else if (advview == 1)
             {
-                if (trueadv == false)
-                {
-                    trueadv = true;
-                    playtime = 0f;
-                    Time.timeScale = 0;
-                    endgame.OpenEndGame();
-                }
-                else if (advview == 1)
-                {
-                    lastscore.Open_Menu();
-                    advview++;
-                }
+                lastscore.Open_Menu();
+                advview++;
             }
         }
-
     }
+
 
     public void EndScore()
     {
