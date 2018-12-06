@@ -183,9 +183,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1765711750}
-  - {fileID: 921658019}
   m_Father: {fileID: 1034807474}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -646,7 +645,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1034807474}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -748,7 +747,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1034807474}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8362501, y: 0.91819096}
   m_AnchorMax: {x: 1, y: 1}
@@ -2481,17 +2480,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 921658018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 38825981}
-  m_RootOrder: 1
+  m_Father: {fileID: 1765711750}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.18, y: 0.6498125}
   m_AnchorMax: {x: 0.82000005, y: 0.75081253}
-  m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: 6.299988, y: 0}
+  m_AnchoredPosition: {x: 0.000015258789, y: 169.23154}
+  m_SizeDelta: {x: 105.50003, y: 85.58072}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &921658020
 MonoBehaviour:
@@ -2816,10 +2815,10 @@ RectTransform:
   - {fileID: 1652884165}
   - {fileID: 1266524062}
   - {fileID: 790709312}
-  - {fileID: 232730210}
   - {fileID: 1705810915}
   - {fileID: 288649024}
   - {fileID: 38825981}
+  - {fileID: 232730210}
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5094,18 +5093,18 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1705810914}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.029486654, w: -0.99956524}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1034807474}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.13375, y: 0.75321877}
-  m_AnchorMax: {x: 0.86, y: 0.87981254}
-  m_AnchoredPosition: {x: 2.5, y: 0.000061035156}
-  m_SizeDelta: {x: 9, y: 10}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.3790002}
+  m_AnchorMin: {x: 0.09375001, y: 0.673375}
+  m_AnchorMax: {x: 0.97374994, y: 0.8777032}
+  m_AnchoredPosition: {x: -10, y: -10}
+  m_SizeDelta: {x: 21.8978, y: 3}
+  m_Pivot: {x: 0.5, y: 0.5000004}
 --- !u!114 &1705810916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5121,31 +5120,49 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.017494202
-      value: 0.52472305
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      time: 0
+      value: 0.6881561
+      inSlope: 1.9219216
+      outSlope: 1.9219216
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.49735156
-      value: 0.989415
-      inSlope: -0.00002242081
-      outSlope: -0.00002242081
+      time: 0.11885418
+      value: 0.91658455
+      inSlope: 0.82340497
+      outSlope: 0.82340497
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.98251224
-      value: 0.4927613
-      inSlope: -2.056023
-      outSlope: -2.056023
+      time: 0.47888517
+      value: 0.99443364
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.21274878
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.73437524
+      value: 0.8712068
+      inSlope: -0.7613556
+      outSlope: -0.7613556
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.6881561
+      inSlope: -0.68913263
+      outSlope: -0.68913263
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -5172,7 +5189,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2a545a5539986be4ab9be82f0ef1894c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd8b9950339b3384a80f2501be629a73, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5353,6 +5370,7 @@ RectTransform:
   m_Children:
   - {fileID: 520066376}
   - {fileID: 1774213303}
+  - {fileID: 921658019}
   m_Father: {fileID: 38825981}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
