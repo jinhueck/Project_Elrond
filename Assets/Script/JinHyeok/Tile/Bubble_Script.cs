@@ -9,7 +9,10 @@ public class Bubble_Script : Tile_Script
     {
         SetBool();
         SetImg();
-        ImageChange(tileSprite[0]);
+        if (InGameManager.instance.CheckFever())
+            ImageChange(Map_Group_Script.instance.ReturnFever());
+        else
+            ImageChange(tileSprite[0]);
     }
 
     public void SetImg()
@@ -32,6 +35,7 @@ public class Bubble_Script : Tile_Script
             InGameManager.instance.AddScore();
             Sound_Script.instance.Play_EffectPopSound();
             transform.parent.GetComponent<BombManager>().CheckIsTouched();
+            gameObject.SetActive(false);
         }
     }
 }

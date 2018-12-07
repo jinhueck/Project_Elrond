@@ -99,6 +99,11 @@ public class Map_Group_Script : MonoBehaviour {
         ChangeImg_Fever(bombManagers[0]);
         ChangeImg_Fever(bombManagers[1]);
         ChangeImg_Fever(bombManagers[2]);
+        int num = InvisibleBomb.transform.childCount;
+        for (int i = 0; i < num; i++)
+        {
+            InvisibleBomb.transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = sprites_Fever;
+        }
     }
 
     public void Fever_End()

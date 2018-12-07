@@ -16,6 +16,7 @@ public class BombManager : MonoBehaviour {
     [SerializeField] public List<GameObject> FeverList = new List<GameObject>();
     [SerializeField] public List<GameObject> RubyList = new List<GameObject>();
 
+    Map_Group_Script map_Group;
 
     public GameObject Bomb;
     public GameObject Trap;
@@ -35,6 +36,7 @@ public class BombManager : MonoBehaviour {
 
     private void Start()
     {
+        map_Group = Map_Group_Script.instance;
         /*
         if(instance == null)
         {
@@ -56,9 +58,10 @@ public class BombManager : MonoBehaviour {
             {
                 if (i == randArray[j])
                 {
-                    GameObject obj2 = PopFromPool(TrapList,1,this.transform);
+                    GameObject obj2 = PopFromPool(1,map_Group.InvisibleTrap.transform);
                     obj2.transform.position = this.transform.GetChild(i).transform.position;
                     obj2.transform.SetParent(this.transform);
+                    TrapList.Add(obj2);
                     
                     //GameObject obj2 = Instantiate(Trap, this.transform.GetChild(i).transform.position, Quaternion.identity);
                     //obj2.transform.parent = ;
@@ -77,20 +80,20 @@ public class BombManager : MonoBehaviour {
                 if (makeRuby == 5)
                 {
                     Debug.Log("루비생성" + makeRuby);
-                    GameObject obj = PopFromPool(RubyList, 3, this.transform);
+                    GameObject obj = PopFromPool(3, map_Group.InvisibleRuby.transform);
                     obj.transform.position = this.transform.GetChild(i).transform.position;
                     obj.transform.SetParent(this.transform);
-                    
+                    RubyList.Add(obj);
+
                     //obj.GetComponent<Tile_Script>().Setup();
                 }
                 else if(makeRuby !=5)
                 {
-                    GameObject obj = PopFromPool(BombList, 0, this.transform);
-                    if(InGameManager.instance.CheckFever())
-                        obj.GetComponent<SpriteRenderer>().sprite = Map_Group_Script.instance.ReturnFever();
+                    GameObject obj = PopFromPool(0, map_Group.InvisibleBomb.transform);   
                     obj.transform.position = this.transform.GetChild(i).transform.position;
                     obj.transform.SetParent(this.transform);
                     obj.GetComponent<Tile_Script>().Setup();
+                    BombList.Add(obj);
                 }
                 //GameObject obj = Instantiate(Bomb, this.transform.GetChild(i).transform.position, Quaternion.identity);
                 //obj.transform.parent = ;
@@ -139,38 +142,25 @@ public class BombManager : MonoBehaviour {
         }
     }
     //집어넣기
-    public void PushToPool(List<GameObject> list, GameObject item, Transform parent)
+    public void PushToPool(GameObject item, Transform parent)
     {
         item.transform.SetParent(parent);
         item.SetActive(false);
-        list.Add(item);
     }
     //빼기
-    public GameObject PopFromPool(List<GameObject> list,int num, Transform parent)
+    public GameObject PopFromPool(int num, Transform parent)
     {
-        if (list.Count == 0 && num == 0)
-        {   
-            list.Add(CreateItem(num,parent));
-        }
-        if (list.Count == 0 && num == 1)
+        GameObject obj;
+        if (parent.childCount == 0)
         {
-            list.Add(CreateItem(num, parent));
+            obj = CreateItem(num, parent);
         }
-        if (list.Count == 0 && num == 2)
+        else
         {
-            list.Add(CreateItem(num, parent));
+            obj = parent.GetChild(0).gameObject;
         }
-        if (list.Count == 0 && num == 3)
-        {
-            list.Add(CreateItem(num, parent));
-        }       
-
-        GameObject item = list[0];
-        list.RemoveAt(0);
-        //item.transform.SetParent(parent);
-        item.SetActive(true);
-
-        return item;
+        obj.SetActive(true);
+        return obj;
     }
     //생성
     private GameObject CreateItem(int num,Transform parent)

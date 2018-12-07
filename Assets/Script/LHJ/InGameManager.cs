@@ -146,12 +146,12 @@ public class InGameManager : MonoBehaviour
     {
         Debug.Log("Fever Start!!!");
         fevercheck = true;
+        fevercount = 0;
         InGame_UI_Manager.instance.Fever.gameObject.SetActive(true);
         Map_Group_Script.instance.Fever_Start();
         yield return new WaitForSeconds(fevertime);
 
         Debug.Log("Fever END!!!");
-        fevercount = 0;
         InGame_UI_Manager.instance.Fever.gameObject.SetActive(false);
         fevercheck = false;
         Map_Group_Script.instance.Fever_End();
