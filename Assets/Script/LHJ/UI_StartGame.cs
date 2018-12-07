@@ -18,7 +18,6 @@ public class UI_StartGame : UI_Open
 	void Update ()
     {
         StartCount();
-        Debug.Log("스타트 타이머"+timer);
     }
 
     public void StartCount()

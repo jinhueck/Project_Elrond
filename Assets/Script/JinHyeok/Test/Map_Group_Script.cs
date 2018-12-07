@@ -23,6 +23,7 @@ public class Map_Group_Script : MonoBehaviour {
     [SerializeField] private string key_IntSelect = "SetTile";
     [SerializeField] Sprite[] sprites_Tile;
     [SerializeField] Sprite[] sprites_TileSelect;
+    [SerializeField] Sprite sprites_Tack;
     public GameObject obj;
     int intSelected;
     private void Awake()
@@ -49,6 +50,7 @@ public class Map_Group_Script : MonoBehaviour {
 
         sprites_Tile = Resources.LoadAll<Sprite>("JinHyeok/Img_Tile");
         sprites_TileSelect = Resources.LoadAll<Sprite>("JinHyeok/Img_TileSelect");
+        sprites_Tack = Resources.Load<Sprite>("JinHyeok/Img_Tack/Tile"+ intSelected);
     }
 
     public Sprite ReturnTile()
@@ -58,6 +60,10 @@ public class Map_Group_Script : MonoBehaviour {
     public Sprite ReturnTileSelect()
     {
         return sprites_TileSelect[intSelected];
+    }
+    public Sprite ReturnTack()
+    {
+        return sprites_Tack;
     }
 
 
