@@ -86,6 +86,8 @@ public class BombManager : MonoBehaviour {
                 else if(makeRuby !=5)
                 {
                     GameObject obj = PopFromPool(BombList, 0, this.transform);
+                    if(InGameManager.instance.CheckFever())
+                        obj.GetComponent<SpriteRenderer>().sprite = Map_Group_Script.instance.ReturnFever();
                     obj.transform.position = this.transform.GetChild(i).transform.position;
                     obj.transform.SetParent(this.transform);
                     obj.GetComponent<Tile_Script>().Setup();

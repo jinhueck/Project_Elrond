@@ -41,7 +41,6 @@ public class Delegate_Child : Delegate_Script {
 
     protected IEnumerator Cor_Action(Delegate_Size delegate_Size, Delegate_Action delegate_Action , Delegate_Action delegate_Between)
     {
-        Debug.Log("여기까지도 온다");
         timer = 0;
         float time_del = AnimationSpeed;
         float time_check = AnimationSpeed;
