@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "77471840682-8nk50u0mqk240ej13hmvpovocvt1m8d9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.RoomF.Project_Elrond",
+            "certificate_hash": "401b5bfdd1d1672c8ca651b72b9f9128838deef5"
+          }
+        },
+        {
           "client_id": "77471840682-l92jpnl70ibseme89k162ep9oroh9toq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

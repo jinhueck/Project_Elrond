@@ -16,11 +16,14 @@ public class FirebaseLogin : MonoBehaviour
 
     void Start()
     {
-        for_email_auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        //for_email_auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         OnClickGoogleLogin();
+        Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+        Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
     }
 
-    public void OnClickLoginAnonymous() // 익명인증
+    /*
+     * public void OnClickLoginAnonymous() // 익명인증
     {
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         auth.SignInAnonymouslyAsync().ContinueWith(task =>
@@ -37,6 +40,17 @@ public class FirebaseLogin : MonoBehaviour
           }
       });
     }
+    */
+    public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token) //푸시알림
+    {
+        UnityEngine.Debug.Log("Received Registration Token: " + token.Token);
+    }
+
+    public void OnMessageReceived(object sender, Firebase.Messaging.MessageReceivedEventArgs e)//푸시알림
+    {
+        UnityEngine.Debug.Log("Received a new message from: " + e.Message.From);
+    }
+
     public void OnClickGoogleLogin()//클릭 구글로그인
     {
         InitGooglePlayService();
@@ -78,7 +92,8 @@ public class FirebaseLogin : MonoBehaviour
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
 
         Firebase.Auth.Credential credential = Firebase.Auth.GoogleAuthProvider.GetCredential(idToken, null);
-        auth.SignInWithCredentialAsync(credential).ContinueWith(
+        /*
+         * auth.SignInWithCredentialAsync(credential).ContinueWith(
             task =>
             {
                 if (task.IsCompleted && !task.IsCanceled && !task.IsFaulted)
@@ -87,6 +102,7 @@ public class FirebaseLogin : MonoBehaviour
                     result_text.text = string.Format("FirebaseUser:{0}\nEmail:{1}", newUser.UserId, newUser.Email);
                 }
             });
+            */
         //SceneManager.LoadScene("StartUI");
         //result_text.text = string.Format("\nStartUI");
     }
