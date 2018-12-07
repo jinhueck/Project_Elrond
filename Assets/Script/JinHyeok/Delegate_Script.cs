@@ -20,7 +20,7 @@ public class Delegate_Script : MonoBehaviour {
     protected Vector3 nowScale;
     protected Vector3 nowPos;
 
-    protected GameObject obj_target;
+    [SerializeField]protected GameObject obj_target;
 
     public void SetTarget(GameObject _obj)
     {
@@ -29,7 +29,7 @@ public class Delegate_Script : MonoBehaviour {
         nowPos = obj_target.transform.position;
     }
 
-    void SetCoroutine()
+    protected void SetCoroutine()
     {
         if (coroutine != null)
             StopCoroutine(coroutine);
