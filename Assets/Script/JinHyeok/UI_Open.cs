@@ -8,7 +8,8 @@ public class UI_Open : UI_Base {
 
     public virtual void Open_Menu()
     {
-        InGameManager.instance.TouchCheck = true;
+        if (InGameManager.instance != null)
+            InGameManager.instance.TouchCheck = true;
         Open();
         tweenScale.from = Vector3.zero;
         tweenScale.to = Vector3.one;
@@ -19,7 +20,8 @@ public class UI_Open : UI_Base {
 
     public void Close_Menu()
     {
-        InGameManager.instance.TouchCheck = false;
+        if (InGameManager.instance != null)
+            InGameManager.instance.TouchCheck = false;
         tweenScale.from = Vector3.one;
         tweenScale.to = Vector3.zero;
         tweenScale.ResetToBeginning();

@@ -10,17 +10,17 @@ public class Delegate_Script : MonoBehaviour {
     public AnimationCurve curve_Open_size;
     public AnimationCurve curve_Close_size;
     public float AnimationSpeed;
-    float timer;
+    protected float timer;
 
-    Coroutine coroutine;
+    protected Coroutine coroutine;
 
     public delegate void Delegate_Action();
-    delegate void Delegate_Size(float time);
+    protected delegate void Delegate_Size(float time);
 
-    Vector3 nowScale;
-    Vector3 nowPos;
+    protected Vector3 nowScale;
+    protected Vector3 nowPos;
 
-    GameObject obj_target;
+    [SerializeField]protected GameObject obj_target;
 
     public void SetTarget(GameObject _obj)
     {
@@ -29,7 +29,7 @@ public class Delegate_Script : MonoBehaviour {
         nowPos = obj_target.transform.position;
     }
 
-    void SetCoroutine()
+    protected void SetCoroutine()
     {
         if (coroutine != null)
             StopCoroutine(coroutine);
@@ -68,7 +68,7 @@ public class Delegate_Script : MonoBehaviour {
             coroutine = StartCoroutine(Cor_Action(UI_Move_Close, delegate_Action));
     }
 
-    IEnumerator Cor_Action(Delegate_Size delegate_Size, Delegate_Action delegate_Action)
+    protected IEnumerator Cor_Action(Delegate_Size delegate_Size, Delegate_Action delegate_Action)
     {
         timer = 0;
         float time_del = AnimationSpeed;
@@ -81,14 +81,14 @@ public class Delegate_Script : MonoBehaviour {
         }
         delegate_Action();
     }
-    void UI_Open(float time)
+    protected virtual void UI_Open(float time)
     {
         timer += Time.deltaTime / time;
 
         float y = curve_Open_size.Evaluate(timer);
         obj_target.transform.localScale = nowScale * y;
     }
-    void UI_Close(float time)
+    protected virtual void UI_Close(float time)
     {
         timer += Time.deltaTime / time;
 
@@ -96,23 +96,23 @@ public class Delegate_Script : MonoBehaviour {
         obj_target.transform.localScale = nowScale * y;
     }
 
-    void ActiveFalse()
+    protected void ActiveFalse()
     {
         obj_target.SetActive(false);
     }
-    void ActiveTrue()
+    protected void ActiveTrue()
     {
         obj_target.SetActive(true);
     }
 
-    void UI_Move_Open(float time)
+    protected virtual void UI_Move_Open(float time)
     {
         timer += Time.deltaTime / time;
 
         float y = curve_Open_pos.Evaluate(timer);
         obj_target.transform.position = new Vector3(nowPos.x, nowPos.y * y, nowPos.x);
     }
-    void UI_Move_Close(float time)
+    protected virtual void UI_Move_Close(float time)
     {
         timer += Time.deltaTime / time;
 

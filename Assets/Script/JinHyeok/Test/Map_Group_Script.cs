@@ -15,6 +15,8 @@ public class Map_Group_Script : MonoBehaviour {
     public Vector3 Pos_left;
     public bool check;
 
+    BombManager[] bombManagers = new BombManager[3];
+
     public GameObject InvisibleBomb;
     public GameObject InvisibleTrap;
     public GameObject InvisibleFever;
@@ -23,6 +25,8 @@ public class Map_Group_Script : MonoBehaviour {
     [SerializeField] private string key_IntSelect = "SetTile";
     [SerializeField] Sprite[] sprites_Tile;
     [SerializeField] Sprite[] sprites_TileSelect;
+    [SerializeField] Sprite sprites_Tack;
+    [SerializeField] Sprite sprites_Fever;
     public GameObject obj;
     int intSelected;
     private void Awake()
@@ -49,6 +53,12 @@ public class Map_Group_Script : MonoBehaviour {
 
         sprites_Tile = Resources.LoadAll<Sprite>("JinHyeok/Img_Tile");
         sprites_TileSelect = Resources.LoadAll<Sprite>("JinHyeok/Img_TileSelect");
+        sprites_Tack = Resources.Load<Sprite>("JinHyeok/Img_Tack/Tile"+ intSelected);
+        sprites_Fever = Resources.Load<Sprite>("JinHyeok/Fever");
+
+        bombManagers[0] = Ground1.GetComponent<BombManager>();
+        bombManagers[1] = Ground2.GetComponent<BombManager>();
+        bombManagers[2] = Ground3.GetComponent<BombManager>();
     }
 
     public Sprite ReturnTile()
@@ -59,7 +69,55 @@ public class Map_Group_Script : MonoBehaviour {
     {
         return sprites_TileSelect[intSelected];
     }
+    public Sprite ReturnTack()
+    {
+        return sprites_Tack;
+    }
+    public Sprite ReturnFever()
+    {
+        return sprites_Fever;
+    }
+    void ChangeImg_Fever(BombManager bombManager)
+    {
+        int num = bombManager.BombList.Count;
+        for(int i =0; i < num; i ++)
+        {
+            bombManager.BombList[i].GetComponent<SpriteRenderer>().sprite = sprites_Fever;
+        }
+    }
+    void ChangeImg_FeverEnd(BombManager bombManager)
+    {
+        int num = bombManager.BombList.Count;
+        for (int i = 0; i < num; i++)
+        {
+            bombManager.BombList[i].GetComponent<SpriteRenderer>().sprite = sprites_Tile[intSelected];
+        }
+    }
 
+    public void Fever_Start()
+    {
+        ChangeImg_Fever(bombManagers[0]);
+        ChangeImg_Fever(bombManagers[1]);
+        ChangeImg_Fever(bombManagers[2]);
+        int num = InvisibleBomb.transform.childCount;
+        for (int i = 0; i < num; i++)
+        {
+            InvisibleBomb.transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = sprites_Fever;
+        }
+    }
+
+    public void Fever_End()
+    {
+        ChangeImg_FeverEnd(bombManagers[0]);
+        ChangeImg_FeverEnd(bombManagers[1]);
+        ChangeImg_FeverEnd(bombManagers[2]);
+
+        int num = InvisibleBomb.transform.childCount;
+        for(int i = 0; i < num; i ++)
+        {
+            InvisibleBomb.transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = sprites_Tile[intSelected];
+        }
+    }
 
     public void next()
     {
