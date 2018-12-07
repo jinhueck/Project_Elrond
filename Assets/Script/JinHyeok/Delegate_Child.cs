@@ -6,11 +6,6 @@ public class Delegate_Child : Delegate_Script {
 
     int checking;
 
-    private void Awake()
-    {
-        SetTarget(this.gameObject);
-    }
-
     protected override void UI_Open(float time)
     {
         timer += Time.deltaTime / time;
@@ -26,30 +21,32 @@ public class Delegate_Child : Delegate_Script {
         obj_target.transform.localScale = new Vector3(nowScale.x, nowScale.y * y, nowScale.z);
     }
 
-    void ResetChild()
+    public void ResetChild()
     {
-        for(int i = 0; i < transform.childCount; i ++)
+        for(int i = 0; i < obj_target.transform.childCount; i ++)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            obj_target.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 
     void OpenChild()
     {
-        transform.GetChild(checking).GetComponent<UI_Open>().Open_Menu();
+        
+        obj_target.transform.GetChild(checking).GetComponent<UI_Open>().Open_Menu();
     }
     void CloseChild()
     {
-        transform.GetChild(checking).GetComponent<UI_Open>().Close_Menu();
+        obj_target.transform.GetChild(checking).GetComponent<UI_Open>().Close_Menu();
     }
 
     protected IEnumerator Cor_Action(Delegate_Size delegate_Size, Delegate_Action delegate_Action , Delegate_Action delegate_Between)
     {
+        Debug.Log("여기까지도 온다");
         timer = 0;
         float time_del = AnimationSpeed;
         float time_check = AnimationSpeed;
 
-        int count = this.transform.childCount;
+        int count = obj_target.transform.childCount;
         float size = AnimationSpeed / count;
         float timeForDelegate = time_check - size;
         checking = 0;
@@ -71,6 +68,7 @@ public class Delegate_Child : Delegate_Script {
 
     public void OpenMenu(Delegate_Action delegate_Action = null)
     {
+        obj_target.SetActive(true);
         SetCoroutine();
         if (delegate_Action == null)
             coroutine = StartCoroutine(Cor_Action(UI_Open, ActiveTrue, OpenChild));
@@ -82,17 +80,8 @@ public class Delegate_Child : Delegate_Script {
     {
         SetCoroutine();
         if (delegate_Action == null)
-            coroutine = StartCoroutine(Cor_Action(UI_Close, ActiveFalse, CloseChild));
+            coroutine = StartCoroutine(Cor_Action(UI_Close, ActiveFalse));
         else
-            coroutine = StartCoroutine(Cor_Action(UI_Close, delegate_Action, CloseChild));
-    }
-
-    public void Open()
-    {
-        OpenMenu(ResetChild);
-    }
-    public void Close()
-    {
-        CloseMenu();
+            coroutine = StartCoroutine(Cor_Action(UI_Close, delegate_Action));
     }
 }

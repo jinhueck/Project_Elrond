@@ -20,7 +20,7 @@ public class Delegate_Script : MonoBehaviour {
     protected Vector3 nowScale;
     protected Vector3 nowPos;
 
-    protected GameObject obj_target;
+    [SerializeField]protected GameObject obj_target;
 
     public void SetTarget(GameObject _obj)
     {
