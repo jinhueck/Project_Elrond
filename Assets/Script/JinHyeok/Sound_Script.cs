@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sound_Script : MonoBehaviour {
 
@@ -13,6 +14,10 @@ public class Sound_Script : MonoBehaviour {
     public AudioClip bgm_Effect_Hit;
 
     public AudioClip bgm_Effect_Rubby;
+
+    bool Bool_music_Main;
+    bool Bool_effect_Bgm;
+
 
     [SerializeField] private string key_IntSelect = "SetTile";
     int intSelected;
@@ -35,25 +40,64 @@ public class Sound_Script : MonoBehaviour {
 
     public void Play_EffectPopSound()
     {
-        music_Effect.clip = bgm_Effect_POP;
-        music_Effect.Play();
+        if (Bool_effect_Bgm)
+        {
+            music_Effect.clip = bgm_Effect_POP;
+            music_Effect.Play();
+        }
     }
 
     public void Play_EffectRubbySound()
     {
-        music_Effect.clip = bgm_Effect_Rubby;
-        music_Effect.Play();
+        if (Bool_effect_Bgm)
+        {
+            music_Effect.clip = bgm_Effect_Rubby;
+            music_Effect.Play();
+        }
     }
 
     public void Play_EffectHitSound()
     {
-        music_Effect.clip = bgm_Effect_Hit;
-        music_Effect.Play();
+        if (Bool_effect_Bgm)
+        {
+            music_Effect.clip = bgm_Effect_Hit;
+            music_Effect.Play();
+        }
     }
 
     public void Play_MainSound()
     {
-        music_Main.clip = bgm_Main;
-        music_Main.Play();
+        if (Bool_music_Main)
+        {
+            music_Main.clip = bgm_Main;
+            music_Main.Play();
+        }
+    }
+
+    public void SetMainBGM()
+    {
+        Sprite obj = GameObject.Find("Rolling_Menu").transform.GetChild(1).GetComponent<Sprite>();
+        if (Bool_music_Main)
+        {
+            Bool_music_Main = false;
+            obj = Resources.Load<Sprite>("JungHwanResources/BGMF");
+        }
+        else
+        {
+            Bool_music_Main = true;
+            obj = Resources.Load<Sprite>("JungHwanResources/BGMT");
+        }
+    }
+
+    public void SetEffectSound()
+    {
+        if (Bool_effect_Bgm)
+        {
+            Bool_effect_Bgm = false;
+        }
+        else
+        {
+            Bool_effect_Bgm = true;
+        }
     }
 }
