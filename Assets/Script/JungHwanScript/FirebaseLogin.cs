@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Firebase.Auth;
+//using Firebase.Auth;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using System.Collections;
@@ -11,15 +11,15 @@ public class FirebaseLogin : MonoBehaviour
     public InputField input_pass;
     public Text result_text;
 
-    Firebase.Auth.FirebaseAuth for_email_auth;
+    //Firebase.Auth.FirebaseAuth for_email_auth;
     private string authCode;
 
     void Start()
     {
         //for_email_auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         OnClickGoogleLogin();
-        Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
-        Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
+        //Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+        //Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
     }
 
     /*
@@ -41,6 +41,7 @@ public class FirebaseLogin : MonoBehaviour
       });
     }
     */
+    /*
     public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token) //푸시알림
     {
         UnityEngine.Debug.Log("Received Registration Token: " + token.Token);
@@ -50,6 +51,7 @@ public class FirebaseLogin : MonoBehaviour
     {
         UnityEngine.Debug.Log("Received a new message from: " + e.Message.From);
     }
+    */
 
     public void OnClickGoogleLogin()//클릭 구글로그인
     {
@@ -89,9 +91,9 @@ public class FirebaseLogin : MonoBehaviour
         string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken();
 
         result_text.text = string.Format("\nToken:{0}", idToken);
-        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        //Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
 
-        Firebase.Auth.Credential credential = Firebase.Auth.GoogleAuthProvider.GetCredential(idToken, null);
+        //Firebase.Auth.Credential credential = Firebase.Auth.GoogleAuthProvider.GetCredential(idToken, null);
         /*
          * auth.SignInWithCredentialAsync(credential).ContinueWith(
             task =>

@@ -247,7 +247,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Atents/Documents/Project_Elrond/Keystore/user.keystore
+  AndroidKeystoreName: D:/Unity/Project_Elrond/Keystore/user.keystore
   AndroidKeyaliasName: project_elrond
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
