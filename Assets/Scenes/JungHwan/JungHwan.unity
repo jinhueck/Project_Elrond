@@ -751,7 +751,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8362501, y: 0.91189075}
   m_AnchorMax: {x: 0.97374994, y: 0.98370314}
-  m_AnchoredPosition: {x: 3.2299995, y: -1.2000008}
+  m_AnchoredPosition: {x: 3.230011, y: -1.2000122}
   m_SizeDelta: {x: 3.2299995, y: -0.47000027}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &288649025
@@ -1874,7 +1874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &713412096
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2082,6 +2082,8 @@ MonoBehaviour:
   bgm_Effect_POP: {fileID: 0}
   bgm_Effect_Hit: {fileID: 8300000, guid: 9b973dc155f4ae6439c01e194df121ef, type: 3}
   bgm_Effect_Rubby: {fileID: 0}
+  MainBGMIMG: {fileID: 0}
+  EffectSoundIMG: {fileID: 0}
   key_IntSelect: SetTile
 --- !u!4 &713412099
 Transform:
@@ -2304,7 +2306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.020000001, y: 0.9371877}
   m_AnchorMax: {x: 0.09375001, y: 0.9808125}
-  m_AnchoredPosition: {x: -1.40217, y: 0.056399822}
+  m_AnchoredPosition: {x: -1.4021606, y: 0.056396484}
   m_SizeDelta: {x: 1.4021759, y: -0.05230713}
   m_Pivot: {x: 0, y: 1}
 --- !u!212 &841516787
@@ -4110,6 +4112,8 @@ MonoBehaviour:
   key_IntSelect: SetTile
   sprites_Tile: []
   sprites_TileSelect: []
+  sprites_Tack: {fileID: 0}
+  sprites_Fever: {fileID: 0}
   obj: {fileID: 0}
 --- !u!114 &1501392704
 MonoBehaviour:
@@ -4168,7 +4172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05875, y: 0.924672}
   m_AnchorMax: {x: 0.30375, y: 0.9921877}
-  m_AnchoredPosition: {x: -3, y: 0.5439997}
+  m_AnchoredPosition: {x: -3, y: 0.54400635}
   m_SizeDelta: {x: 4.019989, y: -0.90000916}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1509784773

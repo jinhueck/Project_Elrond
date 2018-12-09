@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Sound_Script : MonoBehaviour {
 
@@ -15,32 +16,43 @@ public class Sound_Script : MonoBehaviour {
 
     public AudioClip bgm_Effect_Rubby;
 
-    bool Bool_music_Main;
-    bool Bool_effect_Bgm;
-
+    public GameObject MainBGMIMG;
+    public GameObject EffectSoundIMG;
 
     [SerializeField] private string key_IntSelect = "SetTile";
     int intSelected;
 
+    string Option = "0";
+    [SerializeField] private int[] soundoption;
+
     private void Awake()
     {
         Setup();
+        LoadPlayerOptionSetting();
     }
 
     public void Setup()
     {
-        if (Sound_Script.instance == null)
-            Sound_Script.instance = this;
-        intSelected = PlayerPrefs.GetInt(key_IntSelect);
-        bgm_Main = (AudioClip)Resources.Load("JinHyeok/Music/Main/" + intSelected);
-        bgm_Effect_POP = (AudioClip)Resources.Load("JinHyeok/Music/TouchBubble/" + intSelected);
-        bgm_Effect_Hit = (AudioClip)Resources.Load("JinHyeok/Music/TouchTack/" + intSelected);
-        bgm_Effect_Rubby = (AudioClip)Resources.Load("JinHyeok/Music/Rubby");
+        if (instance == null)
+        {   
+            DontDestroyOnLoad(transform.root.gameObject);
+            instance = this;
+            intSelected = PlayerPrefs.GetInt(key_IntSelect);
+            bgm_Main = (AudioClip)Resources.Load("JinHyeok/Music/Main/" + intSelected);
+            bgm_Effect_POP = (AudioClip)Resources.Load("JinHyeok/Music/TouchBubble/" + intSelected);
+            bgm_Effect_Hit = (AudioClip)Resources.Load("JinHyeok/Music/TouchTack/" + intSelected);
+            bgm_Effect_Rubby = (AudioClip)Resources.Load("JinHyeok/Music/Rubby");
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 
     public void Play_EffectPopSound()
     {
-        if (Bool_effect_Bgm)
+        if (EffectSoundOption == 0)
         {
             music_Effect.clip = bgm_Effect_POP;
             music_Effect.Play();
@@ -49,7 +61,7 @@ public class Sound_Script : MonoBehaviour {
 
     public void Play_EffectRubbySound()
     {
-        if (Bool_effect_Bgm)
+        if (EffectSoundOption == 0)
         {
             music_Effect.clip = bgm_Effect_Rubby;
             music_Effect.Play();
@@ -58,7 +70,7 @@ public class Sound_Script : MonoBehaviour {
 
     public void Play_EffectHitSound()
     {
-        if (Bool_effect_Bgm)
+        if (EffectSoundOption == 0)
         {
             music_Effect.clip = bgm_Effect_Hit;
             music_Effect.Play();
@@ -67,7 +79,7 @@ public class Sound_Script : MonoBehaviour {
 
     public void Play_MainSound()
     {
-        if (Bool_music_Main)
+        if (MainBGMOption == 0)
         {
             music_Main.clip = bgm_Main;
             music_Main.Play();
@@ -76,28 +88,150 @@ public class Sound_Script : MonoBehaviour {
 
     public void SetMainBGM()
     {
-        Sprite obj = GameObject.Find("Rolling_Menu").transform.GetChild(1).GetComponent<Sprite>();
-        if (Bool_music_Main)
+        Debug.Log(MainBGMOption + "브금");
+        if (MainBGMOption == 0)
         {
-            Bool_music_Main = false;
-            obj = Resources.Load<Sprite>("JungHwanResources/BGMF");
+            MainBGMOption = 1;
+            MainBGMIMG.GetComponent<Image>().sprite = Resources.Load<Sprite>("JungHwanResources/BGMF");
+            music_Main.Stop();
         }
-        else
+        else if(MainBGMOption == 1)
         {
-            Bool_music_Main = true;
-            obj = Resources.Load<Sprite>("JungHwanResources/BGMT");
+            MainBGMOption = 0;
+            MainBGMIMG.GetComponent<Image>().sprite = Resources.Load<Sprite>("JungHwanResources/BGMT");
+            music_Main.Play();
         }
     }
 
     public void SetEffectSound()
     {
-        if (Bool_effect_Bgm)
+        Debug.Log(EffectSoundOption + "이펙트");
+        if (EffectSoundOption == 0)
         {
-            Bool_effect_Bgm = false;
+            EffectSoundOption = 1;
+            EffectSoundIMG.GetComponent<Image>().sprite = Resources.Load<Sprite>("JungHwanResources/EffectF");
+        }
+        else if(EffectSoundOption == 1)
+        {
+            EffectSoundOption = 0;
+            EffectSoundIMG.GetComponent<Image>().sprite = Resources.Load<Sprite>("JungHwanResources/EffectT");
+        }
+    }
+
+    public void LoadMainBGM()
+    {
+        if (MainBGMOption == 0)
+        {   
+            MainBGMIMG.GetComponent<Image>().sprite = Resources.Load<Sprite>("JungHwanResources/BGMF");
+        }
+        else if (MainBGMOption == 1)
+        {
+            MainBGMIMG.GetComponent<Image>().sprite = Resources.Load<Sprite>("JungHwanResources/BGMT");
+        }
+    }
+
+    public void LoadEffectSound()
+    {
+        if (EffectSoundOption == 0)
+        {   
+            EffectSoundIMG.GetComponent<Image>().sprite = Resources.Load<Sprite>("JungHwanResources/EffectF");
+        }
+        else if (EffectSoundOption == 1)
+        {
+            EffectSoundIMG.GetComponent<Image>().sprite = Resources.Load<Sprite>("JungHwanResources/EffectT");
+        }
+    }
+
+    public void PlayStartUI()
+    {
+        music_Main.clip = (AudioClip)Resources.Load("JungHwanResources/BGM/" + 0);
+        music_Main.Play();
+    }
+
+    public void LoadPlayerOptionSetting()
+    {
+        if (SceneManager.GetActiveScene().name == "StartUI" && MainBGMOption == 0)
+        {
+            PlayStartUI();
+        }
+        LoadMainBGM();
+        Debug.Log(MainBGMOption + "브금");
+        LoadEffectSound();
+        Debug.Log(EffectSoundOption + "이펙트");
+    }
+
+    public int MainBGMOption
+    {
+        get
+        {
+            if (!PlayerPrefs.HasKey("BGMOption"))
+            {
+                return 0;
+            }
+            string tmpBGMOption = PlayerPrefs.GetString("BGMOption");
+            return int.Parse(tmpBGMOption);
+        }
+        set
+        {
+            PlayerPrefs.SetString("BGMOption", value.ToString());
+        }
+    }
+
+    public int EffectSoundOption
+    {
+        get
+        {
+            if (!PlayerPrefs.HasKey("EffectSoundOption"))
+            {
+                return 0;
+            }
+            string tmpBGMOption = PlayerPrefs.GetString("EffectSoundOption");
+            return int.Parse(tmpBGMOption);
+        }
+        set
+        {
+            PlayerPrefs.SetString("EffectSoundOption", value.ToString());
+        }
+    }
+    /*
+    int[] FindOptionSetting()
+    {
+        int size = 2;
+        int[] OptionInfo = new int[size];
+        if (PlayerPrefs.GetString(Option) != "")
+        {
+            string[] option;
+            option = PlayerPrefs.GetString(Option).Split(',');
+            for (int i = 0; i < OptionInfo.Length; i++)
+            {
+                OptionInfo[i] = System.Convert.ToInt32(option[i]);
+            }
         }
         else
         {
-            Bool_effect_Bgm = true;
+            string value = OptionInfo[0].ToString();
+            for(int i = 1; i<size; i++)
+            {
+                value += "," + OptionInfo[i];
+            }
+            PlayerPrefs.SetString(Option, value);
         }
+        
+        return OptionInfo;
     }
+
+    public void SetUserSoundOption(int num)
+    {
+        soundoption[num] = 1;
+
+        string value = soundoption[0].ToString();
+        for(int i = 1; i<soundoption.Length; i++)
+        {
+            value += "," + soundoption[i];
+        }
+        PlayerPrefs.SetString(Option, value);
+    }
+    */
+
+
 }

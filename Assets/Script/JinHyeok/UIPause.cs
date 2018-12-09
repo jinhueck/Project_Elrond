@@ -28,6 +28,7 @@ public class UIPause : UI_Open
     public void OpenMainScene()
     {
         GameBase_Manager.instance.OpenMainScene();
+        Sound_Script.instance.PlayStartUI();
     }
 
     public void OpenMenu()
