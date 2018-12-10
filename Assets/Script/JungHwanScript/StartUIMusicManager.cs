@@ -60,7 +60,7 @@ public class StartUIMusicManager : MonoBehaviour {
         {
             MainBGMOption = 0;
             MainBGMIMG.GetComponent<Image>().sprite = Resources.Load<Sprite>("JungHwanResources/BGMT");
-            music_Main.Play();
+            Play_MainSound();
         }
     }
 
@@ -121,6 +121,13 @@ public class StartUIMusicManager : MonoBehaviour {
         Debug.Log(EffectSoundOption + "이펙트");
     }
 
+    public void LoadPlayerOptionSetting2()
+    {   
+        LoadMainBGM();
+        Debug.Log(MainBGMOption + "브금");
+        LoadEffectSound();
+        Debug.Log(EffectSoundOption + "이펙트");
+    }
     public int MainBGMOption
     {
         get
