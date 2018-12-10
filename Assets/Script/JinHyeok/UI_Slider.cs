@@ -94,7 +94,7 @@ public class UI_Slider : MonoBehaviour {
                 ChangeButtonText(i, "장 착");
                 SetSelectedButton(rect.transform);
             }
-            rect.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>Sound_Script.instance.ClickSound());
+            rect.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>StartUIMusicManager.instance.ClickSound());
         }
     }
 
