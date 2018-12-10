@@ -82,7 +82,8 @@ public class Map_Group_Script : MonoBehaviour {
         int num = bombManager.BombList.Count;
         for(int i =0; i < num; i ++)
         {
-            bombManager.BombList[i].GetComponent<SpriteRenderer>().sprite = sprites_Fever;
+            if (bombManager.BombList[i].tag == "Bomb")
+                bombManager.BombList[i].GetComponent<SpriteRenderer>().sprite = sprites_Fever;
         }
     }
     void ChangeImg_FeverEnd(BombManager bombManager)
@@ -90,7 +91,8 @@ public class Map_Group_Script : MonoBehaviour {
         int num = bombManager.BombList.Count;
         for (int i = 0; i < num; i++)
         {
-            bombManager.BombList[i].GetComponent<SpriteRenderer>().sprite = sprites_Tile[intSelected];
+            if (bombManager.BombList[i].tag == "Bomb")
+                bombManager.BombList[i].GetComponent<SpriteRenderer>().sprite = sprites_Tile[intSelected];
         }
     }
 
