@@ -797,6 +797,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &290248597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114176094655229082, guid: 863442ff298fd664cb0496faa3b2cb77,
+    type: 2}
+  m_PrefabInternal: {fileID: 114253073}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &305300141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1165,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 477201101}
+  m_TargetGraphic: {fileID: 290248597}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []

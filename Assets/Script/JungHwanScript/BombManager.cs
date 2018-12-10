@@ -83,6 +83,7 @@ public class BombManager : MonoBehaviour {
                     GameObject obj = PopFromPool(3, map_Group.InvisibleRuby.transform);
                     obj.transform.position = this.transform.GetChild(i).transform.position;
                     obj.transform.SetParent(this.transform);
+                    obj.GetComponent<Tile_Script>().Setup();
                     RubyList.Add(obj);
 
                     //obj.GetComponent<Tile_Script>().Setup();
@@ -93,6 +94,7 @@ public class BombManager : MonoBehaviour {
                     obj.transform.position = this.transform.GetChild(i).transform.position;
                     obj.transform.SetParent(this.transform);
                     obj.GetComponent<Tile_Script>().Setup();
+                    obj.SetActive(true);
                     BombList.Add(obj);
                 }
                 //GameObject obj = Instantiate(Bomb, this.transform.GetChild(i).transform.position, Quaternion.identity);
