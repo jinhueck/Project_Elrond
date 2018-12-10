@@ -21,6 +21,7 @@ namespace Assets.SimpleAndroidNotifications
 
         private void Awake()
         {
+            PlayerPrefs.DeleteKey(key_Time);
             Setup();
         }
 
@@ -32,7 +33,7 @@ namespace Assets.SimpleAndroidNotifications
                
                 string[] item;
                 item = PlayerPrefs.GetString(key_Time).Split(',');
-                for (int i = 0; i < timeInfo.Length; i++)
+                for (int i = 0; i < item.Length; i++)
                 {
                     timeInfo[i] = System.Convert.ToInt32(item[i]);
                 }
@@ -41,7 +42,6 @@ namespace Assets.SimpleAndroidNotifications
             }
             else
             {
-                Debug.Log("여기는 들어와진다 노티");
                 Before_Box();
             }
         }
@@ -49,7 +49,7 @@ namespace Assets.SimpleAndroidNotifications
         public void SendNotif()
         {
             System.DateTime time_Now = System.DateTime.Now;
-            time_Check = new System.DateTime(time_Now.Year, time_Now.Month, time_Now.Day, time_Now.Hour + 6, time_Now.Minute, time_Now.Second).AddHours(time_Wait);
+            time_Check = new System.DateTime(time_Now.Year, time_Now.Month, time_Now.Day, time_Now.Hour, time_Now.Minute, time_Now.Second).AddMinutes(time_Wait);
             
             string saveTime = time_Check.Year + "," +
                 time_Check.Month + "," +
@@ -59,7 +59,7 @@ namespace Assets.SimpleAndroidNotifications
                 time_Check.Second;
             Debug.Log("saveTime : " + saveTime);
             PlayerPrefs.SetString(key_Time, saveTime);
-            NotificationManager.Send(TimeSpan.FromHours(time_Wait),
+            NotificationManager.Send(TimeSpan.FromMinutes(time_Wait),
                 "Go ahead and get DIA!", 
                 "The DIA box is being prepared. Go ahead and get DIA.", 
                 Color.white);
@@ -67,9 +67,10 @@ namespace Assets.SimpleAndroidNotifications
 
         IEnumerator SetText()
         {
-            Debug.Log("여기까지는 들어와진다 노티피케이션");
-            System.TimeSpan check_Gap = System.DateTime.Now - time_Check;
+            System.TimeSpan check_Gap = time_Check - System.DateTime.Now;
+            
             double totalSecond = check_Gap.TotalSeconds;
+            Debug.Log("check_Gap : " + check_Gap + "  , totalSecond : " + totalSecond);
             while (totalSecond > 0)
             {
                 check_Gap = time_Check - System.DateTime.Now;
@@ -78,6 +79,7 @@ namespace Assets.SimpleAndroidNotifications
                 text_Limit.text = check_Gap.Hours + ":" + check_Gap.Minutes + ":" + check_Gap.Seconds;
                 yield return null;
             }
+            PlayerPrefs.DeleteKey(key_Time);
             Before_Box();
         }
 
