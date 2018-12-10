@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3151,9 +3151,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1798499641}
-  - component: {fileID: 1798499640}
   - component: {fileID: 1798499639}
   - component: {fileID: 1798499638}
+  - component: {fileID: 1798499640}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -3359,18 +3359,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1798499637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 860b582f52748fa4898c06691105b5ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 478bac7e766c3bb418f81d814b9e7ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   music_Main: {fileID: 1798499639}
-  music_Effect: {fileID: 1798499638}
-  bgm_Main: {fileID: 8300000, guid: 9a7642788e906434cbf8e5a32bcd5b34, type: 3}
+  music_Effect: {fileID: 1798499639}
+  bgm_Main: {fileID: 0}
   bgm_Effect_POP: {fileID: 0}
-  bgm_Effect_Hit: {fileID: 8300000, guid: 9b973dc155f4ae6439c01e194df121ef, type: 3}
+  bgm_Effect_Hit: {fileID: 0}
   bgm_Effect_Rubby: {fileID: 0}
   MainBGMIMG: {fileID: 1881003771}
   EffectSoundIMG: {fileID: 184283824}
-  key_IntSelect: SetTile
+  soundoption: 
 --- !u!4 &1798499641
 Transform:
   m_ObjectHideFlags: 0
@@ -3464,6 +3464,7 @@ GameObject:
   - component: {fileID: 1881003775}
   - component: {fileID: 1881003774}
   - component: {fileID: 1881003773}
+  - component: {fileID: 1881003778}
   - component: {fileID: 1881003776}
   - component: {fileID: 1881003777}
   m_Layer: 5
@@ -3640,6 +3641,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenScale: {fileID: 1881003776}
+--- !u!114 &1881003778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1881003771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df0b9cfbb6213841b7eade5fe985ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1887909215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,7 +3687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.111835614}
   m_AnchorMax: {x: 1, y: 0.35158223}
-  m_AnchoredPosition: {x: -0.5682144, y: -1.0800018}
+  m_AnchoredPosition: {x: -0.5682144, y: -1.0800056}
   m_SizeDelta: {x: 5.3443, y: -0.05999756}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887909217
