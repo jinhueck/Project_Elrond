@@ -68,6 +68,7 @@ public class Delegate_Child : Delegate_Script {
     public void OpenMenu(Delegate_Action delegate_Action = null)
     {
         obj_target.SetActive(true);
+        StartUIMusicManager.instance.LoadPlayerOptionSetting2();
         SetCoroutine();
         if (delegate_Action == null)
             coroutine = StartCoroutine(Cor_Action(UI_Open, ActiveTrue, OpenChild));
