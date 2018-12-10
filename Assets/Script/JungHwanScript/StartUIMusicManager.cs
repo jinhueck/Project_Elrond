@@ -161,4 +161,13 @@ public class StartUIMusicManager : MonoBehaviour {
             PlayerPrefs.SetString("EffectSoundOption", value.ToString());
         }
     }
+
+    public void ClickSound()
+    {
+        if (EffectSoundOption == 0)
+        {
+            music_Effect.clip = (AudioClip)Resources.Load("JungHwanResources/EffectBGM/UIBGM/ClickSound");
+            music_Effect.Play();
+        }
+    }
 }
