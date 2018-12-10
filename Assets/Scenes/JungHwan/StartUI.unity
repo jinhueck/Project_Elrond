@@ -3603,7 +3603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music_Main: {fileID: 1798499639}
-  music_Effect: {fileID: 1798499639}
+  music_Effect: {fileID: 1798499638}
   bgm_Main: {fileID: 8300000, guid: 2b3cbc0fc4fc94b43bdc97acb631a93f, type: 3}
   bgm_Effect_POP: {fileID: 0}
   bgm_Effect_Hit: {fileID: 0}
