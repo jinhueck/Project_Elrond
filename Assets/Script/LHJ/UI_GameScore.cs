@@ -8,11 +8,10 @@ public class UI_GameScore : UI_Open
 
 {
     public uTools.TweenText Score;
-    public FirebaseCloud cloud;
 
     void Start ()
     {
-        cloud = GetComponent<FirebaseCloud>();
+        Sound_Script.instance.ScoreEffectSound();
     }
 	
 	// Update is called once per frame

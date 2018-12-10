@@ -24,6 +24,7 @@ public class UI_EndGame : UI_Open
     void Start()
     {
         timer = 10.5f;
+        Sound_Script.instance.TimerEffectSound();
     }
 
     
@@ -42,19 +43,21 @@ public class UI_EndGame : UI_Open
 
    public void Advertisingrh()
     {
+        Sound_Script.instance.TimerEffectSoundOff();
         adver.ShowRewardedAd();
         Close_Menu();
     }
 
     public void EndthisGame()
     {
+        Sound_Script.instance.TimerEffectSoundOff();
         EndScore.Open_Menu();
         Close_Menu();
         Time.timeScale = 1f;
     }
 
     void GameOverTIme()
-    {
+    {   
         if (timer > 0)
         {
             timer -= Time.unscaledDeltaTime;

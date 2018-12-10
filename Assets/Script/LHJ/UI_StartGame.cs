@@ -10,7 +10,7 @@ public class UI_StartGame : UI_Open
     public Text starttimer;
 
     private void Awake()
-    {
+    {   
         timerreset();
     }
 	
@@ -21,7 +21,7 @@ public class UI_StartGame : UI_Open
     }
 
     public void StartCount()
-    {
+    {   
         Time.timeScale = 0;
         if (timer > -0.5f)
         {

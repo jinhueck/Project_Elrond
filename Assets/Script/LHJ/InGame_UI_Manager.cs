@@ -30,7 +30,7 @@ public class InGame_UI_Manager : MonoBehaviour {
     }
 
     public void TimerUI(float time)
-    {
+    {   
         if (time > 10.5)
         {
             Timer.text = string.Format("{0:N0}", time);

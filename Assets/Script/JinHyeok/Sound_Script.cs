@@ -9,15 +9,15 @@ public class Sound_Script : MonoBehaviour {
     public static Sound_Script instance;
     public AudioSource music_Main;
     public AudioSource music_Effect;
+    public AudioSource music_UI;
 
     public AudioClip bgm_Main;
     public AudioClip bgm_Effect_POP;
     public AudioClip bgm_Effect_Hit;
+    public AudioClip bgm_Effect_UI;
 
     public AudioClip bgm_Effect_Rubby;
 
-    public GameObject MainBGMIMG;
-    public GameObject EffectSoundIMG;
 
     [SerializeField] private string key_IntSelect = "SetTile";
     int intSelected;
@@ -33,7 +33,7 @@ public class Sound_Script : MonoBehaviour {
     public void Setup()
     {
         if (instance == null)
-        {   
+        {
             instance = this;
         }
         intSelected = PlayerPrefs.GetInt(key_IntSelect);
@@ -41,7 +41,6 @@ public class Sound_Script : MonoBehaviour {
         bgm_Effect_POP = (AudioClip)Resources.Load("JinHyeok/Music/TouchBubble/" + intSelected);
         bgm_Effect_Hit = (AudioClip)Resources.Load("JinHyeok/Music/TouchTack/" + intSelected);
         bgm_Effect_Rubby = (AudioClip)Resources.Load("JinHyeok/Music/Rubby");
-
     }
 
     public void Play_EffectPopSound()
@@ -118,5 +117,23 @@ public class Sound_Script : MonoBehaviour {
         {
             PlayerPrefs.SetString("EffectSoundOption", value.ToString());
         }
+    }
+
+    public void TimerEffectSound()
+    {
+        music_UI.clip = (AudioClip)Resources.Load("JungHwanResources/EffectBGM/UIBGM/Clock");
+        music_UI.Play();
+    }
+
+    public void TimerEffectSoundOff()
+    {
+        music_UI.clip = (AudioClip)Resources.Load("JungHwanResources/EffectBGM/UIBGM/Clock");
+        music_UI.Stop();
+    }
+
+    public void ScoreEffectSound()
+    {
+        music_UI.clip = (AudioClip)Resources.Load("JungHwanResources/EffectBGM/UIBGM/FinalScore");
+        music_UI.Play();
     }
 }
