@@ -136,4 +136,13 @@ public class Sound_Script : MonoBehaviour {
         music_UI.clip = (AudioClip)Resources.Load("JungHwanResources/EffectBGM/UIBGM/FinalScore");
         music_UI.Play();
     }
+
+    public void ClickSound()
+    {
+        if (EffectSoundOption == 0)
+        {
+            music_UI.clip = (AudioClip)Resources.Load("JungHwanResources/EffectBGM/UIBGM/ClickSound");
+            music_UI.Play();
+        }
+    }
 }
