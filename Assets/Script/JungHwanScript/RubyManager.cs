@@ -35,6 +35,11 @@ public class RubyManager : MonoBehaviour {
         }
     }
 
+    public void PrintRuby()
+    {
+        RubyText.text = Ruby.ToString();
+    }
+
     public void AddRuby()
     {
         int a = Ruby;

@@ -11,6 +11,7 @@ public class Sound_Script : MonoBehaviour {
     public AudioSource music_Effect;
     public AudioSource music_UI;
     public AudioSource music_Ruby;
+    public AudioSource music_Hit;
 
     public AudioClip bgm_Main;
     public AudioClip bgm_Effect_POP;
@@ -66,8 +67,8 @@ public class Sound_Script : MonoBehaviour {
     {
         if (EffectSoundOption == 0)
         {
-            music_Effect.clip = bgm_Effect_Hit;
-            music_Effect.Play();
+            music_Hit.clip = bgm_Effect_Hit;
+            music_Hit.Play();
         }
     }
 
