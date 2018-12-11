@@ -7,6 +7,7 @@ namespace Assets.SimpleAndroidNotifications
 {
     public class NotificationTest_Script : MonoBehaviour
     {
+
         [SerializeField] private float time_Wait;
         [SerializeField] private string key_Time = "Key_Notification";
         [SerializeField] private int[] timeInfo;
@@ -24,9 +25,14 @@ namespace Assets.SimpleAndroidNotifications
             PlayerPrefs.DeleteKey(key_Time);
             Setup();
         }
+        private void OnEnable()
+        {
+            Setup();
+        }
 
         public void Setup()
         {
+
             timeInfo = new int[6];
             if (PlayerPrefs.HasKey(key_Time))
             {
@@ -75,7 +81,6 @@ namespace Assets.SimpleAndroidNotifications
             {
                 check_Gap = time_Check - System.DateTime.Now;
                 totalSecond = check_Gap.TotalSeconds;
-                Debug.Log(check_Gap.Hours + ":" + check_Gap.Minutes + ":" + check_Gap.Seconds);
                 text_Limit.text = check_Gap.Hours + ":" + check_Gap.Minutes + ":" + check_Gap.Seconds;
                 yield return null;
             }
@@ -98,13 +103,33 @@ namespace Assets.SimpleAndroidNotifications
         {
             if(RubyManager.instance != null)
             {
-                RubyManager.instance.Ruby += ruby_Increase;
+                IncreaseRuby();
                 SendNotif();
-                Clicked_Box();
+                GetDoubleRuby();
+            }
+        }
+        void GetDoubleRuby()
+        {
+            ResetListner();
+            button_Box.onClick.AddListener(() => ShowAds());
+            text_Limit.text = "광고 시청시 2배!";
+        }
+
+        void ShowAds()
+        {
+            if(InGameADS_Script.instance != null)
+            {
+                InGameADS_Script.instance.ShowRewardedAd();
             }
         }
 
-        void Clicked_Box()
+        public void IncreaseRuby()
+        {
+            RubyManager.instance.Ruby += ruby_Increase;
+            RubyManager.instance.PrintRuby();
+        }
+
+        public void Clicked_Box()
         {
             ResetListner();
             if (cor != null)

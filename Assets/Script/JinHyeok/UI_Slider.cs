@@ -224,7 +224,7 @@ void SizeUpSelected()
         if (hasMoney >= forBuy)
         {
             rubyManager.Ruby = hasMoney - forBuy;
-
+            rubyManager.PrintRuby();
             db_shop.SetShopInfo(i);
             ChangeButtonText(i, "장 착");
             SetSelectedButton(button[i].transform);

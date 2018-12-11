@@ -33,7 +33,7 @@ public class UnityAdsHelper : MonoBehaviour
         }
     }
 
-    private void HandleShowResult(ShowResult result)
+    protected virtual void HandleShowResult(ShowResult result)
     {
         switch (result)
         {

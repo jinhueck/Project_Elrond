@@ -39,9 +39,9 @@ public class Delegate_Script : MonoBehaviour {
     {
         SetCoroutine();
         if (delegate_Action == null)
-            coroutine = StartCoroutine(Cor_Action(UI_Open, ActiveTrue));
+            coroutine = StartCoroutine(Cor_Action_Start(UI_Open, ActiveTrue));
         else
-            coroutine = StartCoroutine(Cor_Action(UI_Open, delegate_Action));
+            coroutine = StartCoroutine(Cor_Action_Start(UI_Open, delegate_Action));
     } 
     public void Scale_Close(Delegate_Action delegate_Action = null)
     {
@@ -55,9 +55,9 @@ public class Delegate_Script : MonoBehaviour {
     {
         SetCoroutine();
         if (delegate_Action == null)
-            coroutine = StartCoroutine(Cor_Action(UI_Move_Open, ActiveTrue));
+            coroutine = StartCoroutine(Cor_Action_Start(UI_Move_Open, ActiveTrue));
         else
-            coroutine = StartCoroutine(Cor_Action(UI_Move_Open, delegate_Action));
+            coroutine = StartCoroutine(Cor_Action_Start(UI_Move_Open, delegate_Action));
     }
     public void Move_Close(Delegate_Action delegate_Action = null)
     {
@@ -81,12 +81,26 @@ public class Delegate_Script : MonoBehaviour {
         }
         delegate_Action();
     }
+    protected IEnumerator Cor_Action_Start(Delegate_Size delegate_Size, Delegate_Action delegate_Action)
+    {
+        timer = 0;
+        float time_del = AnimationSpeed;
+        float time_check = AnimationSpeed;
+        delegate_Action();
+        while (time_check >= 0.0f)
+        {
+            time_check -= Time.deltaTime;
+            delegate_Size(time_del);
+            yield return null;
+        }
+    }
     protected virtual void UI_Open(float time)
     {
         timer += Time.deltaTime / time;
 
         float y = curve_Open_size.Evaluate(timer);
-        obj_target.transform.localScale = nowScale * y;
+        obj_target.GetComponent<RectTransform>().localScale = nowScale * y;
+        Debug.Log("obj_target.GetComponent<RectTransform>().localScale : " + obj_target.GetComponent<RectTransform>().localScale);
     }
     protected virtual void UI_Close(float time)
     {
