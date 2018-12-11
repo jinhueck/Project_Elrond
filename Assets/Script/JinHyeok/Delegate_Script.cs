@@ -100,7 +100,6 @@ public class Delegate_Script : MonoBehaviour {
 
         float y = curve_Open_size.Evaluate(timer);
         obj_target.GetComponent<RectTransform>().localScale = nowScale * y;
-        Debug.Log("obj_target.GetComponent<RectTransform>().localScale : " + obj_target.GetComponent<RectTransform>().localScale);
     }
     protected virtual void UI_Close(float time)
     {

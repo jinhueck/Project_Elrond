@@ -22,7 +22,7 @@ namespace Assets.SimpleAndroidNotifications
 
         private void Awake()
         {
-            PlayerPrefs.DeleteKey(key_Time);
+            //PlayerPrefs.DeleteKey(key_Time);
             Setup();
         }
         private void OnEnable()

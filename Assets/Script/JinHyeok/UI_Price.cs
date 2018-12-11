@@ -21,6 +21,7 @@ public class UI_Price : MonoBehaviour {
     public void Open_Price()
     {
         delegate_Script.Scale_Open();
+        this.GetComponent<Assets.SimpleAndroidNotifications.NotificationTest_Script>().Setup();
     }
     public void Close_Price()
     {
