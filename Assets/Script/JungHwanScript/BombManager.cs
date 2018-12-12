@@ -76,7 +76,6 @@ public class BombManager : MonoBehaviour {
             if (what == true)
             {
                 MakeRuby(0,10);
-                Debug.Log(makeRuby);
                 if (makeRuby == 5)
                 {
                     Debug.Log("루비생성" + makeRuby);

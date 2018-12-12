@@ -34,6 +34,7 @@ public class Bubble_Script : Tile_Script
             ImageChange(tileSprite[1]);
             InGameManager.instance.AddScore();
             Sound_Script.instance.Play_EffectPopSound();
+            Effect_Script.instance.PopEffect(this.transform);
             transform.parent.GetComponent<BombManager>().CheckIsTouched();
             gameObject.SetActive(false);
         }

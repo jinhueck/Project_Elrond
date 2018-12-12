@@ -20,6 +20,7 @@ public class Ruby_Script : Tile_Script {
             //InGameManager.instance.Jewelry();
             Sound_Script.instance.Play_EffectRubbySound();
             RubyManager.instance.AddRuby();
+            Effect_Script.instance.PopEffect(this.transform);
             //RubyMove.instance.MoveRuby(TopRuby);
             transform.parent.GetComponent<BombManager>().CheckIsTouched();
         }

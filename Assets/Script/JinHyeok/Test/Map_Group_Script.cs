@@ -61,6 +61,11 @@ public class Map_Group_Script : MonoBehaviour {
         bombManagers[2] = Ground3.GetComponent<BombManager>();
     }
 
+    public int ReturnSelectNum()
+    {
+        return intSelected;
+    }
+
     public Sprite ReturnTile()
     {
         return sprites_Tile[intSelected];
