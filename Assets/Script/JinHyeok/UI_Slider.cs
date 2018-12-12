@@ -42,7 +42,7 @@ public class UI_Slider : MonoBehaviour {
         delegate_Script.SetTarget(ui_Slider);
 
         check_SliderOpen = false;
-        ui_Slider.SetActive(false);
+        //ui_Slider.SetActive(false);
     }
 
     public void SetupIntSelect()
