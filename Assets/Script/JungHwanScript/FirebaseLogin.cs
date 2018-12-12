@@ -17,6 +17,7 @@ public class FirebaseLogin : MonoBehaviour
     void Start()
     {
         //for_email_auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        Screen.SetResolution(720, 1280, true);
         OnClickGoogleLogin();
         //Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
         //Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;

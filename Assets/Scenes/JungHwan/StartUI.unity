@@ -1653,7 +1653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &791982282
@@ -2270,7 +2270,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 263454686}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2779,7 +2779,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.7141919}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 16.595, y: 42}
+  m_AnchoredPosition: {x: 16.595001, y: 41.99997}
   m_SizeDelta: {x: 297.3, y: 1.2}
   m_Pivot: {x: 0.51675713, y: 1.0000001}
 --- !u!114 &1433929539
@@ -3994,7 +3994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music_Main: {fileID: 1798499639}
   music_Effect: {fileID: 1798499638}
-  bgm_Main: {fileID: 8300000, guid: 2b3cbc0fc4fc94b43bdc97acb631a93f, type: 3}
+  bgm_Main: {fileID: 8300000, guid: 3bc0107ba69a9eb4facdd35e217b0a62, type: 3}
   bgm_Effect_POP: {fileID: 0}
   bgm_Effect_Hit: {fileID: 0}
   bgm_Effect_Rubby: {fileID: 0}
@@ -4046,7 +4046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23766668, y: 0.7897159}
   m_AnchorMax: {x: 0.7717778, y: 1}
-  m_AnchoredPosition: {x: -2, y: 48.5}
+  m_AnchoredPosition: {x: -2, y: 48.500015}
   m_SizeDelta: {x: -102.6, y: -31.251}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807237569
