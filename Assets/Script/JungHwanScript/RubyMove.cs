@@ -15,7 +15,6 @@ public class RubyMove : MonoBehaviour {
         //if (cor != null)
         //StopCoroutine(cor);
         //this.gameObject.SetActive(true);
-        Debug.Log("루비무브스크립트 진입");
         cor = StartCoroutine(MoveTopRuby(vec));
     }
 
@@ -28,7 +27,6 @@ public class RubyMove : MonoBehaviour {
 
         while (transform.position != StartPosition)
         {
-            Debug.Log("루비이동중");
             currPosition = transform.position;
             float step = speed * (Time.time - startTime);
             transform.position = Vector3.MoveTowards(currPosition, StartPosition, step);
@@ -39,7 +37,6 @@ public class RubyMove : MonoBehaviour {
         this.gameObject.SetActive(false);
         //this.transform.position = zeroPosition;
         RubyMaker.instance.PushToPool(RubyMaker.instance.RubyIMGList, this.gameObject);
-        Debug.Log("루비 코루틴 끝");
         yield break;
     }
 }

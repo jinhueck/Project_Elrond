@@ -59,6 +59,7 @@ public class Map_Group_Script : MonoBehaviour {
         bombManagers[0] = Ground1.GetComponent<BombManager>();
         bombManagers[1] = Ground2.GetComponent<BombManager>();
         bombManagers[2] = Ground3.GetComponent<BombManager>();
+
     }
 
     public int ReturnSelectNum()

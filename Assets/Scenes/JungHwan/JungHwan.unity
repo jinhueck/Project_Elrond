@@ -181,10 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8acf426db7ffd242bcc0f7c39d27148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect_Enable: []
-  effect_Disable: []
   effectParent: {fileID: 0}
   resource: {fileID: 0}
+  resource_Fever: {fileID: 0}
 --- !u!4 &33995694
 Transform:
   m_ObjectHideFlags: 0
