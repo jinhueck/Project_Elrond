@@ -12,7 +12,7 @@ public class UI_Slider : MonoBehaviour {
     public RectTransform center;
     [SerializeField] private float[] distance;
     [SerializeField] private bool dragging = false;
-    private int btnDistance;
+    private float btnDistance;
     [SerializeField] private int minButtonNum;
     [SerializeField] Image Img_Select;
     [SerializeField] Text text_Select;
@@ -38,7 +38,7 @@ public class UI_Slider : MonoBehaviour {
         int btnLength = button.Length;
         distance = new float[btnLength];
 
-        btnDistance = (int)Mathf.Abs(button[1].GetComponent<RectTransform>().anchoredPosition.x - button[0].GetComponent<RectTransform>().anchoredPosition.x) + 1;
+        btnDistance = Mathf.Abs(button[1].GetComponent<RectTransform>().anchoredPosition.x - button[0].GetComponent<RectTransform>().anchoredPosition.x);
         SetupIntSelect();
 
         check_SliderOpen = false;
@@ -78,7 +78,7 @@ public class UI_Slider : MonoBehaviour {
             newObject.transform.GetChild(0).GetComponent<Image>().sprite = sprite_Tile[i];
             newObject.transform.parent = panal.transform;
             RectTransform rect = newObject.GetComponent<RectTransform>();
-            rect.anchoredPosition = new Vector2(Mathf.Abs(rect.sizeDelta.x + 1) * i, 0);
+            rect.anchoredPosition = new Vector2(Mathf.Abs(rect.sizeDelta.x) * i * 1.1f, 0);
             rect.localScale = Vector3.one;
             rect.sizeDelta = Vector2.zero;
             button[i] = rect;
@@ -166,7 +166,7 @@ void SizeUpSelected()
         }
     }
 
-    void LerpToButton(int pos)
+    void LerpToButton(float pos)
     {
         float newX = Mathf.Lerp(panal.anchoredPosition.x, pos, Time.deltaTime * 3f);
         Vector2 newPosition = new Vector2(newX, panal.anchoredPosition.y);
