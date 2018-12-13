@@ -38,7 +38,7 @@ public class UI_Slider : MonoBehaviour {
         int btnLength = button.Length;
         distance = new float[btnLength];
 
-        btnDistance = (int)Mathf.Abs(button[1].GetComponent<RectTransform>().anchoredPosition.x - button[0].GetComponent<RectTransform>().anchoredPosition.x);
+        btnDistance = (int)Mathf.Abs(button[1].GetComponent<RectTransform>().anchoredPosition.x - button[0].GetComponent<RectTransform>().anchoredPosition.x) + 1;
         SetupIntSelect();
 
         check_SliderOpen = false;
@@ -78,7 +78,7 @@ public class UI_Slider : MonoBehaviour {
             newObject.transform.GetChild(0).GetComponent<Image>().sprite = sprite_Tile[i];
             newObject.transform.parent = panal.transform;
             RectTransform rect = newObject.GetComponent<RectTransform>();
-            rect.anchoredPosition = new Vector2(Mathf.Abs(rect.sizeDelta.x) * i, 0);
+            rect.anchoredPosition = new Vector2(Mathf.Abs(rect.sizeDelta.x + 1) * i, 0);
             rect.localScale = Vector3.one;
             rect.sizeDelta = Vector2.zero;
             button[i] = rect;
