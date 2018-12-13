@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenScale: {fileID: 1765711751}
+  restart: {fileID: 790709311}
 --- !u!114 &38825983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,7 +1045,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 05efdbb0474dfdb42989d2189f14d388, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a4f9ea04fdeb5044b1a9c1b198a5708, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2536,7 +2537,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uB2EB\uAE30"
+  m_Text: Close
 --- !u!222 &776683446
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3029,7 +3030,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 05efdbb0474dfdb42989d2189f14d388, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a4f9ea04fdeb5044b1a9c1b198a5708, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4166,7 +4167,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uBA54\uC778 \uBA54\uB274"
+  m_Text: Main Page
 --- !u!222 &1405622258
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6060,7 +6061,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uC548\uBCF4\uACE0 \uC885\uB8CC"
+  m_Text: Close
 --- !u!222 &1789891976
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6150,7 +6151,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uAC8C\uC784 \uC885\uB8CC"
+  m_Text: Exit
 --- !u!222 &1857680455
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6574,7 +6575,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uAD11\uACE0\uBCF4\uACE0 +10s"
+  m_Text: ADV +10s
 --- !u!222 &2063250055
 CanvasRenderer:
   m_ObjectHideFlags: 0

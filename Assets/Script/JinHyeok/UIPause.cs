@@ -6,6 +6,7 @@ public class UIPause : UI_Open
 {
 
     UnityEngine.Events.UnityAction m_finished;
+    public UI_StartGame restart;
 
     private void Awake()
     {
@@ -41,6 +42,8 @@ public class UIPause : UI_Open
     public void CloseMenu()
     {
         Close_Menu();
+        restart.timerreset();   
+        restart.Open_Menu();    
         Time.timeScale = 1;
     }
 }

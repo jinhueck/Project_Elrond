@@ -9,6 +9,7 @@ public class UI_Slider : MonoBehaviour {
 
     public RectTransform panal;
     public RectTransform[] button;
+    public Button[] button_Check;
     public RectTransform center;
     [SerializeField] private float[] distance;
     [SerializeField] private bool dragging = false;
@@ -33,6 +34,7 @@ public class UI_Slider : MonoBehaviour {
 
         sprite_Tile = Resources.LoadAll<Sprite>("JinHyeok/Img_Tile");
         button = new RectTransform[sprite_Tile.Length];
+        button_Check = new Button[sprite_Tile.Length];
         MakeList(sprite_Tile.Length);
 
         int btnLength = button.Length;
@@ -59,6 +61,14 @@ public class UI_Slider : MonoBehaviour {
         Img_Select.sprite = sprite_Tile[int_Select];
     }
 
+    public void SetButtons(bool check)
+    {
+        for(int i = 0; i < button_Check.Length; i ++)
+        {
+            button_Check[i].interactable = check;
+        }
+    }
+
     public void SetIntSelect()
     {
         PlayerPrefs.SetInt(key_IntSelect, int_Select);
@@ -82,6 +92,7 @@ public class UI_Slider : MonoBehaviour {
             rect.localScale = Vector3.one;
             rect.sizeDelta = Vector2.zero;
             button[i] = rect;
+            button_Check[i] = rect.transform.GetChild(1).GetComponent<Button>();
 
             if (db_shop.SetMoney(i) == 0)
             {
@@ -102,6 +113,7 @@ public class UI_Slider : MonoBehaviour {
     {
         trans.GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
         trans.GetChild(1).GetComponent<Button>().onClick.AddListener(() => ButtonSelect());
+        trans.GetChild(1).GetComponent<Button>().onClick.AddListener(() => StartUIMusicManager.instance.ClickSound());
 
     }
 
@@ -200,11 +212,12 @@ void SizeUpSelected()
             Img_Select.sprite = sprite_Tile[minButtonNum];
             delegate_Script.Move_Close();
         }
-        
+        SetButtons(true);
     }
 
     public void ButtonSelect()
     {
+        SetButtons(false);
         check_SliderOpen = false;
         SetIntSelect();
         delegate_Script.Move_Close();

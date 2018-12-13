@@ -66,8 +66,8 @@ namespace Assets.SimpleAndroidNotifications
             Debug.Log("saveTime : " + saveTime);
             PlayerPrefs.SetString(key_Time, saveTime);
             NotificationManager.Send(TimeSpan.FromHours(time_Wait),
-                "Go ahead and get DIA!", 
-                "The DIA box is being prepared. Go ahead and get DIA.", 
+                "Bubble Pop", 
+                "무료 다이아가 충전되었습니다. 다이아 상점에서 수령해 주세요!", 
                 Color.white);
         }
 

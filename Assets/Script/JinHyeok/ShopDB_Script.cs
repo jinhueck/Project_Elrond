@@ -32,6 +32,7 @@ public class ShopDB_Script : MonoBehaviour {
     {
         int size = shit.dataArray.Length;
         int[] shopInfo = new int[size];
+        shopInfo[0] = 1;
         if (PlayerPrefs.GetString(key_Shop) != "")
         {
             string[] item;

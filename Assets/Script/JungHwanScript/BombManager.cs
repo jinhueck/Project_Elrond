@@ -62,7 +62,7 @@ public class BombManager : MonoBehaviour {
             }
             if (what == true)
             {
-                MakeRuby(0,10);
+                MakeRuby(0,50);
                 if (makeRuby == 5)
                 {   
                     GameObject obj = PopFromPool(3, map_Group.InvisibleRuby.transform);
