@@ -138,18 +138,10 @@ void SizeUpSelected()
     {
         for (int i = 0; i < button.Length; i++)
         {
-            float distance_Button = distance[i] / 130;
-            if (distance_Button < 1)
-            {
-                RectTransform rect = button[i].transform.GetChild(0).GetComponent<RectTransform>();
-                rect.localScale = Vector3.one + new Vector3(0.5f, 0.5f, 0.5f) * (1 - distance_Button);
-                rect.sizeDelta = Vector2.zero + new Vector2(0.5f, 0.5f) * (1 - distance_Button);
-            }
-            else
-            {
-                button[i].localScale = Vector3.one;
-                button[i].sizeDelta = Vector2.zero;
-            }
+            float distance_Button = distance[i] / btnDistance;
+            RectTransform rect = button[i].transform.GetChild(0).GetComponent<RectTransform>();
+            rect.localScale = Vector3.one + new Vector3(0.5f, 0.5f, 0.5f) * (1 - distance_Button);
+            rect.sizeDelta = Vector2.zero + new Vector2(0.5f, 0.5f) * (1 - distance_Button);
         }
     }
 
