@@ -21,9 +21,10 @@ public class Tutorial : UI_Open
 
     void Update()
     {
+      //  Debug.Log(tutorialview.transform.position.x);
         //Debug.Log(tutorialview.transform.position);
-        pagemove();
-        Pageview();
+       pagemove();
+       Pageview();
     }
 
     public void OpenTutorial()
@@ -36,7 +37,7 @@ public class Tutorial : UI_Open
     {
         this.Close_Menu();
         pagenum = 0;
-        move = new Vector3(975, 440, 0);
+        move = new Vector3(1355, 713, 0);
         tutorialview.transform.position = move;
     }
 
@@ -49,6 +50,7 @@ public class Tutorial : UI_Open
 
     public void Next()
     {
+       
         if(pagenum<maxnum)
         pagenum++;
         
@@ -62,29 +64,29 @@ public class Tutorial : UI_Open
         {
 
             case 0:
-                move = new Vector3(975, 440, 0);
+                move = new Vector3(1355, 713, 0);
                 tutorialview.transform.position = Vector3.Lerp(tutorialview.transform.position, move, Time.deltaTime * 10f);
                 break;
             case 1:
-                move = new Vector3(675, 440, 0);
+                move = new Vector3(855, 713, 0);
                 tutorialview.transform.position = Vector3.Lerp(tutorialview.transform.position, move, Time.deltaTime * speed);
                 break;
 
             case 2:
-                move = new Vector3(375, 440, 0);
+                move = new Vector3(355, 713, 0);
                 tutorialview.transform.position = Vector3.Lerp(tutorialview.transform.position, move, Time.deltaTime * speed);
                 break;
             case 3:
-                move = new Vector3(75, 440, 0);
+                move = new Vector3(-145, 713, 0);
                 tutorialview.transform.position = Vector3.Lerp(tutorialview.transform.position, move, Time.deltaTime * speed);
                 break;
             case 4:
-                move = new Vector3(-225, 440, 0);
+                move = new Vector3(-645, 713, 0);
                 tutorialview.transform.position = Vector3.Lerp(tutorialview.transform.position, move, Time.deltaTime * speed);
                 break;
 
             case 5:
-                move = new Vector3(-525, 440, 0);
+                move = new Vector3(-525, 713, 0);
                 tutorialview.transform.position = Vector3.Lerp(tutorialview.transform.position, move, Time.deltaTime * speed);
                 break;
         }

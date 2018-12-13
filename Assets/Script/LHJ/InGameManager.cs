@@ -63,7 +63,7 @@ public class InGameManager : MonoBehaviour
         plusScore = 100;
         combo = 1;
         totalscore = 0;
-        combotime = 3f;
+        combotime = 4f;
         fevercheck = false;
         fevertime = 5f;
         fevercount = 0;
@@ -122,7 +122,7 @@ public class InGameManager : MonoBehaviour
     public void ResetCombo()
     {
         combo = 1;
-        combotime = 5f;
+        combotime = 4f;
         //InGame_UI_Manager.instance.ComboUI(combo);
         comboview.Close();
         ResetCoroutine();
