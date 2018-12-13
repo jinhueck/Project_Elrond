@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2830,7 +2830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.36}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.099975586, y: 1.8000412}
+  m_AnchoredPosition: {x: -0.099975586, y: 1.8000488}
   m_SizeDelta: {x: -0.8999634, y: -3.7200012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1193479851
@@ -3301,7 +3301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8107778, y: 0.37550002}
   m_AnchorMax: {x: 0.9447778, y: 0.67925006}
-  m_AnchoredPosition: {x: 0.024993896, y: -0.19999695}
+  m_AnchoredPosition: {x: 0.024993896, y: -0.2000122}
   m_SizeDelta: {x: 0, y: -0.6300001}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1330498279
@@ -3444,7 +3444,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.36}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.099975586, y: 1.8000412}
+  m_AnchoredPosition: {x: -0.099975586, y: 1.8000488}
   m_SizeDelta: {x: -0.8999634, y: -3.7200012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1375648089
@@ -4557,10 +4557,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.005157225
-      value: -1.5629044
-      inSlope: 16.611916
-      outSlope: 16.611916
+      time: -0.016999844
+      value: -10.061098
+      inSlope: 63.408596
+      outSlope: 63.408596
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -4617,19 +4617,19 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.23440814
     - serializedVersion: 3
-      time: 0.5024374
-      value: -2.022109
-      inSlope: -0.2918036
-      outSlope: -0.2918036
+      time: 0.47256795
+      value: -10.040041
+      inSlope: 0
+      outSlope: 0
       tangentMode: 136
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.0037725
-      value: -2.0786796
-      inSlope: -0.11283976
-      outSlope: -0.11283976
+      time: 1.0112447
+      value: -10.012652
+      inSlope: 0.05084417
+      outSlope: 0.05084417
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -6176,7 +6176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.36}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.4500122, y: 1.8600082}
+  m_AnchoredPosition: {x: 0.4500122, y: 1.8600159}
   m_SizeDelta: {x: -0.8999634, y: -3.7200012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979177294

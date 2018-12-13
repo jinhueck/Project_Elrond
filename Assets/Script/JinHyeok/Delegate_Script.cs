@@ -18,7 +18,8 @@ public class Delegate_Script : MonoBehaviour {
     protected delegate void Delegate_Size(float time);
 
     protected Vector3 nowScale;
-    protected Vector3 nowPos;
+    protected Vector2 nowPos;
+    protected RectTransform objPos;
 
     [SerializeField]protected GameObject obj_target;
 
@@ -26,7 +27,8 @@ public class Delegate_Script : MonoBehaviour {
     {
         obj_target = _obj;
         nowScale = obj_target.transform.localScale;
-        nowPos = obj_target.transform.position;
+        nowPos = obj_target.GetComponent<RectTransform>().anchoredPosition;
+        objPos = obj_target.GetComponent<RectTransform>();
     }
 
     protected void SetCoroutine()
@@ -122,14 +124,14 @@ public class Delegate_Script : MonoBehaviour {
     {
         timer += Time.deltaTime / time;
 
-        float y = curve_Open_pos.Evaluate(timer);
-        obj_target.transform.position = new Vector3(nowPos.x, nowPos.y * y, nowPos.x);
+        float y = curve_Open_pos.Evaluate(timer) * 8;
+        objPos.anchoredPosition = new Vector3(nowPos.x, nowPos.y * y, nowPos.x);
     }
     protected virtual void UI_Move_Close(float time)
     {
         timer += Time.deltaTime / time;
 
-        float y = curve_Close_pos.Evaluate(timer);
-        obj_target.transform.position = new Vector3(nowPos.x, nowPos.y * y, nowPos.x);
+        float y = curve_Close_pos.Evaluate(timer) * 8;
+        objPos.anchoredPosition = new Vector3(nowPos.x, nowPos.y * y, nowPos.x);
     }
 }
