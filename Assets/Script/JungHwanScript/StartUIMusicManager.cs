@@ -49,7 +49,6 @@ public class StartUIMusicManager : MonoBehaviour {
 
     public void SetMainBGM()
     {
-        Debug.Log(MainBGMOption + "브금");
         if (MainBGMOption == 0)
         {
             MainBGMOption = 1;
@@ -66,7 +65,6 @@ public class StartUIMusicManager : MonoBehaviour {
 
     public void SetEffectSound()
     {
-        Debug.Log(EffectSoundOption + "이펙트");
         if (EffectSoundOption == 0)
         {
             EffectSoundOption = 1;
@@ -116,17 +114,13 @@ public class StartUIMusicManager : MonoBehaviour {
             PlayStartUI();
         }
         LoadMainBGM();
-        Debug.Log(MainBGMOption + "브금");
         LoadEffectSound();
-        Debug.Log(EffectSoundOption + "이펙트");
     }
 
     public void LoadPlayerOptionSetting2()
     {   
         LoadMainBGM();
-        Debug.Log(MainBGMOption + "브금");
         LoadEffectSound();
-        Debug.Log(EffectSoundOption + "이펙트");
     }
     public int MainBGMOption
     {

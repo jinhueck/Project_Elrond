@@ -247,7 +247,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/User/Documents/Project_Elrond/Keystore/user.keystore
+  AndroidKeystoreName: C:/Users/Atents/Documents/Project_Elrond/Keystore/user.keystore
   AndroidKeyaliasName: project_elrond
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
@@ -752,13 +752,13 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 1
+    Collab: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 92559b40-d746-4213-9437-9a162360c9fb
-  projectName: Project_Elrond
-  organizationId: banmoyaa-iei-or-kr
+  cloudProjectId: 35c22d8b-d332-403b-a2f3-864cdbd59b21
+  projectName: Project_Elrond (1)
+  organizationId: cjh6220
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

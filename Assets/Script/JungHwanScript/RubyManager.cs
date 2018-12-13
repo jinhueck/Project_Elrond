@@ -8,7 +8,6 @@ public class RubyManager : MonoBehaviour {
     public static RubyManager instance;
     public Text RubyText;
 
-    // Use this for initialization
     private void Awake()
     {
         if (instance == null)

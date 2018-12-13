@@ -17,7 +17,6 @@ public class FeverAni : MonoBehaviour {
     }
 
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime * AnimationSpeed;

@@ -6,13 +6,10 @@ public class BackGroundManager : MonoBehaviour
 {
     public GameObject Ground1;
     public GameObject Ground2;
-    //private Animator anim;
-    //public bool position;
     public float speed;
     private Vector3 StartPosition;
 
     private float startTime;
-    //private float distanceLength;
 
     BombManager bomba;
 
@@ -21,10 +18,6 @@ public class BackGroundManager : MonoBehaviour
     void Start()
     {
         bomba = GetComponent<BombManager>();
-        //anim = GetComponent<Animator>();
-
-        //distanceLength = Vector3.Distance(StartPosition, EndPosition);
-
     }
     
     public void next(Vector3 vec)
@@ -36,7 +29,6 @@ public class BackGroundManager : MonoBehaviour
 
     IEnumerator GoBackStage(Vector3 vec)
     {
-        //Debug.Log("GoBackStage 코루틴 진입");
         StartPosition = vec;
 
         Vector3 currPosition;

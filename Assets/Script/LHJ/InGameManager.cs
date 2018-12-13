@@ -45,12 +45,6 @@ public class InGameManager : MonoBehaviour
             instance = this;
         }
         SetupGame();
-
-    }
-
-    void Start()
-    {
-
     }
 
     void Update()
@@ -106,8 +100,7 @@ public class InGameManager : MonoBehaviour
 
         if (combotime <= 0.7f)
             combotime = 0.7f;
-
-        // InGame_UI_Manager.instance.ComboUI(combo);
+        
         comboview.Open_Menu();
         ResetCoroutine();
     }
@@ -123,7 +116,6 @@ public class InGameManager : MonoBehaviour
     {
         combo = 1;
         combotime = 5f;
-        //InGame_UI_Manager.instance.ComboUI(combo);
         comboview.Close();
         ResetCoroutine();
     }
@@ -144,14 +136,12 @@ public class InGameManager : MonoBehaviour
 
     IEnumerator Fever()
     {
-        Debug.Log("Fever Start!!!");
         fevercheck = true;
         fevercount = 0;
         InGame_UI_Manager.instance.Fever.gameObject.SetActive(true);
         Map_Group_Script.instance.Fever_Start();
         yield return new WaitForSeconds(fevertime);
 
-        Debug.Log("Fever END!!!");
         InGame_UI_Manager.instance.Fever.gameObject.SetActive(false);
         fevercheck = false;
         Map_Group_Script.instance.Fever_End();
@@ -210,15 +200,9 @@ public class InGameManager : MonoBehaviour
 
     public void EndScore()
     {
-        Debug.Log("EndScore 진입");
-        Debug.Log("total score : "+totalscore);
-        //FC.TopScore = totalscore;
-
         if (totalscore > FC.TopScore)
         {
-            Debug.Log("EndScore 비교");
             FC.TopScore = totalscore;
-            Debug.Log("EndScore 비교끝");
         }
         FC.AddScoreToLeaderboard(GPGSIds.leaderboard_score, totalscore);
     }

@@ -27,8 +27,6 @@ public class UI_EndGame : UI_Open
         Sound_Script.instance.TimerEffectSound();
     }
 
-    
-    // Update is called once per frame
     void Update()
     {
         GameOverTIme();

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BombManager : MonoBehaviour {
 
-    //public static BombManager instance;
-
     //뽁뽁이 리스트
     public GameObject prefab = null;
     public int poolCount = 0;
@@ -26,8 +24,6 @@ public class BombManager : MonoBehaviour {
     private int randomnum;
     private int[] randArray;
 
-    // Use this for initialization
-
     //루비생성
     int makeRuby;
     Tile_Script setup;
@@ -37,12 +33,6 @@ public class BombManager : MonoBehaviour {
     private void Start()
     {
         map_Group = Map_Group_Script.instance;
-        /*
-        if(instance == null)
-        {
-            instance = this;
-        }
-        */
         MakeStage();             
     }
     
@@ -62,9 +52,6 @@ public class BombManager : MonoBehaviour {
                     obj2.transform.position = this.transform.GetChild(i).transform.position;
                     obj2.transform.SetParent(this.transform);
                     TrapList.Add(obj2);
-                    
-                    //GameObject obj2 = Instantiate(Trap, this.transform.GetChild(i).transform.position, Quaternion.identity);
-                    //obj2.transform.parent = ;
                     what = false;
                     break;
                 }
@@ -77,15 +64,12 @@ public class BombManager : MonoBehaviour {
             {
                 MakeRuby(0,10);
                 if (makeRuby == 5)
-                {
-                    Debug.Log("루비생성" + makeRuby);
+                {   
                     GameObject obj = PopFromPool(3, map_Group.InvisibleRuby.transform);
                     obj.transform.position = this.transform.GetChild(i).transform.position;
                     obj.transform.SetParent(this.transform);
                     obj.GetComponent<Tile_Script>().Setup();
                     RubyList.Add(obj);
-
-                    //obj.GetComponent<Tile_Script>().Setup();
                 }
                 else if(makeRuby !=5)
                 {
@@ -96,8 +80,6 @@ public class BombManager : MonoBehaviour {
                     obj.SetActive(true);
                     BombList.Add(obj);
                 }
-                //GameObject obj = Instantiate(Bomb, this.transform.GetChild(i).transform.position, Quaternion.identity);
-                //obj.transform.parent = ;
             }
         }
     }

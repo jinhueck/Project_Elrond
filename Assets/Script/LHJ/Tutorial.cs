@@ -21,7 +21,6 @@ public class Tutorial : UI_Open
 
     void Update()
     {
-        //Debug.Log(tutorialview.transform.position.x);
         pagemove();
         Pageview();
     }
@@ -56,8 +55,7 @@ public class Tutorial : UI_Open
 
 
     public void pagemove()
-    {
-        
+    {   
         switch (pagenum)
         {
 
@@ -101,31 +99,4 @@ public class Tutorial : UI_Open
             pageview.text = "마지막 페이지 입니다";
         }
     }
-
-  /*  IEnumerable MovePage()
-    {
-
-        switch(pagenum)
-        {
-            case 0:
-                move = new Vector3(-450, 0, 0);
-                this.transform.position = Vector3.Lerp(this.transform.position, move, Time.deltaTime);
-                break;
-
-            case 1:
-                move = new Vector3(-150, 0, 0);
-                this.transform.position = Vector3.Lerp(this.transform.position, move, Time.deltaTime);
-                break;
-            case 2:
-                move = new Vector3(150, 0, 0);
-                this.transform.position = Vector3.Lerp(this.transform.position, move, Time.deltaTime);
-                break;
-            case 3:
-                move = new Vector3(450, 0, 0);
-                this.transform.position = Vector3.Lerp(this.transform.position, move, Time.deltaTime);
-                break;
-        }
-
-        yield return new WaitForSeconds(0.1f);
-    }*/
 }

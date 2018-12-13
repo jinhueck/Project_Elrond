@@ -14,7 +14,6 @@ public class UI_StartGame : UI_Open
         timerreset();
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
         StartCount();
@@ -35,8 +34,7 @@ public class UI_StartGame : UI_Open
             }
         }   
         else
-        {
-            
+        {   
             this.Close_Menu();
             Time.timeScale = 1;
         }

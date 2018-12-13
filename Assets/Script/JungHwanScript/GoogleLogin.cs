@@ -38,28 +38,9 @@ public class GoogleLogin : MonoBehaviour {
         }
     }
     
-
-    /*//어웨이크에서 구글 서버에 접속
-    void Awake ()
-    {
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
-            .EnableSavedGames().Build();
-
-        PlayGamesPlatform.InitializeInstance(config);
-
-        PlayGamesPlatform.DebugLogEnabled = false;
-        PlayGamesPlatform.Activate();
-        //SignIn();
-    }
-    */
-
     void Start()
-    {
-        //Login();
-        //SignIn();
-        //StartLoadScore();
+    {   
         PrintScore();
-
     }
 
     public void Login() // 로그인
@@ -68,18 +49,13 @@ public class GoogleLogin : MonoBehaviour {
         {
             if (success)
             {
-                // to do ...
-                // 로그인 성공 처리
                 mStatusText = "Welcome " + Social.localUser.userName;
-                //SceneManager.LoadScene("StartUI");
-                //StartLoadScore();
             }
             else
             {
                 Debug.Log("Login Fail");
             }
         });
-        //StartLoadScore();
     }
     #region Achievements
     public void Completeachievement_1000() //업적 1000점 달성
@@ -87,7 +63,6 @@ public class GoogleLogin : MonoBehaviour {
         if (!isAuthenticated)
         {
             Login();
-            //SignIn();
             return;
         }
 
@@ -113,7 +88,6 @@ public class GoogleLogin : MonoBehaviour {
         if (!isAuthenticated)
         {
             Login();
-            //SignIn();
             return;
         }
         Social.ShowAchievementsUI();
@@ -175,36 +149,6 @@ public class GoogleLogin : MonoBehaviour {
             B.text = "로그인 실패";
     }
 
-    
-
-   
-
-    /*
-    public void SignIn() //로그인 하는 함수이지만 지금은 쓰지않음
-    {
-        PlayGamesPlatform.Instance.Authenticate((bool success) =>
-        {
-            mWaitingForAuth = false;
-            if (success)
-            {
-                // to do ...
-                // 로그인 성공 처리
-              mStatusText = "Welcome " + Social.localUser.userName;
-                //SceneManager.LoadScene("StartUI");
-                StartLoadScore();
-
-
-            }
-            else
-            {
-                // to do ...
-                // 로그인 실패 처리
-                mStatusText = "Authentication failed.";
-            }
-        });
-    }
-    */
-
     public void SignOut()//로그아웃
     {
         PlayGamesPlatform.Instance.SignOut();   
@@ -259,7 +203,6 @@ public class GoogleLogin : MonoBehaviour {
     public void PrintScore()
     {
         long a = TopScore;
-        //int intval = Convert.ToInt64(a);
         A.text = a.ToString();
     }
 

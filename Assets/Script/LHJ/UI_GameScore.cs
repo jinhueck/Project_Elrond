@@ -14,11 +14,9 @@ public class UI_GameScore : UI_Open
         Sound_Script.instance.ScoreEffectSound();
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
         Scoreview();
-
     }
 
     public void EndthisGame()

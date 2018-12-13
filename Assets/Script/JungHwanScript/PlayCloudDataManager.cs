@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
-//gpg
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using GooglePlayGames.BasicApi.SavedGame;
-//for encoding
 using System.Text;
-//for extra save ui
 using UnityEngine.SocialPlatforms;
-//for text, remove
 using UnityEngine.UI;
 public class PlayCloudDataManager : MonoBehaviour
 {

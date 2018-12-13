@@ -12,15 +12,11 @@ public class RubyMove : MonoBehaviour {
 
     public void MoveRuby(Vector3 vec)
     {
-        //if (cor != null)
-        //StopCoroutine(cor);
-        //this.gameObject.SetActive(true);
         cor = StartCoroutine(MoveTopRuby(vec));
     }
 
     IEnumerator MoveTopRuby(Vector3 vec)
     {
-        //Debug.Log("GoBackStage 코루틴 진입");
         StartPosition = vec;
         Vector3 currPosition;
         startTime = Time.time;
@@ -35,7 +31,6 @@ public class RubyMove : MonoBehaviour {
             yield return null;
         }
         this.gameObject.SetActive(false);
-        //this.transform.position = zeroPosition;
         RubyMaker.instance.PushToPool(RubyMaker.instance.RubyIMGList, this.gameObject);
         yield break;
     }

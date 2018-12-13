@@ -42,8 +42,6 @@ public class FirebaseCloud : MonoBehaviour {
                 }
             });
         }
-        //PlayGamesPlatform.Instance.ShowLeaderboardUI();
-        //((PlayGamesPlatform)Social.Active).
         Social.ShowLeaderboardUI();
     }
 
@@ -108,7 +106,6 @@ public class FirebaseCloud : MonoBehaviour {
         if (A != null)
         {
             int s = TopScore;
-            //int a = InGameManager.instance.EndScore();
             A.text = s.ToString();
         }
     }
@@ -195,7 +192,7 @@ public class FirebaseCloud : MonoBehaviour {
 
     public void LoadScore() // 구글 클라우드에서 스코어 불러오기
     {
-        Debug.Log("LoadScore 진입");
+        
         PlayCloudDataManager.Instance.LoadFromCloud((string dataToLoad) =>
         { TopScore = int.Parse(dataToLoad); });
         PrintScore();
