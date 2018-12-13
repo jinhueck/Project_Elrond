@@ -15,18 +15,18 @@ MonoBehaviour:
   WorksheetName: Sheet1
   dataArray:
   - name:
-    - "\uBF41\uBF41\uC7741"
+    - "\uBC84\uBE14"
     money:
     - 100
   - name:
-    - "\uBF41\uBF41\uC7742"
+    - "\uC090\uC545\uC774"
     money:
     - 200
   - name:
-    - "\uBF41\uBF41\uC7743"
+    - "\uD560\uB85C\uC708"
     money:
     - 300
   - name:
-    - "\uBF41\uBF41\uC7744"
+    - "\uAC31\uC2A4\uD130"
     money:
     - 400

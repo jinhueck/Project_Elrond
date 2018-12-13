@@ -752,13 +752,13 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 1
+    Collab: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 92559b40-d746-4213-9437-9a162360c9fb
+  cloudProjectId: 06b77a2f-4a1c-40c9-b9d7-4478f7d8c5aa
   projectName: Project_Elrond
-  organizationId: banmoyaa-iei-or-kr
+  organizationId: room704
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
