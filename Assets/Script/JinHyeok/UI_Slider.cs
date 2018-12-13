@@ -28,6 +28,9 @@ public class UI_Slider : MonoBehaviour {
     {
         db_shop.Setup();
 
+        delegate_Script = gameObject.GetComponent<Delegate_Script>();
+        delegate_Script.SetTarget(ui_Slider);
+
         sprite_Tile = Resources.LoadAll<Sprite>("JinHyeok/Img_Tile");
         button = new RectTransform[sprite_Tile.Length];
         MakeList(sprite_Tile.Length);
@@ -37,9 +40,6 @@ public class UI_Slider : MonoBehaviour {
 
         btnDistance = (int)Mathf.Abs(button[1].GetComponent<RectTransform>().anchoredPosition.x - button[0].GetComponent<RectTransform>().anchoredPosition.x);
         SetupIntSelect();
-
-        delegate_Script = gameObject.GetComponent<Delegate_Script>();
-        delegate_Script.SetTarget(ui_Slider);
 
         check_SliderOpen = false;
         ui_Slider.SetActive(false);
@@ -155,7 +155,7 @@ void SizeUpSelected()
 
     private void Update()
     {
-        if(ui_Slider.active)
+        if(ui_Slider.active && check_SliderOpen == true)
         {
             CheckMinButton();
             SizeUpSelected();
@@ -204,6 +204,8 @@ void SizeUpSelected()
         else
         {
             check_SliderOpen = false;
+            minButtonNum = int_Select = PlayerPrefs.GetInt(key_IntSelect);
+            Img_Select.sprite = sprite_Tile[minButtonNum];
             delegate_Script.Move_Close();
         }
         
