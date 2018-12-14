@@ -1,0 +1,5 @@
+﻿Use a touch or drag to pop the bubble to get score.
+Staying away from the trap and keeping Combo, gives you more points.
+As the combo gathers, the time decreases
+You can score higher on FeverTime.
+If you want to get a higher score after the game, watch the ad and get more time.
