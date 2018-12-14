@@ -25,7 +25,7 @@ public class Effect_Script : MonoBehaviour
         Setup();
     }
 
-    struct Struct_Effect
+    public struct Struct_Effect
     {
         public CheckEffect key;
         public ParticleSystem effect;
@@ -87,7 +87,7 @@ public class Effect_Script : MonoBehaviour
     {
         obj.effect.transform.parent = effectParent.transform;
         ParticleSystem particle = obj.effect.GetComponent<ParticleSystem>();
-        obj.effect.gameObject.SetActive(false);
+        
         effect_Enable.Remove(obj);
         if (obj.key == CheckEffect.Bomb)
         {
@@ -96,7 +96,8 @@ public class Effect_Script : MonoBehaviour
         else if (obj.key == CheckEffect.Fever)
         {
             effect_DisableFever.Add(obj);
-        }     
+        }
+        obj.effect.gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -104,7 +105,12 @@ public class Effect_Script : MonoBehaviour
         {
             for (int i = 0; i < effect_Enable.Count; i++)
             {
-                if (!effect_Enable[i].effect.isPlaying)
+                if (effect_Enable[i].effect == null)
+                {
+                     effect_Enable.Remove(effect_Enable[i]);
+                }
+                    
+                else if (!effect_Enable[i].effect.isPlaying)
                     PushEffect(effect_Enable[i]);
             }
         }
