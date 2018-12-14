@@ -97,7 +97,7 @@ namespace Assets.SimpleAndroidNotifications
         public void Before_Box()
         {
             ResetListner();
-            text_Limit.text = "받기";
+            text_Limit.text = "RECEIVE";
             button_Box.onClick.AddListener(() => GetRuby());
         }
         public void GetRuby()
