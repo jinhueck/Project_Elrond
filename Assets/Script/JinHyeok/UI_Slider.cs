@@ -102,7 +102,7 @@ public class UI_Slider : MonoBehaviour {
             }
             else
             {
-                ChangeButtonText(i, "장 착");
+                ChangeButtonText(i, "SELECT");
                 SetSelectedButton(rect.transform);
             }
             rect.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(()=>StartUIMusicManager.instance.ClickSound());
@@ -233,7 +233,7 @@ void SizeUpSelected()
             rubyManager.Ruby = hasMoney - forBuy;
             rubyManager.PrintRuby();
             db_shop.SetShopInfo(i);
-            ChangeButtonText(i, "장 착");
+            ChangeButtonText(i, "SELECT");
             SetSelectedButton(button[i].transform);
         }
     }

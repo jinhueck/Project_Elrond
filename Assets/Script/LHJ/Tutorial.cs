@@ -90,13 +90,7 @@ public class Tutorial : UI_Open
 
     public void Pageview()
     {
-        if (pagenum < maxnum)
-        {
-            pageview.text = (pagenum + 1) + " / " + (maxnum+1);
-        }
-        else
-        {
-            pageview.text = "마지막 페이지 입니다";
-        }
+        pageview.text = (pagenum + 1) + " / " + (maxnum + 1);
     }
+
 }

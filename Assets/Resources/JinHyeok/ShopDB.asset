@@ -15,18 +15,18 @@ MonoBehaviour:
   WorksheetName: Sheet1
   dataArray:
   - name:
-    - "\uBC84\uBE14"
+    - BUBBLE
     money:
     - 100
   - name:
-    - "\uC090\uC57D\uC774"
+    - CHICK
     money:
     - 200
   - name:
-    - "\uD560\uB85C\uC708"
+    - HALLOWEEN
     money:
     - 300
   - name:
-    - "\uAC31\uC2A4\uD130"
+    - BULLET
     money:
     - 400

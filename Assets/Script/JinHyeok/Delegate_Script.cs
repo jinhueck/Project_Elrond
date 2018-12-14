@@ -108,7 +108,7 @@ public class Delegate_Script : MonoBehaviour {
         timer += Time.deltaTime / time;
 
         float y = curve_Close_size.Evaluate(timer);
-        obj_target.transform.localScale = nowScale * y;
+        obj_target.GetComponent<RectTransform>().localScale = nowScale * y;
     }
 
     protected void ActiveFalse()

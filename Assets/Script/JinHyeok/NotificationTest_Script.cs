@@ -12,6 +12,7 @@ namespace Assets.SimpleAndroidNotifications
         [SerializeField] private string key_Time = "Key_Notification";
         [SerializeField] private int[] timeInfo;
         [SerializeField] Text text_Limit;
+        [SerializeField] GameObject img_Ads;
         [SerializeField] Button button_Box;
         [SerializeField] int ruby_Increase;
 
@@ -112,7 +113,8 @@ namespace Assets.SimpleAndroidNotifications
         {
             ResetListner();
             button_Box.onClick.AddListener(() => ShowAds());
-            text_Limit.text = "광고 시청시 2배!";
+            img_Ads.SetActive(true);
+            text_Limit.text = "      X 2";
         }
 
         void ShowAds()
@@ -131,6 +133,7 @@ namespace Assets.SimpleAndroidNotifications
 
         public void Clicked_Box()
         {
+            img_Ads.SetActive(false);
             ResetListner();
             if (cor != null)
                 StopCoroutine(cor);
