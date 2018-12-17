@@ -37,7 +37,7 @@ public class UI_TutorialText_Script : MonoBehaviour {
                 case "Korean":
                     num_Language = 0;
                     break;
-                case "English":
+                default:
                     num_Language = 1;
                     break;
             }
