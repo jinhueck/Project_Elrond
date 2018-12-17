@@ -28,7 +28,7 @@ public class InGameManager : MonoBehaviour
     Coroutine ComboCor;
     int plusScore;
     public int combo;
-    float combotime;
+   public float combotime;
     bool fevercheck;
     float fevertime;
     int fevercount;
@@ -57,7 +57,7 @@ public class InGameManager : MonoBehaviour
         plusScore = 100;
         combo = 1;
         totalscore = 0;
-        combotime = 3f;
+        combotime = 4f;
         fevercheck = false;
         fevertime = 5f;
         fevercount = 0;
@@ -115,7 +115,7 @@ public class InGameManager : MonoBehaviour
     public void ResetCombo()
     {
         combo = 1;
-        combotime = 5f;
+        combotime = 4f;
         comboview.Close();
         ResetCoroutine();
     }

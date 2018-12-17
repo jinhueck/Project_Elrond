@@ -66,10 +66,20 @@ namespace Assets.SimpleAndroidNotifications
                 time_Check.Second;
             Debug.Log("saveTime : " + saveTime);
             PlayerPrefs.SetString(key_Time, saveTime);
-            NotificationManager.Send(TimeSpan.FromHours(time_Wait),
-                "Bubble Pop", 
-                "무료 다이아가 충전되었습니다. 다이아 상점에서 수령해 주세요!", 
-                Color.white);
+            if (UI_TutorialText_Script.instance.ReturnLangauge() == 0)
+            {   
+                NotificationManager.Send(TimeSpan.FromHours(time_Wait),
+                    "Bubble Pop",
+                    "무료 다이아가 충전되었습니다. 다이아 상점에서 수령해 주세요!",
+                    Color.white);
+            }
+                
+            else if(UI_TutorialText_Script.instance.ReturnLangauge() == 1)
+                NotificationManager.Send(TimeSpan.FromHours(time_Wait),
+                    "Bubble Pop",
+                    "Free DIA is charged. Please pick it up at the DIA store!",
+                    Color.white);
+
         }
 
         IEnumerator SetText()

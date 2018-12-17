@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_TutorialText_Script : MonoBehaviour {
-
+    public static UI_TutorialText_Script instance;
     [SerializeField] Delegate_Script delegate_Script;
     [SerializeField] private GameObject ui_Langauge;
 
@@ -15,6 +15,8 @@ public class UI_TutorialText_Script : MonoBehaviour {
 
     private void Awake()
     {
+        if (UI_TutorialText_Script.instance == null)
+            UI_TutorialText_Script.instance = this;
         Setup();
     }
 
@@ -56,6 +58,11 @@ public class UI_TutorialText_Script : MonoBehaviour {
             text_Tutorial[i].text = value[i];
         }
         CloseLangauge();
+    }
+
+    public int ReturnLangauge()
+    {
+        return num_Language;
     }
 
     public void OpenLangauge()
